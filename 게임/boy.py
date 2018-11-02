@@ -39,11 +39,11 @@ class IdleState:
     def enter(boy, event):
         if event == PLAYER1:
             boy.velocity += RUN_SPEED_PPS
-        elif event == LEFT_DOWN:
+        elif event == PLAYER2:
             boy.velocity -= RUN_SPEED_PPS
-        elif event == RIGHT_UP:
+        elif event == PLAYER3:
             boy.velocity -= RUN_SPEED_PPS
-        elif event == LEFT_UP:
+        elif event == PLAYER4:
             boy.velocity += RUN_SPEED_PPS
         boy.timer = 0
 
