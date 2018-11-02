@@ -21,14 +21,14 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 # Boy Event
-PLAYER1, PLAYER2, PLAYER3, PLAYER4, ITEM = range(5)
+RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SPACE  = range(5)
 
 key_event_table = {
-    (SDL_KEYDOWN, SDLK_q): PLAYER1,
-    (SDL_KEYDOWN, SDLK_w): PLAYER2,
-    (SDL_KEYUP, SDLK_e): PLAYER3,
-    (SDL_KEYUP, SDLK_r): PLAYER4,
-    (SDL_KEYDOWN, SDLK_SPACE): ITEM
+    (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
+    (SDL_KEYDOWN, SDLK_LEFT): LEFT_DOWN,
+    (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
+    (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
+    (SDL_KEYDOWN, SDLK_SPACE): SPACE
 }
 
 # Boy States
@@ -37,13 +37,13 @@ class IdleState:
 
     @staticmethod
     def enter(boy, event):
-        if event == PLAYER1:
+        if event == RIGHT_DOWN:
             boy.velocity += RUN_SPEED_PPS
-        elif event == PLAYER2:
+        elif event == LEFT_DOWN:
             boy.velocity -= RUN_SPEED_PPS
-        elif event == PLAYER3:
+        elif event == RIGHT_UP:
             boy.velocity -= RUN_SPEED_PPS
-        elif event == PLAYER4:
+        elif event == LEFT_UP:
             boy.velocity += RUN_SPEED_PPS
         boy.timer = 0
 
@@ -71,7 +71,7 @@ class RunState:
 
     @staticmethod
     def enter(boy, event):
-        if event == PLA:
+        if event == RIGHT_DOWN:
             boy.velocity += RUN_SPEED_PPS
         elif event == LEFT_DOWN:
             boy.velocity -= RUN_SPEED_PPS
@@ -109,9 +109,12 @@ next_state_table = {
 
 class Boy:
     def __init__(self):
-        self.x, self.y = 100, 300
+        self.x, self.y = 230, 270
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('unit_48.png')
+        self.image = load_image('Bazzi.png')
+        self.image = load_image('Dio.png')
+        self.image = load_image('Cappy.png')
         self.font = load_font('ENCR10B.TTF', 30)
         self.dir = 1
         self.velocity = 0
@@ -147,5 +150,3 @@ class Boy:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
-
-            #비공개설정으로 다시 올립니다.

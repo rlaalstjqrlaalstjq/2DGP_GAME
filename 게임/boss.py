@@ -5,7 +5,6 @@ class Boss:
         self.image = load_image('boss.png')
         self.font = load_font('ENCR10B.TTF', 16)
         self.HP = 2000
-
     def update(self):
         pass
 
