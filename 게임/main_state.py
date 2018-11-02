@@ -9,6 +9,7 @@ import game_world
 from boy import Boy
 from grass import Grass
 from manabar import Manabar
+from boss import Boss
 
 
 name = "MainState"
@@ -20,9 +21,11 @@ def enter():
     boy = Boy()
     grass = Grass()
     manabar = Manabar()
+    boss = Boss()
     game_world.add_object(grass, 0)
     game_world.add_object(manabar, 1)
-    game_world.add_object(boy, 2)
+    game_world.add_object(boss, 2)
+    game_world.add_object(boy, 3)
 
 
 def exit():

@@ -1,12 +1,11 @@
 from pico2d import *
 
-class Grass:
+class Boss:
     def __init__(self):
-        self.image = load_image('stage1.png')
+        self.image = load_image('boss.png')
 
     def update(self):
         pass
 
     def draw(self):
-        self.image.draw(1565 //2, 700//2)
-
+        self.image.clip_draw(0, 0, 250, 350, 1455, 350)
