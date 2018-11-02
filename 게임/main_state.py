@@ -6,7 +6,7 @@ from pico2d import *
 import game_framework
 import game_world
 
-from boy import Boy
+from boy import Bazzi
 from grass import Grass
 from manabar import Manabar
 from boss import Boss
@@ -20,7 +20,7 @@ boy = None
 
 def enter():
     global boy
-    boy = Boy()
+    boy = Bazzi()
     grass = Grass()
     manabar = Manabar()
     boss = Boss()

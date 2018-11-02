@@ -21,14 +21,10 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 # Boy Event
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SPACE  = range(5)
+CREATE_BAZZI = range(1)
 
 key_event_table = {
-    (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
-    (SDL_KEYDOWN, SDLK_LEFT): LEFT_DOWN,
-    (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
-    (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
-    (SDL_KEYDOWN, SDLK_SPACE): SPACE
+    (SDL_KEYDOWN, SDLK_q): CREATE_BAZZI
 }
 
 # Boy States
@@ -37,87 +33,62 @@ class IdleState:
 
     @staticmethod
     def enter(boy, event):
-        if event == RIGHT_DOWN:
-            boy.velocity += RUN_SPEED_PPS
-        elif event == LEFT_DOWN:
-            boy.velocity -= RUN_SPEED_PPS
-        elif event == RIGHT_UP:
-            boy.velocity -= RUN_SPEED_PPS
-        elif event == LEFT_UP:
-            boy.velocity += RUN_SPEED_PPS
-        boy.timer = 0
-
-    @staticmethod
-    def exit(boy, event):
-        if event == SPACE:
-            boy.fire_ball()
         pass
 
     @staticmethod
-    def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
-
-        boy.timer += get_time() - boy.fisrt_time
-        boy.fisrt_time = get_time()
-
-    @staticmethod
-    def draw(boy):
-        if boy.dir == 1:
-            boy.image.clip_draw(0, 400, 100, 100, boy.x, boy.y)
-        else:
-            boy.image.clip_draw(100, 400, 100, 100, boy.x, boy.y)
-
-class RunState:
-
-    @staticmethod
-    def enter(boy, event):
-        if event == RIGHT_DOWN:
-            boy.velocity += RUN_SPEED_PPS
-        elif event == LEFT_DOWN:
-            boy.velocity -= RUN_SPEED_PPS
-        elif event == RIGHT_UP:
-            boy.velocity -= RUN_SPEED_PPS
-        elif event == LEFT_UP:
-            boy.velocity += RUN_SPEED_PPS
-        boy.dir = clamp(-1, boy.velocity, 1)
-
-    @staticmethod
     def exit(boy, event):
-        if event == SPACE:
-            boy.fire_ball()
+       pass
 
     @staticmethod
     def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        boy.x += boy.velocity * game_framework.frame_time
-        boy.x = clamp(25, boy.x, 1600 - 25)
-        boy.image.opacify(1)
+       pass
 
     @staticmethod
     def draw(boy):
-        if boy.dir == 1:
-            boy.image.clip_draw(0, int(boy.frame) * 100, 100, 100, boy.x, boy.y)
-        else:
-            boy.image.clip_draw(100 , int(boy.frame) * 100, 100, 100, boy.x, boy.y)
+
+            pass
+
+class BazziMove:
+
+    @staticmethod
+    def enter(Bazzi, event):
+        if event == CREATE_BAZZI:
+            Bazzi.x = 230
+            Bazzi.y= 270
+
+    @staticmethod
+    def exit(Bazzi, event):
+       pass
+
+    @staticmethod
+    def do(Bazzi):
+        Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        Bazzi.x += 3
+        Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
+
+
+    @staticmethod
+    def draw(Bazzi):
+        Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
+
 
 
 next_state_table = {
-    IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState, RIGHT_DOWN: RunState, LEFT_DOWN: RunState, SPACE: IdleState},
-    RunState: {RIGHT_UP: IdleState, LEFT_UP: IdleState, LEFT_DOWN: IdleState, RIGHT_DOWN: IdleState, SPACE: RunState},
+    IdleState: {CREATE_BAZZI : BazziMove},
+    BazziMove: {CREATE_BAZZI : BazziMove},
+
 }
 
 
-class Boy:
+class Bazzi:
     def __init__(self):
-        self.x, self.y = 230, 270
+        self.x, self.y = 230 , 270
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('unit_48.png')
         self.image = load_image('Bazzi.png')
-        self.image = load_image('Dio.png')
-        self.image = load_image('Cappy.png')
-        self.font = load_font('ENCR10B.TTF', 30)
-        self.dir = 1
-        self.velocity = 0
+
+        self.font = load_font('ENCR10B.TTF', 15)
+        self.HP = 200
+
         self.frame = 0
         self.event_que = []
         self.cur_state = IdleState
@@ -125,11 +96,6 @@ class Boy:
         self.fisrt_time = 0
 
 
-
-
-    def fire_ball(self):
-        ball = Ball(self.x, self.y, self.dir*3)
-        game_world.add_object(ball, 1)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -144,7 +110,44 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
-        self.font.draw(720, 650, 'Time : %3.2f' % get_time(), (0, 0, 0))
+        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/200' % int(self.HP), (0, 0, 0))
+
+    def handle_event(self, event):
+        if (event.type, event.key) in key_event_table:
+            key_event = key_event_table[(event.type, event.key)]
+            self.add_event(key_event)
+
+class Dio:
+    def __init__(self):
+        self.x, self.y = 230 , 270
+        # Boy is only once created, so instance image loading is fine
+        self.image = load_image('Dio.png')
+
+        self.font = load_font('ENCR10B.TTF', 15)
+        self.HP = 350
+
+        self.frame = 0
+        self.event_que = []
+        self.cur_state = RunState
+        self.cur_state.enter(self, None)
+        self.fisrt_time = 0
+
+
+
+    def add_event(self, event):
+        self.event_que.insert(0, event)
+
+    def update(self):
+        self.cur_state.do(self)
+        if len(self.event_que) > 0:
+            event = self.event_que.pop()
+            self.cur_state.exit(self, event)
+            self.cur_state = next_state_table[self.cur_state][event]
+            self.cur_state.enter(self, event)
+
+    def draw(self):
+        self.cur_state.draw(self)
+        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/350' % int(self.HP), (0, 0, 0))
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
