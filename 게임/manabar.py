@@ -14,7 +14,7 @@ class Manabar:
 
 
     def draw(self):
-        self.image.clip_draw(0, 20, 400, 70, 700, 40)
+        self.image.clip_draw(0, 20, 400, 70, 400, 40)
         if self.x <380:
             self.image.clip_draw(0, 0, self.x*1, 20, 600, 40)
 
