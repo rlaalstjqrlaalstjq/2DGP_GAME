@@ -21,14 +21,14 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 # Boy Event
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SPACE = range(5)
+PLAYER1, PLAYER2, PLAYER3, PLAYER4, ITEM = range(5)
 
 key_event_table = {
-    (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
-    (SDL_KEYDOWN, SDLK_LEFT): LEFT_DOWN,
-    (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
-    (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
-    (SDL_KEYDOWN, SDLK_SPACE): SPACE
+    (SDL_KEYDOWN, SDLK_q): PLAYER1,
+    (SDL_KEYDOWN, SDLK_w): PLAYER2,
+    (SDL_KEYUP, SDLK_e): PLAYER3,
+    (SDL_KEYUP, SDLK_r): PLAYER4,
+    (SDL_KEYDOWN, SDLK_SPACE): ITEM
 }
 
 # Boy States
@@ -37,7 +37,7 @@ class IdleState:
 
     @staticmethod
     def enter(boy, event):
-        if event == RIGHT_DOWN:
+        if event == PLAYER1:
             boy.velocity += RUN_SPEED_PPS
         elif event == LEFT_DOWN:
             boy.velocity -= RUN_SPEED_PPS
@@ -71,7 +71,7 @@ class RunState:
 
     @staticmethod
     def enter(boy, event):
-        if event == RIGHT_DOWN:
+        if event == PLA:
             boy.velocity += RUN_SPEED_PPS
         elif event == LEFT_DOWN:
             boy.velocity -= RUN_SPEED_PPS
