@@ -10,6 +10,7 @@ from boy import Boy
 from grass import Grass
 from manabar import Manabar
 from boss import Boss
+from tower import Tower
 
 
 name = "MainState"
@@ -22,10 +23,12 @@ def enter():
     grass = Grass()
     manabar = Manabar()
     boss = Boss()
+    tower = Tower()
     game_world.add_object(grass, 0)
     game_world.add_object(manabar, 1)
     game_world.add_object(boss, 2)
-    game_world.add_object(boy, 3)
+    game_world.add_object(tower, 3)
+    game_world.add_object(boy, 4)
 
 
 def exit():
