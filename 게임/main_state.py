@@ -12,7 +12,7 @@ from manabar import Manabar
 from boss import Boss
 from tower import Tower
 from selectplayer import SelectPlayer
-
+from monster import Monster1
 
 
 name = "MainState"
@@ -28,7 +28,7 @@ def enter():
     manabar = Manabar()
     boss = Boss()
     tower = Tower()
-
+    monster = Monster1()
     selectplayer = SelectPlayer()
 
     game_world.add_object(grass, 0)
@@ -37,6 +37,7 @@ def enter():
     game_world.add_object(boss, 3)
     game_world.add_object(tower, 4)
     game_world.add_object(boy, 5)
+    game_world.add_object(monster, 6)
 
 
 
