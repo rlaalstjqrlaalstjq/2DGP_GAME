@@ -21,11 +21,10 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
 # Boy Event
-CREATE_BAZZI,CREATE_DIO = range(2)
+CREATE_Dio = range(1)
 
 key_event_table = {
-    (SDL_KEYDOWN, SDLK_q): CREATE_BAZZI,
-(SDL_KEYDOWN, SDLK_w): CREATE_DIO
+    (SDL_KEYDOWN, SDLK_w): CREATE_Dio
 }
 
 # Boy States
@@ -49,34 +48,11 @@ class IdleState:
 
             pass
 
-class BazziMove:
-
-    @staticmethod
-    def enter(Bazzi, event):
-        if event == CREATE_BAZZI:
-            Bazzi.x = 230
-            Bazzi.y= 270
-
-    @staticmethod
-    def exit(Bazzi, event):
-       pass
-
-    @staticmethod
-    def do(Bazzi):
-        Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        Bazzi.x += 3
-        Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
-
-    @staticmethod
-    def draw(Bazzi):
-        Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
-
-
 class DioMove:
 
     @staticmethod
     def enter(Dio, event):
-        if event == CREATE_DIO:
+        if event == CREATE_BAZZI:
             Dio.x = 230
             Dio.y= 270
 
@@ -96,22 +72,22 @@ class DioMove:
         Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
 
 
+
 next_state_table = {
-    IdleState: {CREATE_BAZZI: BazziMove, CREATE_DIO:DioMove},
-    BazziMove: {CREATE_BAZZI: BazziMove, CREATE_DIO: DioMove},
-    DioMove:{CREATE_DIO: DioMove, CREATE_BAZZI: BazziMove}
+    IdleState: {CREATE_Dio : DioMove},
+    DioMove: {CREATE_Dio : DioMove},
 
 }
 
 
-class Bazzi:
+class Dio:
     def __init__(self):
         self.x, self.y = 230 , 270
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('Bazzi.png')
+        self.image = load_image('Dio.png')
 
         self.font = load_font('ENCR10B.TTF', 15)
-        self.HP = 200
+        self.HP = 350
 
         self.frame = 0
         self.event_que = []
@@ -141,38 +117,3 @@ class Bazzi:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
 
-class Dio:
-    def __init__(self):
-        self.x, self.y = 230 , 270
-        # Boy is only once created, so instance image loading is fine
-        self.image = load_image('Dio.png')
-        self.font = load_font('ENCR10B.TTF', 15)
-        self.HP = 350
-
-        self.frame = 0
-        self.event_que = []
-        self.cur_state = IdleState
-        self.cur_state.enter(self, None)
-        self.fisrt_time = 0
-
-
-
-    def add_event(self, event):
-        self.event_que.insert(0, event)
-
-    def update(self):
-        self.cur_state.do(self)
-        if len(self.event_que) > 0:
-            event = self.event_que.pop()
-            self.cur_state.exit(self, event)
-            self.cur_state = next_state_table[self.cur_state][event]
-            self.cur_state.enter(self, event)
-
-    def draw(self):
-        self.cur_state.draw(self)
-        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/350' % int(self.HP), (0, 0, 0))
-
-    def handle_event(self, event):
-        if (event.type, event.key) in key_event_table:
-            key_event = key_event_table[(event.type, event.key)]
-            self.add_event(key_event)
