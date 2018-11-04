@@ -18,6 +18,8 @@ from tower import Tower
 from selectplayer import SelectPlayer
 from monster import Monster1
 from monster import Monster2
+from monster import Monster3
+from monster import Monster4
 
 
 name = "MainState"
@@ -42,6 +44,8 @@ def enter():
     tower = Tower()
     monster1 = Monster1()
     monster2 = Monster2()
+    monster3 = Monster3()
+    monster4 = Monster4()
 
 
     selectplayer = SelectPlayer()
@@ -53,6 +57,9 @@ def enter():
     game_world.add_object(tower, 4)
     game_world.add_object(monster1, 6)
     game_world.add_object(monster2, 10)
+    game_world.add_object(monster3, 11)
+    game_world.add_object(monster4, 12)
+
 
 
 
