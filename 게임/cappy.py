@@ -38,8 +38,13 @@ class Cappy:
 
     def update(Cappy):
         Cappy.frame = (Cappy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        Cappy.x += 5   #이동속도
+
         Cappy.x = clamp(25, Cappy.x, 1600 - 25)
+
+        if (Cappy.x >= 800):
+            Cappy.x += 0
+        else:
+            Cappy.x += 2.4  # 이동속도
 
     def draw(Cappy):
         Cappy.image.clip_draw(0, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)

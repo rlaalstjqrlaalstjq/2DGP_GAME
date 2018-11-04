@@ -38,8 +38,13 @@ class Dio:
 
     def update(Dio):
         Dio.frame = (Dio.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        Dio.x += 2   #이동속도
+
         Dio.x = clamp(25, Dio.x, 1600 - 25)
+
+        if (Dio.x >= 800):
+            Dio.x += 0
+        else:
+            Dio.x += 1.7  # 이동속도
 
     def draw(Dio):
         Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)

@@ -20,15 +20,14 @@ FRAMES_PER_ACTION = 8
 
 class HeelItem:
     def __init__(HeelItem):
-        HeelItem.x, HeelItem.y = 500,300
+        HeelItem.x, HeelItem.y = 120, 300
         HeelItem.image = load_image('heelitem.png')
         HeelItem.font = load_font('ENCR10B.TTF', 50)
-        HeelItem.x = 0
         HeelItem.frame = 0
         HeelItem.bar_num = 0
 
     def update(HeelItem):
-        HeelItem.frame = (HeelItem.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        HeelItem.frame = (HeelItem.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 7
 
     def do(HeelItem):
         pass

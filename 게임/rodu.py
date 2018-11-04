@@ -38,8 +38,13 @@ class Rodu:
 
     def update(Rodu):
         Rodu.frame = (Rodu.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        Rodu.x += 1   #이동속도
+
         Rodu.x = clamp(25, Rodu.x, 1600 - 25)
+
+        if (Rodu.x >= 800):
+            Rodu.x += 0
+        else:
+            Rodu.x += 1.7  # 이동속도
 
     def draw(Rodu):
         Rodu.image.clip_draw(0, int(Rodu.frame) * 100, 100, 100, Rodu.x, Rodu.y)
