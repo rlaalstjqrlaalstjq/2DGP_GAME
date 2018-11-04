@@ -42,7 +42,7 @@ class Monster1:
         pass
 
     def update(self):
-        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         self.x -= 2  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
 
@@ -69,11 +69,11 @@ class Monster2:
     def __init__(self):
         self.x, self.y = 1400 , 270
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('monster1.png')
+        self.image = load_image('monster2.png')
 
         self.font = load_font('ENCR10B.TTF', 15)
-        self.HP = 300
-        self.Attack = 30
+        self.HP = 400
+        self.Attack = 40
 
         self.frame = 0
 
@@ -84,7 +84,7 @@ class Monster2:
         pass
 
     def update(self):
-        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         self.x -= 2  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
 
@@ -98,7 +98,7 @@ class Monster2:
         self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
 
 
-        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/300' % int(self.HP), (0, 0, 0))
+        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/400' % int(self.HP), (0, 0, 0))
 
 
 
