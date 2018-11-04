@@ -85,7 +85,7 @@ class Monster2:
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        self.x -= 2  # 이동속도
+        self.x -= 1.5  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
 
         self.mana = get_time()
@@ -126,7 +126,7 @@ class Monster3:
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        self.x -= 3  # 이동속도
+        self.x -= 1  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
 
         self.mana = get_time()
@@ -167,7 +167,7 @@ class Monster4:
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        self.x -= 2  # 이동속도
+        self.x -= 0.5  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
 
         self.mana = get_time()
