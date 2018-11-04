@@ -20,48 +20,7 @@ TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 8
 
-# Boy Event
-CREATE_BAZZI,CREATE_DIO = range(2)
 
-key_event_table = {
-    (SDL_KEYDOWN, SDLK_q): CREATE_BAZZI,
-(SDL_KEYDOWN, SDLK_w): CREATE_DIO
-}
-
-# Boy States
-
-class IdleState:
-
-    @staticmethod
-    def enter(boy, event):
-        pass
-
-    @staticmethod
-    def exit(boy, event):
-       pass
-
-    @staticmethod
-    def do(Monster1):
-        Monster1.frame = (Monster1.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        Monster1.x -= 2
-        Monster1.x = clamp(25, Monster1.x, 1600 - 25)
-        timer = get_time()
-
-    @staticmethod
-    def draw(Monster1):
-        x = 0
-        while(x<3):
-            Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
-            x += 1
-
-
-
-
-next_state_table = {
-    IdleState: {},
-
-
-}
 
 
 class Monster1:
@@ -71,68 +30,78 @@ class Monster1:
         self.image = load_image('monster1.png')
 
         self.font = load_font('ENCR10B.TTF', 15)
-        self.HP = 200
+        self.HP = 300
+        self.Attack = 30
 
         self.frame = 0
-        self.event_que = []
-        self.cur_state = IdleState
-        self.cur_state.enter(self, None)
-        self.fisrt_time = 0
+
 
 
 
     def add_event(self, event):
-        self.event_que.insert(0, event)
+        pass
 
     def update(self):
-        self.cur_state.do(self)
-        if len(self.event_que) > 0:
-            event = self.event_que.pop()
-            self.cur_state.exit(self, event)
-            self.cur_state = next_state_table[self.cur_state][event]
-            self.cur_state.enter(self, event)
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        self.x -= 2  # 이동속도
+        self.x = clamp(25, self.x, 1600 - 25)
+
+        self.mana = get_time()
+
+
+
 
     def draw(self):
-        self.cur_state.draw(self)
-        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/200' % int(self.HP), (0, 0, 0))
+
+        self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
+
+
+        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/300' % int(self.HP), (0, 0, 0))
+
+
 
     def handle_event(self, event):
-        if (event.type, event.key) in key_event_table:
-            key_event = key_event_table[(event.type, event.key)]
-            self.add_event(key_event)
+        pass
 
-class Dio:
+
+
+class Monster2:
     def __init__(self):
-        self.x, self.y = 230 , 270
+        self.x, self.y = 1400 , 270
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('Dio.png')
+        self.image = load_image('monster1.png')
+
         self.font = load_font('ENCR10B.TTF', 15)
-        self.HP = 350
+        self.HP = 300
+        self.Attack = 30
 
         self.frame = 0
-        self.event_que = []
-        self.cur_state = IdleState
-        self.cur_state.enter(self, None)
-        self.fisrt_time = 0
+
 
 
 
     def add_event(self, event):
-        self.event_que.insert(0, event)
+        pass
 
     def update(self):
-        self.cur_state.do(self)
-        if len(self.event_que) > 0:
-            event = self.event_que.pop()
-            self.cur_state.exit(self, event)
-            self.cur_state = next_state_table[self.cur_state][event]
-            self.cur_state.enter(self, event)
+        self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+        self.x -= 2  # 이동속도
+        self.x = clamp(25, self.x, 1600 - 25)
+
+        self.mana = get_time()
+
+
+
 
     def draw(self):
-        self.cur_state.draw(self)
-        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/350' % int(self.HP), (0, 0, 0))
+
+        self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
+
+
+        self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/300' % int(self.HP), (0, 0, 0))
+
+
 
     def handle_event(self, event):
-        if (event.type, event.key) in key_event_table:
-            key_event = key_event_table[(event.type, event.key)]
-            self.add_event(key_event)
+        pass
+

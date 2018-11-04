@@ -5,6 +5,7 @@ import os
 from pico2d import *
 import game_framework
 import game_world
+import math
 
 from bazzi import Bazzi
 from rodu import Rodu
@@ -39,6 +40,7 @@ def enter():
     boss = Boss()
     tower = Tower()
     monster = Monster1()
+
     selectplayer = SelectPlayer()
 
     game_world.add_object(grass, 0)
@@ -73,24 +75,30 @@ def handle_events():
             bazzi.handle_event(event)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 7)
-            bazzi.handle_event(event)
+            dio.handle_event(event)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_e:
             game_world.add_object(rodu, 8)
-            bazzi.handle_event(event)
+            rodu.handle_event(event)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_r:
             game_world.add_object(cappy, 9)
-            bazzi.handle_event(event)
+            cappy.handle_event(event)
 
 def update():
+
     for game_object in game_world.all_objects():
         game_object.update()
 
 
+
 def draw():
     clear_canvas()
+
+
+
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
+
 
 
 

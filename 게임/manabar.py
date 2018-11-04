@@ -5,6 +5,7 @@ class Manabar:
         self.image = load_image('mana_bar.png')
         self.font = load_font('ENCR10B.TTF', 50)
         self.x = 0
+
     def update(self):
         self.x = get_time()
 
@@ -15,6 +16,9 @@ class Manabar:
 
 
     def draw(self):
+
+        self.font.draw(640, 650, 'Time : %3.2f' % get_time(), (0, 0, 0))
+
         self.image.clip_draw(0, 20, 400, 70, 500, 40)
         if (self.x*19) < 380:
             self.image.clip_draw(0, 0, int(self.x*10), 20, 400, 40)
