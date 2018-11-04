@@ -1,37 +1,39 @@
 from pico2d import *
 
 class Manabar:
-    def __init__(self):
-        self.image = load_image('mana_bar.png')
-        self.font = load_font('ENCR10B.TTF', 50)
-        self.x = 0
+    def __init__(Manabar):
+        Manabar.image = load_image('mana_bar.png')
+        Manabar.font = load_font('ENCR10B.TTF', 50)
+        Manabar.x = 0
+        Manabar.bar_num = 0
 
-    def update(self):
-        self.x = get_time()
+    def update(Manabar):
+        Manabar.x = get_time()
+        Manabar.bar_num = int(Manabar.x / 2)
 
-    def do(self):
+    def do(Manabar):
         pass
 
 
 
 
-    def draw(self):
+    def draw(Manabar):
 
-        self.font.draw(640, 650, 'Time : %3.2f' % get_time(), (0, 0, 0))
+        Manabar.font.draw(640, 650, 'Time : %3.2f' % Manabar.x, (0, 0, 0))
 
-        self.image.clip_draw(0, 20, 400, 70, 500, 40)
-        if (self.x*19) < 380:
-            self.image.clip_draw(0, 0, int(self.x*10), 20, 400, 40)
+        Manabar.image.clip_draw(0, 20, 400, 70, 500, 40)
+        if (Manabar.x*19) < 380:
+            Manabar.image.clip_draw(0, 0, int(Manabar.x*10), 20, 400, 40)
 
-        if (self.x*19) >= 380:
-            self.image.clip_draw(0, 0, 380, 20, 500, 40)
+        if (Manabar.x*19) >= 380:
+            Manabar.image.clip_draw(0, 0, 380, 20, 500, 40)
 
-        bar_num = int(self.x/2)
-        if bar_num <10:
-            self.font.draw(230, 40, '%3.2i' % bar_num, (0, 200, 0))
+
+        if Manabar.bar_num <10:
+            Manabar.font.draw(210, 40, '%3.2i' % Manabar.bar_num, (0, 200, 0))
         else:
             bar_num = 10
-            self.font.draw(230, 40, '%3.2i' % bar_num, (0, 200, 0))
+            Manabar.font.draw(210, 40, '%3.2i' % Manabar.bar_num, (0, 200, 0))
             # 마나바 10개에 걸리는 충전시간 20초로 설정
 
 

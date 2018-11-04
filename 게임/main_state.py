@@ -84,17 +84,22 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_q:
             game_world.add_object(bazzi, 5)
             bazzi.handle_event(event)
+            manabar.bar_num -= bazzi.Mana
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 7)
             dio.handle_event(event)
+            manabar.bar_num -= dio.Mana
         elif event.type == SDL_KEYDOWN and event.key == SDLK_e:
             game_world.add_object(rodu, 8)
             rodu.handle_event(event)
+            manabar.bar_num -= rodu.Mana
         elif event.type == SDL_KEYDOWN and event.key == SDLK_r:
             game_world.add_object(cappy, 9)
             cappy.handle_event(event)
+            manabar.bar_num -= cappy.Mana
 
 def update():
+    get_time()
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -105,9 +110,9 @@ def draw():
     clear_canvas()
 
 
-
     for game_object in game_world.all_objects():
         game_object.draw()
+
     update_canvas()
 
 
