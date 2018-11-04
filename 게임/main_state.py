@@ -6,7 +6,10 @@ from pico2d import *
 import game_framework
 import game_world
 
-from boy import Bazzi
+from bazzi import Bazzi
+from rodu import Rodu
+from dio import Dio
+from cappy import Cappy
 from grass import Grass
 from manabar import Manabar
 from boss import Boss
@@ -17,13 +20,20 @@ from monster import Monster1
 
 name = "MainState"
 
-boy = None
 
 def enter():
-    global boy
+    global bazzi
+    global dio
+    global rodu
+    global cappy
+    global grass
+    global manabar
+    global selectplayer
 
-
-    boy = Bazzi()
+    bazzi = Bazzi()
+    rodu = Rodu()
+    cappy = Cappy()
+    dio = Dio()
     grass = Grass()
     manabar = Manabar()
     boss = Boss()
@@ -36,7 +46,6 @@ def enter():
     game_world.add_object(selectplayer, 2)
     game_world.add_object(boss, 3)
     game_world.add_object(tower, 4)
-    game_world.add_object(boy, 5)
     game_world.add_object(monster, 6)
 
 
@@ -59,9 +68,18 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.quit()
-        else:
-            boy.handle_event(event)
-
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_q:
+            game_world.add_object(bazzi, 5)
+            bazzi.handle_event(event)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
+            game_world.add_object(dio, 7)
+            bazzi.handle_event(event)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_e:
+            game_world.add_object(rodu, 8)
+            bazzi.handle_event(event)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_r:
+            game_world.add_object(cappy, 9)
+            bazzi.handle_event(event)
 
 def update():
     for game_object in game_world.all_objects():

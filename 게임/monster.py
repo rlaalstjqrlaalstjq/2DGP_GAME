@@ -49,8 +49,10 @@ class IdleState:
 
     @staticmethod
     def draw(Monster1):
-
-        Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
+        x = 0
+        while(x<3):
+            Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
+            x += 1
 
 
 
