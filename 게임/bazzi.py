@@ -37,9 +37,11 @@ class Bazzi:
         pass
 
     def update(Bazzi):
-        Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-        Bazzi.x += 3   #이동속도
-        Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
+
+            Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+            Bazzi.x += 3  # 이동속도
+            Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
+
 
     def draw(Bazzi):
         Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)

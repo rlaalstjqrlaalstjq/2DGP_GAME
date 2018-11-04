@@ -20,6 +20,7 @@ from monster import Monster1
 from monster import Monster2
 from monster import Monster3
 from monster import Monster4
+from heelitem import HeelItem
 
 
 name = "MainState"
@@ -33,7 +34,9 @@ def enter():
     global grass
     global manabar
     global selectplayer
-
+    global monster1
+    global heelitem
+    global tower
     bazzi = Bazzi()
     rodu = Rodu()
     cappy = Cappy()
@@ -46,6 +49,7 @@ def enter():
     monster2 = Monster2()
     monster3 = Monster3()
     monster4 = Monster4()
+    heelitem = HeelItem()
 
 
     selectplayer = SelectPlayer()
@@ -59,6 +63,7 @@ def enter():
     game_world.add_object(monster2, 10)
     game_world.add_object(monster3, 11)
     game_world.add_object(monster4, 12)
+
 
 
 
@@ -85,6 +90,7 @@ def handle_events():
             game_world.add_object(bazzi, 5)
             bazzi.handle_event(event)
             manabar.bar_num -= bazzi.Mana
+
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 7)
             dio.handle_event(event)
@@ -97,6 +103,10 @@ def handle_events():
             game_world.add_object(cappy, 9)
             cappy.handle_event(event)
             manabar.bar_num -= cappy.Mana
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
+            game_world.add_object(heelitem,13 )
+            heelitem.handle_event(event)
+            tower.HP += 500
 
 def update():
     get_time()
@@ -108,6 +118,7 @@ def update():
 
 def draw():
     clear_canvas()
+
 
 
     for game_object in game_world.all_objects():
