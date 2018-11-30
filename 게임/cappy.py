@@ -21,18 +21,18 @@ FRAMES_PER_ACTION = 8
 
 
 class Cappy:
+    image = None
+
     def __init__(Cappy):
+        if Cappy.image == None:
+            Cappy.image = load_image('Cappy.png')
         Cappy.x, Cappy.y = 230, 270
-        # Boy is only once created, so instance image loading is fine
-        Cappy.image = load_image('Cappy.png')
         Cappy.font = load_font('ENCR10B.TTF', 15)
         Cappy.HP = 120    #체력
         Cappy.Attack = 20  #공격력
         Cappy.Mana = 2  #소환에 필요한 마나 소모량
-
         Cappy.frame = 0
         Cappy.fisrt_time = 0
-
         Cappy.timer = 100
         Cappy.colliding = True
 
@@ -41,7 +41,6 @@ class Cappy:
 
     def update(Cappy):
         Cappy.frame = (Cappy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-
         Cappy.x = clamp(25, Cappy.x, 1600 - 25)
 
         if Cappy.colliding == True:

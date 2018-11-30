@@ -21,12 +21,12 @@ FRAMES_PER_ACTION = 8
 
 
 class Bazzi:
-
+    image = None
 
     def __init__(Bazzi):
+        if Bazzi.image == None:
+            Bazzi.image = load_image('Bazzi.png')
         Bazzi.x, Bazzi.y = 150, 270
-        # Boy is only once created, so instance image loading is fine
-        Bazzi.image = load_image('Bazzi.png')
         Bazzi.font = load_font('ENCR10B.TTF', 15)
         Bazzi.HP = 350    #체력
         Bazzi.Attack = 50  #공격력

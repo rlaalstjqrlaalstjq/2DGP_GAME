@@ -24,11 +24,14 @@ FRAMES_PER_ACTION = 8
 
 
 class Monster1:
+    image = None
+
     def __init__(Monster1):
+        if Monster1.image == None:
+            Monster1.image = load_image('monster1.png')
         Monster1.y = [270, 170, 370]
         Monster1.x, Monster1.y = random.randint(1400, 5000) , Monster1.y[random.randint(0, 2)]
-        # Boy is only once created, so instance image loading is fine
-        Monster1.image = load_image('monster1.png')
+
         Monster1.font = load_font('ENCR10B.TTF', 15)
         Monster1.HP = 300
         Monster1.Attack = 30
@@ -62,11 +65,13 @@ class Monster1:
 
 
 class Monster2:
+    image = None
+
     def __init__(Monster2):
+        if Monster2.image == None:
+            Monster2.image = load_image('monster2.png')
         Monster2.y = [270, 170, 370]
         Monster2.x, Monster2.y = random.randint(1400, 5000) ,Monster2.y[random.randint(0, 2)]
-        # Boy is only once created, so instance image loading is fine
-        Monster2.image = load_image('monster2.png')
         Monster2.font = load_font('ENCR10B.TTF', 15)
         Monster2.HP = 400
         Monster2.Attack = 40
@@ -101,10 +106,13 @@ class Monster2:
 
 
 class Monster3:
+    image = None
+
     def __init__(Monster3):
+        if Monster3.image == None:
+            Monster3.image = load_image('Monster3.png')
         Monster3.y = [270,170,370]
         Monster3.x, Monster3.y = random.randint(1400, 5000) ,Monster3.y[random.randint(0, 2)]
-        Monster3.image = load_image('Monster3.png')
         Monster3.font = load_font('ENCR10B.TTF', 15)
         Monster3.HP = 200
         Monster3.Attack = 20
@@ -137,11 +145,14 @@ class Monster3:
         return self.x - 40, self.y - 40, self.x + 30, self.y + 40
 
 class Monster4:
+    image = None
+
     def __init__(Monster4):
+        if Monster4.image == None:
+            Monster4.image = load_image('Monster4.png')
         Monster4.y = [270, 170, 370]
         Monster4.x, Monster4.y = random.randint(1400, 5000), Monster4.y[random.randint(0, 2)]
         Monster4.colliding = True
-        Monster4.image = load_image('Monster4.png')
         Monster4.font = load_font('ENCR10B.TTF', 15)
         Monster4.HP = 500
         Monster4.Attack = 30

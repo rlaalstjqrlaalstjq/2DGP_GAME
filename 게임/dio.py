@@ -21,18 +21,18 @@ FRAMES_PER_ACTION = 8
 
 
 class Dio:
+    image = None
+
     def __init__(Dio):
+        if Dio.image == None:
+            Dio.image = load_image('Dio.png')
         Dio.x, Dio.y = 230, 270
-        # Boy is only once created, so instance image loading is fine
-        Dio.image = load_image('Dio.png')
         Dio.font = load_font('ENCR10B.TTF', 15)
         Dio.HP = 200    #체력
         Dio.Attack = 80  #공격력
         Dio.Mana = 5  #소환에 필요한 마나 소모량
-
         Dio.frame = 0
         Dio.fisrt_time = 0
-
         Dio.timer = 100
         Dio.colliding = True
 

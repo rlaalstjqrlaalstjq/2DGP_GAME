@@ -21,18 +21,18 @@ FRAMES_PER_ACTION = 8
 
 
 class Rodu:
+    image = None
+
     def __init__(Rodu):
+        if Rodu.image == None:
+            Rodu.image = load_image('Rodu.png')
         Rodu.x, Rodu.y = 230, 270
-        # Boy is only once created, so instance image loading is fine
-        Rodu.image = load_image('Rodu.png')
         Rodu.font = load_font('ENCR10B.TTF', 15)
         Rodu.HP = 500    #체력
         Rodu.Attack = 30  #공격력
         Rodu.Mana = 7  #소환에 필요한 마나 소모량
-
         Rodu.frame = 0
         Rodu.fisrt_time = 0
-
         Rodu.timer = 100
         Rodu.colliding = True
 
@@ -41,7 +41,6 @@ class Rodu:
 
     def update(Rodu):
         Rodu.frame = (Rodu.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-
         Rodu.x = clamp(25, Rodu.x, 1600 - 25)
 
         if Rodu.colliding == True:
