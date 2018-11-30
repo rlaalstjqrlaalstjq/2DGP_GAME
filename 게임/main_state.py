@@ -22,7 +22,6 @@ from heelitem import HeelItem
 
 name = "MainState"
 
-monsters =[]
 
 
 
@@ -75,16 +74,16 @@ def enter():
     game_world.add_object(boss, 1)
 
     global monster1
-    monster1 = [Monster1()]
+    monster1 = [Monster1() for i in range(10)]
     game_world.add_objects(monster1, 1)
     global monster2
-    monster2 = [Monster2()]
+    monster2 = [Monster2() for i in range(10)]
     game_world.add_objects(monster2, 1)
     global monster3
-    monster3 = [Monster3()]
+    monster3 = [Monster3() for i in range(10)]
     game_world.add_objects(monster3, 1)
     global monster4
-    monster4 = [Monster4()]
+    monster4 = [Monster4() for i in range(10)]
     game_world.add_objects(monster4, 1)
 
 
@@ -108,8 +107,6 @@ def handle_events():
                 game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_q:
             game_world.add_object(bazzi, 1)
-            bazzi.handle_event(event)
-            manabar.bar_num -= bazzi.Mana
 
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 1)
@@ -135,8 +132,18 @@ def update():
 
     for monster in monster1:
         if collide(bazzi, monster):
-            monster1.remove(monster)
-            game_world.remove_object(monster)
+            bazzi.x =
+            monster.x =
+            bazzi.timer -= 1
+            if bazzi.timer ==0:
+                bazzi.HP -= 1
+                monster.HP -=1
+                bazzi.timer = 300
+                if monster.HP ==0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                elif bazzi.HP ==0:
+                    game_world.remove_object(bazzi)
 
 def draw():
     clear_canvas()

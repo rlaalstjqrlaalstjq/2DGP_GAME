@@ -32,6 +32,7 @@ class Bazzi:
 
         Bazzi.frame = 0
         Bazzi.fisrt_time = 0
+        Bazzi.timer = 300
 
     def add_event(Bazzi, event):
         pass
@@ -39,13 +40,8 @@ class Bazzi:
     def update(Bazzi):
 
             Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-
             Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
-
-            if(Bazzi.x >= 800):
-                Bazzi.x += 0
-            else:
-                Bazzi.x += 3  # 이동속도
+            Bazzi.x += 3  # 이동속도
 
 
 
@@ -57,4 +53,4 @@ class Bazzi:
         pass
 
     def get_bb(self):
-        return self.x - 40, self.y - 40, self.x + 30, self.y + 40
+        return self.x +28, self.y - 40, self.x + 30, self.y + 40
