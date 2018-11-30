@@ -21,6 +21,8 @@ FRAMES_PER_ACTION = 8
 
 
 class Bazzi:
+
+
     def __init__(Bazzi):
         Bazzi.x, Bazzi.y = 230, 270
         # Boy is only once created, so instance image loading is fine
@@ -32,7 +34,8 @@ class Bazzi:
 
         Bazzi.frame = 0
         Bazzi.fisrt_time = 0
-        Bazzi.timer = 300
+        Bazzi.timer = 100
+        Bazzi.colliding = True
 
     def add_event(Bazzi, event):
         pass
@@ -41,7 +44,12 @@ class Bazzi:
 
             Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
-            Bazzi.x += 3  # 이동속도
+
+            if Bazzi.colliding == True:
+                Bazzi.x += 3  # 이동속도
+            elif Bazzi.colliding == False:
+                Bazzi.x += 0
+
 
 
 
@@ -53,4 +61,4 @@ class Bazzi:
         pass
 
     def get_bb(self):
-        return self.x +28, self.y - 40, self.x + 30, self.y + 40
+        return self.x , self.y - 40, self.x + 30, self.y + 40

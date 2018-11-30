@@ -25,14 +25,14 @@ FRAMES_PER_ACTION = 8
 
 class Monster1:
     def __init__(Monster1):
-        Monster1.x, Monster1.y = random.randint(1400, 5000) , 270
+        Monster1.x, Monster1.y = random.randint(1400, 2000) , 270
         # Boy is only once created, so instance image loading is fine
         Monster1.image = load_image('monster1.png')
 
         Monster1.font = load_font('ENCR10B.TTF', 15)
         Monster1.HP = 300
         Monster1.Attack = 30
-
+        Monster1.colliding = True
         Monster1.frame = 0
 
 
@@ -43,7 +43,12 @@ class Monster1:
 
     def update(Monster1):
         Monster1.frame = (Monster1.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-        Monster1.x -= 1  # 이동속도
+
+        if Monster1.colliding == True:
+            Monster1.x -= 1  # 이동속도
+        elif Monster1.colliding == False:
+            Monster1.x -= 0
+
         Monster1.x = clamp(25, Monster1.x, 1600 - 25)
 
 
@@ -58,7 +63,7 @@ class Monster1:
         pass
 
     def get_bb(Monster1):
-        return Monster1.x - 40, Monster1.y - 50, Monster1.x - 38, Monster1.y + 50
+        return Monster1.x - 40, Monster1.y - 50, Monster1.x , Monster1.y + 50
 
 class Monster2:
     def __init__(self):

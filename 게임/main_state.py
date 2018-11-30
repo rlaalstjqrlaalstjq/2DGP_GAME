@@ -132,18 +132,20 @@ def update():
 
     for monster in monster1:
         if collide(bazzi, monster):
-            bazzi.x =
-            monster.x =
+            bazzi.colliding = False
+            monster.colliding = False
             bazzi.timer -= 1
             if bazzi.timer ==0:
-                bazzi.HP -= 1
-                monster.HP -=1
-                bazzi.timer = 300
-                if monster.HP ==0:
+                bazzi.HP -= 10
+                monster.HP -=10
+                bazzi.timer = 100
+                if monster.HP <=0:
                     monster1.remove(monster)
                     game_world.remove_object(monster)
-                elif bazzi.HP ==0:
+                    bazzi.colliding = True
+                elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
+                    monster.colliding = True
 
 def draw():
     clear_canvas()
