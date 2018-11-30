@@ -1,13 +1,18 @@
 from pico2d import *
 
 class Boss:
-    def __init__(self):
-        self.image = load_image('boss.png')
-        self.font = load_font('ENCR10B.TTF', 16)
-        self.HP = 2000
-    def update(self):
+    def __init__(Boss):
+        Boss.x, Boss.y = 100, 270
+        Boss.image = load_image('boss.png')
+        Boss.font = load_font('ENCR10B.TTF', 16)
+        Boss.HP = 2000
+    def update(Boss):
         pass
 
-    def draw(self):
-        self.image.clip_draw(0, 0, 250, 350, 1455, 350)
-        self.font.draw(1350, 500, '(HP: %3.2f/2000.00)' % self.HP, (255, 0, 0))
+    def draw(Boss):
+        Boss.image.clip_draw(0, 0, 250, 350, 1455, 350)
+        Boss.font.draw(1350, 500, '(HP: %3.2f/2000.00)' % Boss.HP, (255, 0, 0))
+        draw_rectangle(*Boss.get_bb())
+
+    def get_bb(Boss):
+        return Boss.x-100, Boss.y - 200, Boss.x + 100, Boss.y + 250

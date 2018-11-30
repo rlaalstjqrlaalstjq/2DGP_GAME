@@ -24,7 +24,7 @@ class Bazzi:
 
 
     def __init__(Bazzi):
-        Bazzi.x, Bazzi.y = 230, 270
+        Bazzi.x, Bazzi.y = 150, 270
         # Boy is only once created, so instance image loading is fine
         Bazzi.image = load_image('Bazzi.png')
         Bazzi.font = load_font('ENCR10B.TTF', 15)
