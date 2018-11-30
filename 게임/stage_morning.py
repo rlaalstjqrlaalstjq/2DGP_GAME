@@ -1,6 +1,6 @@
 from pico2d import *
 
-class Grass:
+class Stage_Morning:
     def __init__(self):
         self.image = load_image('stage1.png')
 

@@ -11,7 +11,7 @@ from bazzi import Bazzi
 from rodu import Rodu
 from dio import Dio
 from cappy import Cappy
-from grass import Grass
+from stage_morning import Stage_Morning
 from manabar import Manabar
 from boss import Boss
 from tower import Tower
@@ -50,9 +50,9 @@ def enter():
     global cappy
     cappy = Cappy()
 
-    global grass
-    grass = Grass()
-    game_world.add_object(grass, 0)
+    global stage_morning
+    stage_morning = Stage_Morning()
+    game_world.add_object(stage_morning, 0)
 
     global manabar
     manabar = Manabar()
@@ -442,6 +442,39 @@ def update():
                     game_world.remove_object(rodu)
                     monster.colliding = True
                     rodu.colliding = True             # 몬스터 4과 로두 충돌체크
+
+    if collide(bazzi, boss):
+        bazzi.colliding = False
+        bazzi.timer -= 1
+        if bazzi.timer == 0:
+            boss.HP -= 10
+            bazzi.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)    # 배찌와 보스의 충돌체크
+    if collide(dio, boss):
+        dio.colliding = False
+        dio.timer -= 1
+        if dio.timer == 0:
+            boss.HP -= 10
+            dio.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)    # 다오 보스의 충돌체크
+    if collide(cappy, boss):
+        cappy.colliding = False
+        cappy.timer -= 1
+        if cappy.timer == 0:
+            boss.HP -= 10
+            cappy.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)    # 캐피와 보스의 충돌체크
+    if collide(rodu, boss):
+        rodu.colliding = False
+        rodu.timer -= 1
+        if rodu.timer == 0:
+            boss.HP -= 10
+            rodu.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)    # 로두와 보스의 충돌체크
 
 def draw():
     clear_canvas()

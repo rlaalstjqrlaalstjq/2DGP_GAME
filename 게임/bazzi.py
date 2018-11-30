@@ -31,7 +31,6 @@ class Bazzi:
         Bazzi.HP = 350    #체력
         Bazzi.Attack = 50  #공격력
         Bazzi.Mana = 3  #소환에 필요한 마나 소모량
-
         Bazzi.frame = 0
         Bazzi.fisrt_time = 0
         Bazzi.timer = 100
@@ -41,22 +40,19 @@ class Bazzi:
         pass
 
     def update(Bazzi):
+         Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
+         Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
 
-            Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-            Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
-
-            if Bazzi.colliding == True:
-                Bazzi.x += 3  # 이동속도
-            elif Bazzi.colliding == False:
-                Bazzi.x += 0
-
-
-
+         if Bazzi.colliding == True:
+             Bazzi.x += 3  # 이동속도
+         elif Bazzi.colliding == False:
+             Bazzi.x += 0
 
     def draw(Bazzi):
         Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
         Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/350' % int(Bazzi.HP), (0, 0, 0))
         draw_rectangle(*Bazzi.get_bb())
+
     def handle_event(Bazzi, event):
         pass
 

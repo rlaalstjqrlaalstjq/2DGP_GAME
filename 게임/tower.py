@@ -7,7 +7,7 @@ class Tower:
         Tower.x, Tower.y = 100, 270
         Tower.image = load_image('tower.png')
         Tower.font = load_font('ENCR10B.TTF', 15)
-        Tower.HP = 1000
+        Tower.HP = 5000
         Tower.colliding = True
         Tower.timer = 100
 
