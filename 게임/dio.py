@@ -26,7 +26,7 @@ class Dio:
     def __init__(Dio):
         if Dio.image == None:
             Dio.image = load_image('Dio.png')
-        Dio.x, Dio.y = 230, 270
+        Dio.x, Dio.y = 150, 270
         Dio.font = load_font('ENCR10B.TTF', 15)
         Dio.HP = 200    #체력
         Dio.Attack = 80  #공격력

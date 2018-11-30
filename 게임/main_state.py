@@ -130,6 +130,14 @@ def update():
         game_object.update()
 
     for monster in monster1:
+        if collide(tower, monster):
+            monster.colliding = False
+            tower.timer -= 1
+            if tower.timer == 0:
+                tower.HP -= 10
+                tower.timer = 100
+                if tower.HP <= 0:
+                    game_world.remove_object(tower)   # 몬스터 1과 타워 충돌체크
         if collide(bazzi, monster):
             bazzi.colliding = False
             monster.colliding = False
@@ -199,7 +207,17 @@ def update():
                     monster.colliding = True
                     rodu.colliding = True             # 몬스터 1과 로두 충돌체크
 
+
+
     for monster in monster2:
+        if collide(tower, monster):
+            monster.colliding = False
+            tower.timer -= 1
+            if tower.timer == 0:
+                tower.HP -= 10
+                tower.timer = 100
+                if tower.HP <= 0:
+                    game_world.remove_object(tower)   # 몬스터 2과 타워 충돌체크
         if collide(bazzi, monster):
             bazzi.colliding = False
             monster.colliding = False
@@ -270,6 +288,14 @@ def update():
                     rodu.colliding = True             # 몬스터 2과 로두 충돌체크
 
     for monster in monster3:
+        if collide(tower, monster):
+            monster.colliding = False
+            tower.timer -= 1
+            if tower.timer == 0:
+                tower.HP -= 10
+                tower.timer = 100
+                if tower.HP <= 0:
+                    game_world.remove_object(tower)   # 몬스터 3과 타워 충돌체크
         if collide(bazzi, monster):
             bazzi.colliding = False
             monster.colliding = False
@@ -340,6 +366,14 @@ def update():
                     rodu.colliding = True             # 몬스터 3과 로두 충돌체크
 
     for monster in monster4:
+        if collide(tower, monster):
+            monster.colliding = False
+            tower.timer -= 1
+            if tower.timer == 0:
+                tower.HP -= 10
+                tower.timer = 100
+                if tower.HP <= 0:
+                    game_world.remove_object(tower)   # 몬스터 4과 타워 충돌체크
         if collide(bazzi, monster):
             bazzi.colliding = False
             monster.colliding = False

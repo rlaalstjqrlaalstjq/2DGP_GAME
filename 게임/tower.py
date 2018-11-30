@@ -1,11 +1,15 @@
 from pico2d import *
+import game_framework
+import game_world
 
 class Tower:
     def __init__(Tower):
-        Tower.x, Tower.y = 1420, 270
+        Tower.x, Tower.y = 100, 270
         Tower.image = load_image('tower.png')
         Tower.font = load_font('ENCR10B.TTF', 15)
         Tower.HP = 1000
+        Tower.colliding = True
+        Tower.timer = 100
 
     def update(Tower):
         pass
@@ -16,4 +20,4 @@ class Tower:
         draw_rectangle(*Tower.get_bb())
 
     def get_bb(Tower):
-        return Tower.x-100, Tower.y - 200, Tower.x + 100, Tower.y + 250
+        return Tower.x - 100, Tower.y - 200, Tower.x + 100, Tower.y + 250

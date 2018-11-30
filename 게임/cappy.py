@@ -26,7 +26,7 @@ class Cappy:
     def __init__(Cappy):
         if Cappy.image == None:
             Cappy.image = load_image('Cappy.png')
-        Cappy.x, Cappy.y = 230, 270
+        Cappy.x, Cappy.y = 150, 270
         Cappy.font = load_font('ENCR10B.TTF', 15)
         Cappy.HP = 120    #체력
         Cappy.Attack = 20  #공격력
