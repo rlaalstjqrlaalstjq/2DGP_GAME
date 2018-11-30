@@ -16,7 +16,7 @@ class Tower:
 
     def draw(Tower):
         Tower.image.clip_draw(0, 0, 200, 200, 90, 300)
-        Tower.font.draw(30, 420, '(HP: %3.2f/1000.00)' % Tower.HP, (0, 0, 255))
+        Tower.font.draw(30, 420, '(HP: %3.2f/5000.00)' % Tower.HP, (0, 0, 255))
         draw_rectangle(*Tower.get_bb())
 
     def get_bb(Tower):

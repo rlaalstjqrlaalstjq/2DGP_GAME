@@ -26,7 +26,8 @@ class Rodu:
     def __init__(Rodu):
         if Rodu.image == None:
             Rodu.image = load_image('Rodu.png')
-        Rodu.x, Rodu.y = 150, 270
+            Rodu.y = [270, 170, 370]
+        Rodu.x, Rodu.y = 150, Rodu.y[random.randint(0, 2)]
         Rodu.font = load_font('ENCR10B.TTF', 15)
         Rodu.HP = 500    #체력
         Rodu.Attack = 30  #공격력

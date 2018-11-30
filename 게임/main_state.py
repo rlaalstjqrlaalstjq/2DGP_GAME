@@ -18,6 +18,7 @@ from tower import Tower
 from selectplayer import SelectPlayer
 from monster import Monster1, Monster2, Monster3, Monster4
 from heelitem import HeelItem
+from brassitem import BrassItem
 
 
 name = "MainState"
@@ -65,6 +66,9 @@ def enter():
     global heelitem
     heelitem = HeelItem()
 
+    global brassitem
+    brassitem = BrassItem()
+
     global tower
     tower = Tower()
     game_world.add_object(tower, 1)
@@ -109,20 +113,30 @@ def handle_events():
             game_world.add_object(bazzi, 1)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 1)
-            dio.handle_event(event)
-            manabar.bar_num -= dio.Mana
+            manabar.bar_num -= 3
         elif event.type == SDL_KEYDOWN and event.key == SDLK_e:
             game_world.add_object(rodu, 1)
-            rodu.handle_event(event)
             manabar.bar_num -= rodu.Mana
         elif event.type == SDL_KEYDOWN and event.key == SDLK_r:
             game_world.add_object(cappy, 1)
             cappy.handle_event(event)
             manabar.bar_num -= cappy.Mana
         elif event.type == SDL_KEYDOWN and event.key == SDLK_d:
-            game_world.add_object(heelitem,0)
+            game_world.add_object(heelitem,1)
             heelitem.handle_event(event)
-            tower.HP += 500
+            if heelitem.can_use == 1:
+                tower.HP += 500
+                heelitem.can_use -= 1
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
+            game_world.add_object(brassitem,1)
+            brassitem.handle_event(event)
+            if brassitem.can_use == 1:
+                boss.HP -= 100
+                brassitem.can_use -= 1
+            else:
+                break
 
 def update():
     get_time()

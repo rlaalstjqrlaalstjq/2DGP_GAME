@@ -26,7 +26,9 @@ class Bazzi:
     def __init__(Bazzi):
         if Bazzi.image == None:
             Bazzi.image = load_image('Bazzi.png')
-        Bazzi.x, Bazzi.y = 150, 270
+
+        Bazzi.y = [270, 170, 370]
+        Bazzi.x, Bazzi.y = 150, Bazzi.y[random.randint(0, 2)]
         Bazzi.font = load_font('ENCR10B.TTF', 15)
         Bazzi.HP = 350    #체력
         Bazzi.Attack = 50  #공격력
