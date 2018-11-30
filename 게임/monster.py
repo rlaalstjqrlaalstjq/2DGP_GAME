@@ -45,25 +45,19 @@ class Monster1:
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         self.x -= 2  # 이동속도
         self.x = clamp(25, self.x, 1600 - 25)
-
         self.mana = get_time()
 
 
-
-
     def draw(self):
-
         self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
-
-
         self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/300' % int(self.HP), (0, 0, 0))
-
-
+        draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         pass
 
-
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 class Monster2:
     def __init__(self):
@@ -96,15 +90,15 @@ class Monster2:
     def draw(self):
 
         self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
-
-
         self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/400' % int(self.HP), (0, 0, 0))
-
+        draw_rectangle(*self.get_bb())
 
 
     def handle_event(self, event):
         pass
 
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 class Monster3:
     def __init__(self):
@@ -137,15 +131,15 @@ class Monster3:
     def draw(self):
 
         self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
-
-
         self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/200' % int(self.HP), (0, 0, 0))
-
+        draw_rectangle(*self.get_bb())
 
 
     def handle_event(self, event):
         pass
 
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 class Monster4:
     def __init__(self):
@@ -178,11 +172,12 @@ class Monster4:
     def draw(self):
 
         self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
-
-
         self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/500' % int(self.HP), (0, 0, 0))
-
+        draw_rectangle(*self.get_bb())
 
 
     def handle_event(self, event):
         pass
+
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50

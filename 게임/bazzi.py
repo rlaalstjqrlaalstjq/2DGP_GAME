@@ -52,7 +52,9 @@ class Bazzi:
     def draw(Bazzi):
         Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
         Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/350' % int(Bazzi.HP), (0, 0, 0))
-
+        draw_rectangle(*Bazzi.get_bb())
     def handle_event(Bazzi, event):
         pass
 
+    def get_bb(self):
+        return self.x - 40, self.y - 40, self.x + 30, self.y + 40
