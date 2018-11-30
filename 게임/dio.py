@@ -33,23 +33,28 @@ class Dio:
         Dio.frame = 0
         Dio.fisrt_time = 0
 
+        Dio.timer = 100
+        Dio.colliding = True
+
     def add_event(Dio, event):
         pass
 
     def update(Dio):
         Dio.frame = (Dio.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
-
         Dio.x = clamp(25, Dio.x, 1600 - 25)
 
-        if (Dio.x >= 800):
+        if Dio.colliding == True:
+            Dio.x += 1.5  # 이동속도
+        elif Dio.colliding == False:
             Dio.x += 0
-        else:
-            Dio.x += 1.7  # 이동속도
 
     def draw(Dio):
         Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
         Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/200' % int(Dio.HP), (0, 0, 0))
+        draw_rectangle(*Dio.get_bb())
 
     def handle_event(Dio, event):
         pass
 
+    def get_bb(Dio):
+        return Dio.x , Dio.y - 40, Dio.x + 30, Dio.y + 40

@@ -33,6 +33,9 @@ class Cappy:
         Cappy.frame = 0
         Cappy.fisrt_time = 0
 
+        Cappy.timer = 100
+        Cappy.colliding = True
+
     def add_event(Cappy, event):
         pass
 
@@ -41,16 +44,19 @@ class Cappy:
 
         Cappy.x = clamp(25, Cappy.x, 1600 - 25)
 
-        if (Cappy.x >= 800):
+        if Cappy.colliding == True:
+            Cappy.x += 2  # 이동속도
+        elif Cappy.colliding == False:
             Cappy.x += 0
-        else:
-            Cappy.x += 2.4  # 이동속도
 
     def draw(Cappy):
         Cappy.image.clip_draw(0, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)
         Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/350' % int(Cappy.HP), (0, 0, 0))
+        draw_rectangle(*Cappy.get_bb())
 
     def handle_event(Cappy, event):
         pass
 
-#발표!
+    def get_bb(Cappy):
+        return Cappy.x , Cappy.y - 40, Cappy.x + 30, Cappy.y + 40
+

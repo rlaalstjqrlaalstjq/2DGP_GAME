@@ -25,7 +25,8 @@ FRAMES_PER_ACTION = 8
 
 class Monster1:
     def __init__(Monster1):
-        Monster1.x, Monster1.y = random.randint(1400, 2000) , 270
+        Monster1.y = [270, 170, 370]
+        Monster1.x, Monster1.y = random.randint(1400, 2000) , Monster1.y[random.randint(0, 2)]
         # Boy is only once created, so instance image loading is fine
         Monster1.image = load_image('monster1.png')
 
@@ -67,7 +68,8 @@ class Monster1:
 
 class Monster2:
     def __init__(self):
-        self.x, self.y = random.randint(1400, 5000) , 270
+        self.y = [270, 170, 370]
+        self.x, self.y = random.randint(1400, 5000) ,self.y[random.randint(0, 2)]
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('monster2.png')
 
@@ -107,7 +109,8 @@ class Monster2:
         return self.x - 50, self.y - 40, self.x + 40, self.y + 40
 class Monster3:
     def __init__(self):
-        self.x, self.y = random.randint(1400, 5000) , 270
+        self.y = [270,170,370]
+        self.x, self.y = random.randint(1400, 5000) ,self.y[random.randint(0, 2)]
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('Monster3.png')
 
@@ -148,7 +151,8 @@ class Monster3:
 
 class Monster4:
     def __init__(self):
-        self.x, self.y = random.randint(1400, 5000), 270
+        self.y = [270, 170, 370]
+        self.x, self.y = random.randint(1400, 5000), self.y[random.randint(0, 2)]
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('Monster4.png')
 

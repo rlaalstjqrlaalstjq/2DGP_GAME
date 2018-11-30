@@ -107,7 +107,6 @@ def handle_events():
                 game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_q:
             game_world.add_object(bazzi, 1)
-
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             game_world.add_object(dio, 1)
             dio.handle_event(event)
@@ -143,9 +142,63 @@ def update():
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     bazzi.colliding = True
+                    monster.colliding = True
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
                     monster.colliding = True
+                    bazzi.colliding = True              # 몬스터 1과 배찌의 충돌체크
+        if collide(dio, monster):
+            dio.colliding = False
+            monster.colliding = False
+            dio.timer -= 1
+            if dio.timer ==0:
+                dio.HP -= 10
+                monster.HP -=10
+                dio.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    dio.colliding = True
+                    monster.colliding = True
+                elif dio.HP <=0:
+                    game_world.remove_object(dio)
+                    monster.colliding = True
+                    dio.colliding = True             # 몬스터 1과 디오 충돌체크
+        if collide(cappy, monster):
+            cappy.colliding = False
+            monster.colliding = False
+            cappy.timer -= 1
+            if cappy.timer ==0:
+                cappy.HP -= 10
+                monster.HP -=10
+                cappy.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy.colliding = True
+                    monster.colliding = True
+                elif cappy.HP <=0:
+                    game_world.remove_object(cappy)
+                    monster.colliding = True
+                    cappy.colliding = True             # 몬스터 1과 캐피 충돌체크
+        if collide(rodu, monster):
+            rodu.colliding = False
+            monster.colliding = False
+            rodu.timer -= 1
+            if rodu.timer ==0:
+                rodu.HP -= 10
+                monster.HP -=10
+                rodu.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu.colliding = True
+                    monster.colliding = True
+                elif rodu.HP <=0:
+                    game_world.remove_object(rodu)
+                    monster.colliding = True
+                    rodu.colliding = True             # 몬스터 1과 로두 충돌체크
+
 
 def draw():
     clear_canvas()

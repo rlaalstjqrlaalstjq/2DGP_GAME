@@ -33,6 +33,9 @@ class Rodu:
         Rodu.frame = 0
         Rodu.fisrt_time = 0
 
+        Rodu.timer = 100
+        Rodu.colliding = True
+
     def add_event(Rodu, event):
         pass
 
@@ -41,15 +44,19 @@ class Rodu:
 
         Rodu.x = clamp(25, Rodu.x, 1600 - 25)
 
-        if (Rodu.x >= 800):
-            Rodu.x += 0
-        else:
+        if Rodu.colliding == True:
             Rodu.x += 1.7  # 이동속도
+        elif Rodu.colliding == False:
+            Rodu.x += 0
 
     def draw(Rodu):
         Rodu.image.clip_draw(0, int(Rodu.frame) * 100, 100, 100, Rodu.x, Rodu.y)
         Rodu.font.draw(Rodu.x - 60, Rodu.y + 50, 'HP : %3.2i/500' % int(Rodu.HP), (0, 0, 0))
+        draw_rectangle(*Rodu.get_bb())
 
     def handle_event(Rodu, event):
         pass
+
+    def get_bb(Cappy):
+        return Cappy.x , Cappy.y - 40, Cappy.x + 30, Cappy.y + 40
 
