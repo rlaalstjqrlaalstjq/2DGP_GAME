@@ -37,6 +37,7 @@ class Bazzi:
         Bazzi.fisrt_time = 0
         Bazzi.timer = 100
         Bazzi.colliding = True
+        Bazzi.live_num = 0
 
     def add_event(Bazzi, event):
         pass

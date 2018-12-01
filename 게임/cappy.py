@@ -29,7 +29,7 @@ class Cappy:
             Cappy.y = [270, 170, 370]
         Cappy.x, Cappy.y = 150, Cappy.y[random.randint(0, 2)]
         Cappy.font = load_font('ENCR10B.TTF', 15)
-        Cappy.HP = 120    #체력
+        Cappy.HP = 350    #체력
         Cappy.Attack = 20  #공격력
         Cappy.Mana = 2  #소환에 필요한 마나 소모량
         Cappy.frame = 0
