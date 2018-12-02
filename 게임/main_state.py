@@ -7,10 +7,10 @@ import game_framework
 import game_world
 import math
 
-from bazzi import Bazzi
-from rodu import Rodu
-from dio import Dio
-from cappy import Cappy
+from bazzi import Bazzi, Bazzi2, Bazzi3, Bazzi4, Bazzi5
+from rodu import Rodu, Rodu2, Rodu3, Rodu4
+from dio import Dio , Dio2, Dio3, Dio4
+from cappy import Cappy , Cappy2, Cappy3, Cappy4
 from stage_morning import Stage_Morning
 from manabar import Manabar
 from boss import Boss
@@ -41,15 +41,41 @@ def collide(a, b):                  # 충돌체크 함수
 def enter():
     global bazzi
     bazzi = Bazzi()
+    global bazzi2
+    bazzi2 = Bazzi2()
+    global bazzi3
+    bazzi3 = Bazzi3()
+    global bazzi4
+    bazzi4 = Bazzi4()
+    global bazzi5
+    bazzi5 = Bazzi5()
 
     global dio
     dio = Dio()
+    global dio2
+    dio2 = Dio2()
+    global dio3
+    dio3 = Dio3()
+    global dio4
+    dio4 = Dio4()
 
     global rodu
     rodu = Rodu()
+    global rodu2
+    rodu2 = Rodu2()
+    global rodu3
+    rodu3 = Rodu3()
+    global rodu4
+    rodu4 = Rodu4()
 
     global cappy
     cappy = Cappy()
+    global cappy2
+    cappy2 = Cappy2()
+    global cappy3
+    cappy3 = Cappy3()
+    global cappy4
+    cappy4 = Cappy4()
 
     global stage_morning
     stage_morning = Stage_Morning()
@@ -113,11 +139,45 @@ def handle_events():
             if manabar.bar_num > 3:
                 game_world.add_object(bazzi, 1)
                 manabar.bar_num -= 3
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_1:
+            if manabar.bar_num > 3:
+                game_world.add_object(bazzi2, 1)
+                manabar.bar_num -= 3
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_2:
+            if manabar.bar_num > 3:
+                game_world.add_object(bazzi3, 1)
+                manabar.bar_num -= 3
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_3:
+            if manabar.bar_num > 3:
+                game_world.add_object(bazzi4, 1)
+                manabar.bar_num -= 3
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_4:
+            if manabar.bar_num > 3:
+                game_world.add_object(bazzi5, 1)
+                manabar.bar_num -= 3
             else:
                 break
         elif event.type == SDL_KEYDOWN and event.key == SDLK_w:
             if manabar.bar_num > 5:
                 game_world.add_object(dio, 1)
+                manabar.bar_num -= 5
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_5:
+            if manabar.bar_num > 5:
+                game_world.add_object(dio2, 1)
+                manabar.bar_num -= 5
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_6:
+            if manabar.bar_num > 5:
+                game_world.add_object(dio3, 1)
+                manabar.bar_num -= 5
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_7:
+            if manabar.bar_num > 5:
+                game_world.add_object(dio4, 1)
                 manabar.bar_num -= 5
             else:
                 break
@@ -127,9 +187,48 @@ def handle_events():
                 manabar.bar_num -= 7
             else:
                 break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_z:
+            if manabar.bar_num > 7:
+                game_world.add_object(rodu2, 1)
+                manabar.bar_num -= 7
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_x:
+            if manabar.bar_num > 7:
+                game_world.add_object(rodu3, 1)
+                manabar.bar_num -= 7
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_c:
+            if manabar.bar_num > 7:
+                game_world.add_object(rodu4, 1)
+                manabar.bar_num -= 7
+            else:
+                break
         elif event.type == SDL_KEYDOWN and event.key == SDLK_r:
             if manabar.bar_num > 2:
                 game_world.add_object(cappy, 1)
+                cappy.handle_event(event)
+                manabar.bar_num -= 2
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_v:
+            if manabar.bar_num > 2:
+                game_world.add_object(cappy2, 1)
+                cappy.handle_event(event)
+                manabar.bar_num -= 2
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_b:
+            if manabar.bar_num > 2:
+                game_world.add_object(cappy3, 1)
+                cappy.handle_event(event)
+                manabar.bar_num -= 2
+            else:
+                break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_n:
+            if manabar.bar_num > 2:
+                game_world.add_object(cappy4, 1)
                 cappy.handle_event(event)
                 manabar.bar_num -= 2
             else:
@@ -177,10 +276,69 @@ def update():
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     bazzi.colliding = True
-
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
-                    monster.colliding = True       # 몬스터 1과 배찌의 충돌체크
+                    monster.colliding = True  # 몬스터 1과 배찌의 충돌체크
+        if collide(bazzi2, monster):
+            bazzi2.colliding = False
+            monster.colliding = False
+            bazzi2.timer -= 1
+            if bazzi2.timer ==0:
+                bazzi2.HP -= 10
+                monster.HP -=100
+                bazzi2.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi2.colliding = True
+                elif bazzi2.HP <=0:
+                    game_world.remove_object(bazzi2)
+                    monster.colliding = True    # 배찌2 / 몬스터 1
+        if collide(bazzi3, monster):
+            bazzi3.colliding = False
+            monster.colliding = False
+            bazzi3.timer -= 1
+            if bazzi3.timer ==0:
+                bazzi3.HP -= 10
+                monster.HP -=100
+                bazzi3.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi3.colliding = True
+                elif bazzi3.HP <=0:
+                    game_world.remove_object(bazzi3)   # 배찌3 / 몬스터 1
+                    monster.colliding = True
+        if collide(bazzi4, monster):
+            bazzi4.colliding = False
+            monster.colliding = False
+            bazzi4.timer -= 1
+            if bazzi4.timer ==0:
+                bazzi4.HP -= 10
+                monster.HP -=100
+                bazzi4.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi4.colliding = True
+                elif bazzi4.HP <=0:
+                    game_world.remove_object(bazzi4)
+                    monster.colliding = True      # 배찌4 / 몬스터 1
+        if collide(bazzi5, monster):
+            bazzi5.colliding = False
+            monster.colliding = False
+            bazzi5.timer -= 1
+            if bazzi5.timer ==0:
+                bazzi5.HP -= 10
+                monster.HP -=100
+                bazzi5.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi5.colliding = True
+                elif bazzi5.HP <=0:
+                    game_world.remove_object(bazzi5)
+                    monster.colliding = True     # 배찌5 / 몬스터 1
         if collide(dio, monster):
             dio.colliding = False
             monster.colliding = False
@@ -193,26 +351,114 @@ def update():
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     dio.colliding = True
-
                 elif dio.HP <=0:
                     game_world.remove_object(dio)
                     monster.colliding = True            # 몬스터 1과 디오 충돌체크
+        if collide(dio2, monster):
+            dio2.colliding = False
+            monster.colliding = False
+            dio2.timer -= 1
+            if dio2.timer ==0:
+                dio2.HP -= 10
+                monster.HP -=100
+                dio2.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    dio2.colliding = True
+                elif dio2.HP <=0:
+                    game_world.remove_object(dio2)
+                    monster.colliding = True
+        if collide(dio3, monster):
+            dio3.colliding = False
+            monster.colliding = False
+            dio3.timer -= 1
+            if dio3.timer ==0:
+                dio3.HP -= 10
+                monster.HP -=100
+                dio3.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    dio3.colliding = True
+                elif dio3.HP <=0:
+                    game_world.remove_object(dio3)
+                    monster.colliding = True
+        if collide(dio4, monster):
+            dio4.colliding = False
+            monster.colliding = False
+            dio4.timer -= 1
+            if dio4.timer ==0:
+                dio4.HP -= 10
+                monster.HP -=100
+                dio4.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    dio4.colliding = True
+                elif dio4.HP <=0:
+                    game_world.remove_object(dio4)
+                    monster.colliding = True   # 디오 / 몬스터 1
         if collide(cappy, monster):
             cappy.colliding = False
             monster.colliding = False
             cappy.timer -= 1
-            if cappy.timer ==0:
+            if cappy.timer == 0:
                 cappy.HP -= 10
-                monster.HP -=100
+                monster.HP -= 100
                 cappy.timer = 100
-                if monster.HP <=0:
-                    monster1.remove(monster)
+                if monster.HP <= 0:
+                    monster2.remove(monster)
                     game_world.remove_object(monster)
                     cappy.colliding = True
-
-                elif cappy.HP <=0:
+                elif cappy.HP <= 0:
                     game_world.remove_object(cappy)
-                    monster.colliding = True          # 몬스터 1과 캐피 충돌체크
+                    monster.colliding = True    # 몬스터 1과 캐피 충돌체크
+        if collide(cappy2, monster):
+            cappy2.colliding = False
+            monster.colliding = False
+            cappy2.timer -= 1
+            if cappy2.timer == 0:
+                cappy2.HP -= 10
+                monster.HP -= 100
+                cappy2.timer = 100
+                if monster.HP <= 0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy2.colliding = True
+                elif cappy2.HP <= 0:
+                    game_world.remove_object(cappy2)
+                    monster.colliding = True
+        if collide(cappy3, monster):
+            cappy3.colliding = False
+            monster.colliding = False
+            cappy3.timer -= 1
+            if cappy3.timer == 0:
+                cappy3.HP -= 10
+                monster.HP -= 100
+                cappy3.timer = 100
+                if monster.HP <= 0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy3.colliding = True
+                elif cappy3.HP <= 0:
+                    game_world.remove_object(cappy3)
+                    monster.colliding = True
+        if collide(cappy4, monster):
+            cappy4.colliding = False
+            monster.colliding = False
+            cappy4.timer -= 1
+            if cappy4.timer == 0:
+                cappy4.HP -= 10
+                monster.HP -= 100
+                cappy4.timer = 100
+                if monster.HP <= 0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy4.colliding = True
+                elif cappy4.HP <= 0:
+                    game_world.remove_object(cappy4)
+                    monster.colliding = True
         if collide(rodu, monster):
             rodu.colliding = False
             monster.colliding = False
@@ -225,10 +471,54 @@ def update():
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     rodu.colliding = True
-
                 elif rodu.HP <=0:
                     game_world.remove_object(rodu)
                     monster.colliding = True           # 몬스터 1과 로두 충돌체크
+        if collide(rodu2, monster):
+            rodu2.colliding = False
+            monster.colliding = False
+            rodu2.timer -= 1
+            if rodu2.timer ==0:
+                rodu2.HP -= 10
+                monster.HP -=100
+                rodu2.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu2.colliding = True
+                elif rodu2.HP <=0:
+                    game_world.remove_object(rodu2)
+                    monster.colliding = True
+        if collide(rodu3, monster):
+            rodu3.colliding = False
+            monster.colliding = False
+            rodu3.timer -= 1
+            if rodu3.timer ==0:
+                rodu3.HP -= 10
+                monster.HP -=100
+                rodu3.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu3.colliding = True
+                elif rodu3.HP <=0:
+                    game_world.remove_object(rodu3)
+                    monster.colliding = True
+        if collide(rodu4, monster):
+            rodu4.colliding = False
+            monster.colliding = False
+            rodu4.timer -= 1
+            if rodu4.timer ==0:
+                rodu4.HP -= 10
+                monster.HP -=100
+                rodu4.timer = 100
+                if monster.HP <=0:
+                    monster1.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu4.colliding = True
+                elif rodu4.HP <=0:
+                    game_world.remove_object(rodu4)
+                    monster.colliding = True
 
 
 
@@ -253,10 +543,69 @@ def update():
                     monster2.remove(monster)
                     game_world.remove_object(monster)
                     bazzi.colliding = True
-
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
                     monster.colliding = True           # 몬스터 2과 배찌의 충돌체크
+        if collide(bazzi2, monster):
+            bazzi2.colliding = False
+            monster.colliding = False
+            bazzi2.timer -= 1
+            if bazzi2.timer ==0:
+                bazzi2.HP -= 10
+                monster.HP -=100
+                bazzi2.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi2.colliding = True
+                elif bazzi2.HP <=0:
+                    game_world.remove_object(bazzi2)
+                    monster.colliding = True
+        if collide(bazzi3, monster):
+            bazzi3.colliding = False
+            monster.colliding = False
+            bazzi3.timer -= 1
+            if bazzi3.timer ==0:
+                bazzi3.HP -= 10
+                monster.HP -=100
+                bazzi3.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi3.colliding = True
+                elif bazzi3.HP <=0:
+                    game_world.remove_object(bazzi3)
+                    monster.colliding = True
+        if collide(bazzi4, monster):
+            bazzi4.colliding = False
+            monster.colliding = False
+            bazzi4.timer -= 1
+            if bazzi4.timer ==0:
+                bazzi4.HP -= 10
+                monster.HP -=100
+                bazzi4.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi4.colliding = True
+                elif bazzi4.HP <=0:
+                    game_world.remove_object(bazzi4)
+                    monster.colliding = True
+        if collide(bazzi5, monster):
+            bazzi5.colliding = False
+            monster.colliding = False
+            bazzi5.timer -= 1
+            if bazzi5.timer ==0:
+                bazzi5.HP -= 10
+                monster.HP -=100
+                bazzi5.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi5.colliding = True
+                elif bazzi5.HP <=0:
+                    game_world.remove_object(bazzi5)
+                    monster.colliding = True     # 배찌 5 / 몬스터 2
         if collide(dio, monster):
             dio.colliding = False
             monster.colliding = False
@@ -269,10 +618,54 @@ def update():
                     monster2.remove(monster)
                     game_world.remove_object(monster)
                     dio.colliding = True
-
                 elif dio.HP <=0:
                     game_world.remove_object(dio)
                     monster.colliding = True         # 몬스터 2과 디오 충돌체크
+        if collide(dio2, monster):
+            dio2.colliding = False
+            monster.colliding = False
+            dio2.timer -= 1
+            if dio2.timer ==0:
+                dio2.HP -= 10
+                monster.HP -=100
+                dio2.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    dio2.colliding = True
+                elif dio2.HP <=0:
+                    game_world.remove_object(dio2)
+                    monster.colliding = True
+        if collide(dio3, monster):
+            dio3.colliding = False
+            monster.colliding = False
+            dio3.timer -= 1
+            if dio3.timer ==0:
+                dio3.HP -= 10
+                monster.HP -=100
+                dio3.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    dio3.colliding = True
+                elif dio3.HP <=0:
+                    game_world.remove_object(dio3)
+                    monster.colliding = True
+        if collide(dio4, monster):
+            dio4.colliding = False
+            monster.colliding = False
+            dio4.timer -= 1
+            if dio4.timer ==0:
+                dio4.HP -= 10
+                monster.HP -=100
+                dio4.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    dio4.colliding = True
+                elif dio4.HP <=0:
+                    game_world.remove_object(dio4)
+                    monster.colliding = True      # 디오4/ 몬스터 2
         if collide(cappy, monster):
             cappy.colliding = False
             monster.colliding = False
@@ -285,10 +678,54 @@ def update():
                     monster2.remove(monster)
                     game_world.remove_object(monster)
                     cappy.colliding = True
-
                 elif cappy.HP <=0:
                     game_world.remove_object(cappy)
                     monster.colliding = True           # 몬스터 2과 캐피 충돌체크
+        if collide(cappy2, monster):
+            cappy2.colliding = False
+            monster.colliding = False
+            cappy2.timer -= 1
+            if cappy2.timer ==0:
+                cappy2.HP -= 10
+                monster.HP -=100
+                cappy2.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy2.colliding = True
+                elif cappy2.HP <=0:
+                    game_world.remove_object(cappy2)
+                    monster.colliding = True
+        if collide(cappy3, monster):
+            cappy3.colliding = False
+            monster.colliding = False
+            cappy3.timer -= 1
+            if cappy3.timer ==0:
+                cappy3.HP -= 10
+                monster.HP -=100
+                cappy3.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy3.colliding = True
+                elif cappy3.HP <=0:
+                    game_world.remove_object(cappy3)
+                    monster.colliding = True
+        if collide(cappy4, monster):
+            cappy4.colliding = False
+            monster.colliding = False
+            cappy4.timer -= 1
+            if cappy4.timer ==0:
+                cappy4.HP -= 10
+                monster.HP -=100
+                cappy4.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy4.colliding = True
+                elif cappy4.HP <=0:
+                    game_world.remove_object(cappy4)
+                    monster.colliding = True
         if collide(rodu, monster):
             rodu.colliding = False
             monster.colliding = False
@@ -301,10 +738,54 @@ def update():
                     monster2.remove(monster)
                     game_world.remove_object(monster)
                     rodu.colliding = True
-
                 elif rodu.HP <=0:
                     game_world.remove_object(rodu)
                     monster.colliding = True           # 몬스터 2과 로두 충돌체크
+        if collide(rodu2, monster):
+            rodu2.colliding = False
+            monster.colliding = False
+            rodu2.timer -= 1
+            if rodu2.timer ==0:
+                rodu2.HP -= 10
+                monster.HP -=100
+                rodu2.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu2.colliding = True
+                elif rodu2.HP <=0:
+                    game_world.remove_object(rodu2)
+                    monster.colliding = True
+        if collide(rodu3, monster):
+            rodu3.colliding = False
+            monster.colliding = False
+            rodu3.timer -= 1
+            if rodu3.timer ==0:
+                rodu3.HP -= 10
+                monster.HP -=100
+                rodu3.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu3.colliding = True
+                elif rodu3.HP <=0:
+                    game_world.remove_object(rodu3)
+                    monster.colliding = True
+        if collide(rodu4, monster):
+            rodu4.colliding = False
+            monster.colliding = False
+            rodu4.timer -= 1
+            if rodu4.timer ==0:
+                rodu4.HP -= 10
+                monster.HP -=100
+                rodu4.timer = 100
+                if monster.HP <=0:
+                    monster2.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu4.colliding = True
+                elif rodu4.HP <=0:
+                    game_world.remove_object(rodu4)
+                    monster.colliding = True
 
     for monster in monster3:
         if collide(tower, monster):
@@ -327,10 +808,69 @@ def update():
                     monster3.remove(monster)
                     game_world.remove_object(monster)
                     bazzi.colliding = True
-
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
                     monster.colliding = True            # 몬스터 3과 배찌의 충돌체크
+        if collide(bazzi2, monster):
+            bazzi2.colliding = False
+            monster.colliding = False
+            bazzi2.timer -= 1
+            if bazzi2.timer ==0:
+                bazzi2.HP -= 10
+                monster.HP -=10
+                bazzi2.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi2.colliding = True
+                elif bazzi2.HP <=0:
+                    game_world.remove_object(bazzi2)
+                    monster.colliding = True
+        if collide(bazzi3, monster):
+            bazzi3.colliding = False
+            monster.colliding = False
+            bazzi3.timer -= 1
+            if bazzi3.timer ==0:
+                bazzi3.HP -= 10
+                monster.HP -=10
+                bazzi3.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi3.colliding = True
+                elif bazzi3.HP <=0:
+                    game_world.remove_object(bazzi3)
+                    monster.colliding = True
+        if collide(bazzi4, monster):
+            bazzi4.colliding = False
+            monster.colliding = False
+            bazzi4.timer -= 1
+            if bazzi4.timer ==0:
+                bazzi4.HP -= 10
+                monster.HP -=10
+                bazzi4.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi4.colliding = True
+                elif bazzi4.HP <=0:
+                    game_world.remove_object(bazzi4)
+                    monster.colliding = True
+        if collide(bazzi5, monster):
+            bazzi5.colliding = False
+            monster.colliding = False
+            bazzi5.timer -= 1
+            if bazzi5.timer ==0:
+                bazzi5.HP -= 10
+                monster.HP -=10
+                bazzi5.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi5.colliding = True
+                elif bazzi5.HP <=0:
+                    game_world.remove_object(bazzi5)
+                    monster.colliding = True             # 배찌 5 / 몬스터 3
         if collide(dio, monster):
             dio.colliding = False
             monster.colliding = False
@@ -343,10 +883,54 @@ def update():
                     monster3.remove(monster)
                     game_world.remove_object(monster)
                     dio.colliding = True
-
                 elif dio.HP <=0:
                     game_world.remove_object(dio)
                     monster.colliding = True           # 몬스터 3과 디오 충돌체크
+        if collide(dio2, monster):
+            dio2.colliding = False
+            monster.colliding = False
+            dio2.timer -= 1
+            if dio2.timer ==0:
+                dio2.HP -= 10
+                monster.HP -=100
+                dio2.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    dio2.colliding = True
+                elif dio2.HP <=0:
+                    game_world.remove_object(dio2)
+                    monster.colliding = True
+        if collide(dio3, monster):
+            dio3.colliding = False
+            monster.colliding = False
+            dio3.timer -= 1
+            if dio3.timer ==0:
+                dio3.HP -= 10
+                monster.HP -=100
+                dio3.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    dio3.colliding = True
+                elif dio3.HP <=0:
+                    game_world.remove_object(dio3)
+                    monster.colliding = True
+        if collide(dio4, monster):
+            dio4.colliding = False
+            monster.colliding = False
+            dio4.timer -= 1
+            if dio4.timer ==0:
+                dio4.HP -= 10
+                monster.HP -=100
+                dio4.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    dio4.colliding = True
+                elif dio4.HP <=0:
+                    game_world.remove_object(dio4)
+                    monster.colliding = True   # 디오 4/ 몬스터 3
         if collide(cappy, monster):
             cappy.colliding = False
             monster.colliding = False
@@ -362,6 +946,51 @@ def update():
                 elif cappy.HP <=0:
                     game_world.remove_object(cappy)
                     monster.colliding = True           # 몬스터 3과 캐피 충돌체크
+        if collide(cappy2, monster):
+            cappy2.colliding = False
+            monster.colliding = False
+            cappy2.timer -= 1
+            if cappy2.timer ==0:
+                cappy2.HP -= 10
+                monster.HP -=100
+                cappy2.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy2.colliding = True
+                elif cappy2.HP <=0:
+                    game_world.remove_object(cappy2)
+                    monster.colliding = True
+        if collide(cappy3, monster):
+            cappy3.colliding = False
+            monster.colliding = False
+            cappy3.timer -= 1
+            if cappy3.timer ==0:
+                cappy3.HP -= 10
+                monster.HP -=100
+                cappy3.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy3.colliding = True
+                elif cappy3.HP <=0:
+                    game_world.remove_object(cappy3)
+                    monster.colliding = True
+        if collide(cappy4, monster):
+            cappy4.colliding = False
+            monster.colliding = False
+            cappy4.timer -= 1
+            if cappy4.timer ==0:
+                cappy4.HP -= 10
+                monster.HP -=100
+                cappy4.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy4.colliding = True
+                elif cappy4.HP <=0:
+                    game_world.remove_object(cappy4)
+                    monster.colliding = True
         if collide(rodu, monster):
             rodu.colliding = False
             monster.colliding = False
@@ -374,10 +1003,54 @@ def update():
                     monster3.remove(monster)
                     game_world.remove_object(monster)
                     rodu.colliding = True
-
                 elif rodu.HP <=0:
                     game_world.remove_object(rodu)
                     monster.colliding = True           # 몬스터 3과 로두 충돌체크
+        if collide(rodu2, monster):
+            rodu2.colliding = False
+            monster.colliding = False
+            rodu2.timer -= 1
+            if rodu2.timer ==0:
+                rodu2.HP -= 10
+                monster.HP -=100
+                rodu2.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu2.colliding = True
+                elif rodu2.HP <=0:
+                    game_world.remove_object(rodu2)
+                    monster.colliding = True
+        if collide(rodu3, monster):
+            rodu3.colliding = False
+            monster.colliding = False
+            rodu3.timer -= 1
+            if rodu3.timer ==0:
+                rodu3.HP -= 10
+                monster.HP -=100
+                rodu3.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu3.colliding = True
+                elif rodu3.HP <=0:
+                    game_world.remove_object(rodu3)
+                    monster.colliding = True
+        if collide(rodu4, monster):
+            rodu4.colliding = False
+            monster.colliding = False
+            rodu4.timer -= 1
+            if rodu4.timer ==0:
+                rodu4.HP -= 10
+                monster.HP -=100
+                rodu4.timer = 100
+                if monster.HP <=0:
+                    monster3.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu4.colliding = True
+                elif rodu4.HP <=0:
+                    game_world.remove_object(rodu4)
+                    monster.colliding = True
 
     for monster in monster4:
         if collide(tower, monster):
@@ -400,10 +1073,69 @@ def update():
                     monster4.remove(monster)
                     game_world.remove_object(monster)
                     bazzi.colliding = True
-
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
                     monster.colliding = True           # 몬스터 4과 배찌의 충돌체크
+        if collide(bazzi2, monster):
+            bazzi2.colliding = False
+            monster.colliding = False
+            bazzi2.timer -= 1
+            if bazzi2.timer ==0:
+                bazzi2.HP -= 10
+                monster.HP -=100
+                bazzi2.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi2.colliding = True
+                elif bazzi2.HP <=0:
+                    game_world.remove_object(bazzi2)
+                    monster.colliding = True
+        if collide(bazzi3, monster):
+            bazzi3.colliding = False
+            monster.colliding = False
+            bazzi3.timer -= 1
+            if bazzi3.timer ==0:
+                bazzi3.HP -= 10
+                monster.HP -=100
+                bazzi3.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    bazzi3.remove_object(monster)
+                    bazzi3.colliding = True
+                elif bazzi.HP <=0:
+                    game_world.remove_object(bazzi3)
+                    monster.colliding = True
+        if collide(bazzi4, monster):
+            bazzi4.colliding = False
+            monster.colliding = False
+            bazzi4.timer -= 1
+            if bazzi4.timer ==0:
+                bazzi4.HP -= 10
+                monster.HP -=100
+                bazzi4.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi4.colliding = True
+                elif bazzi4.HP <=0:
+                    game_world.remove_object(bazzi4)
+                    monster.colliding = True
+        if collide(bazzi5, monster):
+            bazzi5.colliding = False
+            monster.colliding = False
+            bazzi5.timer -= 1
+            if bazzi5.timer ==0:
+                bazzi5.HP -= 10
+                monster.HP -=100
+                bazzi5.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    bazzi5.colliding = True
+                elif bazzi5.HP <=0:
+                    game_world.remove_object(bazzi5)  #배찌5 / 몬스터 4
+                    monster.colliding = True
         if collide(dio, monster):
             dio.colliding = False
             monster.colliding = False
@@ -416,10 +1148,54 @@ def update():
                     monster4.remove(monster)
                     game_world.remove_object(monster)
                     dio.colliding = True
-
                 elif dio.HP <=0:
                     game_world.remove_object(dio)
                     monster.colliding = True         # 몬스터 4과 디오 충돌체크
+        if collide(dio2, monster):
+            dio2.colliding = False
+            monster.colliding = False
+            dio2.timer -= 1
+            if dio2.timer ==0:
+                dio2.HP -= 10
+                monster.HP -=100
+                dio2.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    dio2.colliding = True
+                elif dio2.HP <=0:
+                    game_world.remove_object(dio2)
+                    monster.colliding = True
+        if collide(dio4, monster):
+            dio4.colliding = False
+            monster.colliding = False
+            dio4.timer -= 1
+            if dio4.timer ==0:
+                dio4.HP -= 10
+                monster.HP -=100
+                dio4.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    dio4.colliding = True
+                elif dio4.HP <=0:
+                    game_world.remove_object(dio4)
+                    monster.colliding = True
+        if collide(dio3, monster):
+            dio3.colliding = False
+            monster.colliding = False
+            dio3.timer -= 1
+            if dio3.timer ==0:
+                dio3.HP -= 10
+                monster.HP -=100
+                dio3.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    dio3.colliding = True
+                elif dio3.HP <=0:
+                    game_world.remove_object(dio3)
+                    monster.colliding = True   # 몬스터 4 / 디오 4
         if collide(cappy, monster):
             cappy.colliding = False
             monster.colliding = False
@@ -432,10 +1208,54 @@ def update():
                     monster4.remove(monster)
                     game_world.remove_object(monster)
                     cappy.colliding = True
-
                 elif cappy.HP <=0:
                     game_world.remove_object(cappy)
                     monster.colliding = True             # 몬스터 4과 캐피 충돌체크
+        if collide(cappy2, monster):
+            cappy2.colliding = False
+            monster.colliding = False
+            cappy2.timer -= 1
+            if cappy2.timer ==0:
+                cappy2.HP -= 10
+                monster.HP -=100
+                cappy2.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy2.colliding = True
+                elif cappy2.HP <=0:
+                    game_world.remove_object(cappy2)
+                    monster.colliding = True
+        if collide(cappy3, monster):
+            cappy3.colliding = False
+            monster.colliding = False
+            cappy3.timer -= 1
+            if cappy3.timer ==0:
+                cappy3.HP -= 10
+                monster.HP -=100
+                cappy3.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy3.colliding = True
+                elif cappy3.HP <=0:
+                    game_world.remove_object(cappy3)
+                    monster.colliding = True
+        if collide(cappy4, monster):
+            cappy4.colliding = False
+            monster.colliding = False
+            cappy4.timer -= 1
+            if cappy4.timer ==0:
+                cappy4.HP -= 10
+                monster.HP -=100
+                cappy4.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    cappy4.colliding = True
+                elif cappy4.HP <=0:
+                    game_world.remove_object(cappy4)
+                    monster.colliding = True
         if collide(rodu, monster):
             rodu.colliding = False
             monster.colliding = False
@@ -448,10 +1268,54 @@ def update():
                     monster4.remove(monster)
                     game_world.remove_object(monster)
                     rodu.colliding = True
-
                 elif rodu.HP <=0:
                     game_world.remove_object(rodu)
                     monster.colliding = True          # 몬스터 4과 로두 충돌체크
+        if collide(rodu2, monster):
+            rodu2.colliding = False
+            monster.colliding = False
+            rodu2.timer -= 1
+            if rodu2.timer ==0:
+                rodu2.HP -= 10
+                monster.HP -=100
+                rodu2.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu2.colliding = True
+                elif rodu2.HP <=0:
+                    game_world.remove_object(rodu2)
+                    monster.colliding = True
+        if collide(rodu3, monster):
+            rodu3.colliding = False
+            monster.colliding = False
+            rodu3.timer -= 1
+            if rodu3.timer ==0:
+                rodu3.HP -= 10
+                monster.HP -=100
+                rodu3.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu3.colliding = True
+                elif rodu3.HP <=0:
+                    game_world.remove_object(rodu3)
+                    monster.colliding = True
+        if collide(rodu4, monster):
+            rodu4.colliding = False
+            monster.colliding = False
+            rodu4.timer -= 1
+            if rodu4.timer ==0:
+                rodu4.HP -= 10
+                monster.HP -=100
+                rodu4.timer = 100
+                if monster.HP <=0:
+                    monster4.remove(monster)
+                    game_world.remove_object(monster)
+                    rodu4.colliding = True
+                elif rodu4.HP <=0:
+                    game_world.remove_object(rodu4)
+                    monster.colliding = True
 
     if collide(bazzi, boss):
         bazzi.colliding = False
@@ -461,6 +1325,38 @@ def update():
             bazzi.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 배찌와 보스의 충돌체크
+    if collide(bazzi2, boss):
+        bazzi2.colliding = False
+        bazzi2.timer -= 1
+        if bazzi2.timer == 0:
+            boss.HP -= 10
+            bazzi2.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(bazzi3, boss):
+        bazzi3.colliding = False
+        bazzi3.timer -= 1
+        if bazzi3.timer == 0:
+            boss.HP -= 10
+            bazzi3.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(bazzi4, boss):
+        bazzi4.colliding = False
+        bazzi4.timer -= 1
+        if bazzi4.timer == 0:
+            boss.HP -= 10
+            bazzi4.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(bazzi5, boss):
+        bazzi5.colliding = False
+        bazzi5.timer -= 1
+        if bazzi5.timer == 0:
+            boss.HP -= 10
+            bazzi5.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
     if collide(dio, boss):
         dio.colliding = False
         dio.timer -= 1
@@ -469,6 +1365,30 @@ def update():
             dio.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 다오 보스의 충돌체크
+    if collide(dio2, boss):
+        dio2.colliding = False
+        dio2.timer -= 1
+        if dio2.timer == 0:
+            boss.HP -= 10
+            dio2.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(dio3, boss):
+        dio3.colliding = False
+        dio3.timer -= 1
+        if dio3.timer == 0:
+            boss.HP -= 10
+            dio3.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(dio4, boss):
+        dio4.colliding = False
+        dio4.timer -= 1
+        if dio4.timer == 0:
+            boss.HP -= 10
+            dio4.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
     if collide(cappy, boss):
         cappy.colliding = False
         cappy.timer -= 1
@@ -477,6 +1397,30 @@ def update():
             cappy.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 캐피와 보스의 충돌체크
+    if collide(cappy2, boss):
+        cappy2.colliding = False
+        cappy2.timer -= 1
+        if cappy2.timer == 0:
+            boss.HP -= 10
+            cappy2.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(cappy3, boss):
+        cappy3.colliding = False
+        cappy3.timer -= 1
+        if cappy3.timer == 0:
+            boss.HP -= 10
+            cappy3.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(cappy4, boss):
+        cappy4.colliding = False
+        cappy4.timer -= 1
+        if cappy4.timer == 0:
+            boss.HP -= 10
+            cappy4.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
     if collide(rodu, boss):
         rodu.colliding = False
         rodu.timer -= 1
@@ -485,6 +1429,30 @@ def update():
             rodu.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 로두와 보스의 충돌체크
+    if collide(rodu2, boss):
+        rodu2.colliding = False
+        rodu2.timer -= 1
+        if rodu2.timer == 0:
+            boss.HP -= 10
+            rodu2.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(rodu3, boss):
+        rodu3.colliding = False
+        rodu3.timer -= 1
+        if rodu3.timer == 0:
+            boss.HP -= 10
+            rodu3.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
+    if collide(rodu4, boss):
+        rodu4.colliding = False
+        rodu4.timer -= 1
+        if rodu4.timer == 0:
+            boss.HP -= 10
+            rodu4.timer = 100
+            if boss.HP <= 0:
+                game_world.remove_object(boss)
 
 def draw():
     clear_canvas()

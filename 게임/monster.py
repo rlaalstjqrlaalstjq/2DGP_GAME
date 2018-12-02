@@ -29,7 +29,7 @@ class Monster1:
     def __init__(Monster1):
         if Monster1.image == None:
             Monster1.image = load_image('monster1.png')
-        Monster1.y = [270, 170, 370]
+        Monster1.y = [270, 270, 270]
         Monster1.x, Monster1.y = random.randint(1400, 10000) , Monster1.y[random.randint(0, 2)]
 
         Monster1.font = load_font('ENCR10B.TTF', 15)
@@ -70,7 +70,7 @@ class Monster2:
     def __init__(Monster2):
         if Monster2.image == None:
             Monster2.image = load_image('monster2.png')
-        Monster2.y = [270, 170, 370]
+        Monster2.y = [270, 270, 270]
         Monster2.x, Monster2.y = random.randint(1400, 10000) ,Monster2.y[random.randint(0, 2)]
         Monster2.font = load_font('ENCR10B.TTF', 15)
         Monster2.HP = 400
@@ -111,7 +111,7 @@ class Monster3:
     def __init__(Monster3):
         if Monster3.image == None:
             Monster3.image = load_image('Monster3.png')
-        Monster3.y = [270,170,370]
+        Monster3.y = [270,270,270]
         Monster3.x, Monster3.y = random.randint(1400, 10000) ,Monster3.y[random.randint(0, 2)]
         Monster3.font = load_font('ENCR10B.TTF', 15)
         Monster3.HP = 200
@@ -150,7 +150,7 @@ class Monster4:
     def __init__(Monster4):
         if Monster4.image == None:
             Monster4.image = load_image('Monster4.png')
-        Monster4.y = [270, 170, 370]
+        Monster4.y = [270, 270, 270]
         Monster4.x, Monster4.y = random.randint(1400, 10000), Monster4.y[random.randint(0, 2)]
         Monster4.colliding = True
         Monster4.font = load_font('ENCR10B.TTF', 15)
