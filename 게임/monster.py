@@ -38,6 +38,12 @@ class Monster1:
         Monster1.colliding = True
         Monster1.frame = 0
 
+        Monster1.attack_sound = load_wav('zombie_attack.ogg')
+        Monster1.attack_sound.set_volume(50)
+
+    def attacking(Monster1, player):
+        Monster1.attack_sound.play()
+
     def add_event(Monster1, event):
         pass
 
@@ -77,6 +83,12 @@ class Monster2:
         Monster2.Attack = 40
         Monster2.frame = 0
         Monster2.colliding = True
+
+        Monster2.attack_sound = load_wav('zombie_attack.ogg')
+        Monster2.attack_sound.set_volume(50)
+
+    def attacking(Monster2, player):
+        Monster2.attack_sound.play()
 
     def add_event(Monster2, event):
         pass
@@ -119,6 +131,12 @@ class Monster3:
         Monster3.colliding = True
         Monster3.frame = 0
 
+        Monster3.attack_sound = load_wav('bomb_attack.ogg')
+        Monster3.attack_sound.set_volume(50)
+
+    def attacking(Monster3, player):
+        Monster3.attack_sound.play()
+
     def add_event(Monster3, event):
         pass
 
@@ -157,6 +175,12 @@ class Monster4:
         Monster4.HP = 500
         Monster4.Attack = 30
         Monster4.frame = 0
+
+        Monster4.attack_sound = load_wav('bomb_attack.ogg')
+        Monster4.attack_sound.set_volume(50)
+
+    def attacking(Monster4, player):
+        Monster4.attack_sound.play()
 
     def add_event(Monster4, event):
         pass
