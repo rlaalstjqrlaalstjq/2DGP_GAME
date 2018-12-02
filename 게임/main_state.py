@@ -251,7 +251,7 @@ def handle_events():
                 break
 
 def update():
-    get_time()
+
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -269,6 +269,7 @@ def update():
             monster.colliding = False
             bazzi.timer -= 1
             if bazzi.timer ==0:
+                bazzi.attacking(monster)
                 bazzi.HP -= 10
                 monster.HP -=100
                 bazzi.timer = 100
@@ -284,6 +285,7 @@ def update():
             monster.colliding = False
             bazzi2.timer -= 1
             if bazzi2.timer ==0:
+                bazzi2.attacking(monster)
                 bazzi2.HP -= 10
                 monster.HP -=100
                 bazzi2.timer = 100
@@ -299,6 +301,7 @@ def update():
             monster.colliding = False
             bazzi3.timer -= 1
             if bazzi3.timer ==0:
+                bazzi3.attacking(monster)
                 bazzi3.HP -= 10
                 monster.HP -=100
                 bazzi3.timer = 100
@@ -314,6 +317,7 @@ def update():
             monster.colliding = False
             bazzi4.timer -= 1
             if bazzi4.timer ==0:
+                bazzi4.attacking(monster)
                 bazzi4.HP -= 10
                 monster.HP -=100
                 bazzi4.timer = 100
@@ -329,6 +333,7 @@ def update():
             monster.colliding = False
             bazzi5.timer -= 1
             if bazzi5.timer ==0:
+                bazzi5.attacking(monster)
                 bazzi5.HP -= 10
                 monster.HP -=100
                 bazzi5.timer = 100
@@ -344,6 +349,7 @@ def update():
             monster.colliding = False
             dio.timer -= 1
             if dio.timer ==0:
+                dio.attacking(monster)
                 dio.HP -= 10
                 monster.HP -=100
                 dio.timer = 100
@@ -359,6 +365,7 @@ def update():
             monster.colliding = False
             dio2.timer -= 1
             if dio2.timer ==0:
+                dio2.attacking(monster)
                 dio2.HP -= 10
                 monster.HP -=100
                 dio2.timer = 100
@@ -374,6 +381,7 @@ def update():
             monster.colliding = False
             dio3.timer -= 1
             if dio3.timer ==0:
+                dio3.attacking(monster)
                 dio3.HP -= 10
                 monster.HP -=100
                 dio3.timer = 100
@@ -389,6 +397,7 @@ def update():
             monster.colliding = False
             dio4.timer -= 1
             if dio4.timer ==0:
+                dio4.attacking(monster)
                 dio4.HP -= 10
                 monster.HP -=100
                 dio4.timer = 100
@@ -404,11 +413,12 @@ def update():
             monster.colliding = False
             cappy.timer -= 1
             if cappy.timer == 0:
+                cappy.attacking(monster)
                 cappy.HP -= 10
                 monster.HP -= 100
                 cappy.timer = 100
                 if monster.HP <= 0:
-                    monster2.remove(monster)
+                    monster1.remove(monster)
                     game_world.remove_object(monster)
                     cappy.colliding = True
                 elif cappy.HP <= 0:
@@ -419,11 +429,12 @@ def update():
             monster.colliding = False
             cappy2.timer -= 1
             if cappy2.timer == 0:
+                cappy2.attacking(monster)
                 cappy2.HP -= 10
                 monster.HP -= 100
                 cappy2.timer = 100
                 if monster.HP <= 0:
-                    monster2.remove(monster)
+                    monster1.remove(monster)
                     game_world.remove_object(monster)
                     cappy2.colliding = True
                 elif cappy2.HP <= 0:
@@ -434,11 +445,12 @@ def update():
             monster.colliding = False
             cappy3.timer -= 1
             if cappy3.timer == 0:
+                cappy3.attacking(monster)
                 cappy3.HP -= 10
                 monster.HP -= 100
                 cappy3.timer = 100
                 if monster.HP <= 0:
-                    monster2.remove(monster)
+                    monster1.remove(monster)
                     game_world.remove_object(monster)
                     cappy3.colliding = True
                 elif cappy3.HP <= 0:
@@ -449,11 +461,12 @@ def update():
             monster.colliding = False
             cappy4.timer -= 1
             if cappy4.timer == 0:
+                cappy4.attacking(monster)
                 cappy4.HP -= 10
                 monster.HP -= 100
                 cappy4.timer = 100
                 if monster.HP <= 0:
-                    monster2.remove(monster)
+                    monster1.remove(monster)
                     game_world.remove_object(monster)
                     cappy4.colliding = True
                 elif cappy4.HP <= 0:
@@ -464,6 +477,7 @@ def update():
             monster.colliding = False
             rodu.timer -= 1
             if rodu.timer ==0:
+                rodu.attacking(monster)
                 rodu.HP -= 10
                 monster.HP -=100
                 rodu.timer = 100
@@ -479,6 +493,7 @@ def update():
             monster.colliding = False
             rodu2.timer -= 1
             if rodu2.timer ==0:
+                rodu2.attacking(monster)
                 rodu2.HP -= 10
                 monster.HP -=100
                 rodu2.timer = 100
@@ -494,6 +509,7 @@ def update():
             monster.colliding = False
             rodu3.timer -= 1
             if rodu3.timer ==0:
+                rodu3.attacking(monster)
                 rodu3.HP -= 10
                 monster.HP -=100
                 rodu3.timer = 100
@@ -509,6 +525,7 @@ def update():
             monster.colliding = False
             rodu4.timer -= 1
             if rodu4.timer ==0:
+                rodu4.attacking(monster)
                 rodu4.HP -= 10
                 monster.HP -=100
                 rodu4.timer = 100
@@ -536,6 +553,7 @@ def update():
             monster.colliding = False
             bazzi.timer -= 1
             if bazzi.timer ==0:
+                bazzi.attacking(monster)
                 bazzi.HP -= 10
                 monster.HP -=100
                 bazzi.timer = 100
@@ -551,6 +569,7 @@ def update():
             monster.colliding = False
             bazzi2.timer -= 1
             if bazzi2.timer ==0:
+                bazzi2.attacking(monster)
                 bazzi2.HP -= 10
                 monster.HP -=100
                 bazzi2.timer = 100
@@ -566,6 +585,7 @@ def update():
             monster.colliding = False
             bazzi3.timer -= 1
             if bazzi3.timer ==0:
+                bazzi3.attacking(monster)
                 bazzi3.HP -= 10
                 monster.HP -=100
                 bazzi3.timer = 100
@@ -581,6 +601,7 @@ def update():
             monster.colliding = False
             bazzi4.timer -= 1
             if bazzi4.timer ==0:
+                bazzi4.attacking(monster)
                 bazzi4.HP -= 10
                 monster.HP -=100
                 bazzi4.timer = 100
@@ -596,6 +617,7 @@ def update():
             monster.colliding = False
             bazzi5.timer -= 1
             if bazzi5.timer ==0:
+                bazzi5.attacking(monster)
                 bazzi5.HP -= 10
                 monster.HP -=100
                 bazzi5.timer = 100
@@ -611,6 +633,7 @@ def update():
             monster.colliding = False
             dio.timer -= 1
             if dio.timer ==0:
+                dio.attacking(monster)
                 dio.HP -= 10
                 monster.HP -=100
                 dio.timer = 100
@@ -626,6 +649,7 @@ def update():
             monster.colliding = False
             dio2.timer -= 1
             if dio2.timer ==0:
+                dio2.attacking(monster)
                 dio2.HP -= 10
                 monster.HP -=100
                 dio2.timer = 100
@@ -641,6 +665,7 @@ def update():
             monster.colliding = False
             dio3.timer -= 1
             if dio3.timer ==0:
+                dio3.attacking(monster)
                 dio3.HP -= 10
                 monster.HP -=100
                 dio3.timer = 100
@@ -656,6 +681,7 @@ def update():
             monster.colliding = False
             dio4.timer -= 1
             if dio4.timer ==0:
+                dio4.attacking(monster)
                 dio4.HP -= 10
                 monster.HP -=100
                 dio4.timer = 100
@@ -671,6 +697,7 @@ def update():
             monster.colliding = False
             cappy.timer -= 1
             if cappy.timer ==0:
+                cappy.attacking(monster)
                 cappy.HP -= 10
                 monster.HP -=100
                 cappy.timer = 100
@@ -686,6 +713,7 @@ def update():
             monster.colliding = False
             cappy2.timer -= 1
             if cappy2.timer ==0:
+                cappy2.attacking(monster)
                 cappy2.HP -= 10
                 monster.HP -=100
                 cappy2.timer = 100
@@ -701,6 +729,7 @@ def update():
             monster.colliding = False
             cappy3.timer -= 1
             if cappy3.timer ==0:
+                cappy3.attacking(monster)
                 cappy3.HP -= 10
                 monster.HP -=100
                 cappy3.timer = 100
@@ -716,6 +745,7 @@ def update():
             monster.colliding = False
             cappy4.timer -= 1
             if cappy4.timer ==0:
+                cappy4.attacking(monster)
                 cappy4.HP -= 10
                 monster.HP -=100
                 cappy4.timer = 100
@@ -731,6 +761,7 @@ def update():
             monster.colliding = False
             rodu.timer -= 1
             if rodu.timer ==0:
+                rodu.attacking(monster)
                 rodu.HP -= 10
                 monster.HP -=100
                 rodu.timer = 100
@@ -746,6 +777,7 @@ def update():
             monster.colliding = False
             rodu2.timer -= 1
             if rodu2.timer ==0:
+                rodu2.attacking(monster)
                 rodu2.HP -= 10
                 monster.HP -=100
                 rodu2.timer = 100
@@ -761,6 +793,7 @@ def update():
             monster.colliding = False
             rodu3.timer -= 1
             if rodu3.timer ==0:
+                rodu3.attacking(monster)
                 rodu3.HP -= 10
                 monster.HP -=100
                 rodu3.timer = 100
@@ -776,6 +809,7 @@ def update():
             monster.colliding = False
             rodu4.timer -= 1
             if rodu4.timer ==0:
+                rodu4.attacking(monster)
                 rodu4.HP -= 10
                 monster.HP -=100
                 rodu4.timer = 100
@@ -801,6 +835,7 @@ def update():
             monster.colliding = False
             bazzi.timer -= 1
             if bazzi.timer ==0:
+                bazzi.attacking(monster)
                 bazzi.HP -= 10
                 monster.HP -=10
                 bazzi.timer = 100
@@ -816,6 +851,7 @@ def update():
             monster.colliding = False
             bazzi2.timer -= 1
             if bazzi2.timer ==0:
+                bazzi2.attacking(monster)
                 bazzi2.HP -= 10
                 monster.HP -=10
                 bazzi2.timer = 100
@@ -831,6 +867,7 @@ def update():
             monster.colliding = False
             bazzi3.timer -= 1
             if bazzi3.timer ==0:
+                bazzi3.attacking(monster)
                 bazzi3.HP -= 10
                 monster.HP -=10
                 bazzi3.timer = 100
@@ -846,6 +883,7 @@ def update():
             monster.colliding = False
             bazzi4.timer -= 1
             if bazzi4.timer ==0:
+                bazzi4.attacking(monster)
                 bazzi4.HP -= 10
                 monster.HP -=10
                 bazzi4.timer = 100
@@ -861,6 +899,7 @@ def update():
             monster.colliding = False
             bazzi5.timer -= 1
             if bazzi5.timer ==0:
+                bazzi5.attacking(monster)
                 bazzi5.HP -= 10
                 monster.HP -=10
                 bazzi5.timer = 100
@@ -876,6 +915,7 @@ def update():
             monster.colliding = False
             dio.timer -= 1
             if dio.timer ==0:
+                dio.attacking(monster)
                 dio.HP -= 10
                 monster.HP -=100
                 dio.timer = 100
@@ -891,6 +931,7 @@ def update():
             monster.colliding = False
             dio2.timer -= 1
             if dio2.timer ==0:
+                dio2.attacking(monster)
                 dio2.HP -= 10
                 monster.HP -=100
                 dio2.timer = 100
@@ -906,6 +947,7 @@ def update():
             monster.colliding = False
             dio3.timer -= 1
             if dio3.timer ==0:
+                dio3.attacking(monster)
                 dio3.HP -= 10
                 monster.HP -=100
                 dio3.timer = 100
@@ -921,6 +963,7 @@ def update():
             monster.colliding = False
             dio4.timer -= 1
             if dio4.timer ==0:
+                dio4.attacking(monster)
                 dio4.HP -= 10
                 monster.HP -=100
                 dio4.timer = 100
@@ -936,6 +979,7 @@ def update():
             monster.colliding = False
             cappy.timer -= 1
             if cappy.timer ==0:
+                cappy.attacking(monster)
                 cappy.HP -= 10
                 monster.HP -=100
                 cappy.timer = 100
@@ -951,6 +995,7 @@ def update():
             monster.colliding = False
             cappy2.timer -= 1
             if cappy2.timer ==0:
+                cappy2.attacking(monster)
                 cappy2.HP -= 10
                 monster.HP -=100
                 cappy2.timer = 100
@@ -966,6 +1011,7 @@ def update():
             monster.colliding = False
             cappy3.timer -= 1
             if cappy3.timer ==0:
+                cappy3.attacking(monster)
                 cappy3.HP -= 10
                 monster.HP -=100
                 cappy3.timer = 100
@@ -981,6 +1027,7 @@ def update():
             monster.colliding = False
             cappy4.timer -= 1
             if cappy4.timer ==0:
+                cappy4.attacking(monster)
                 cappy4.HP -= 10
                 monster.HP -=100
                 cappy4.timer = 100
@@ -996,6 +1043,7 @@ def update():
             monster.colliding = False
             rodu.timer -= 1
             if rodu.timer ==0:
+                rodu.attacking(monster)
                 rodu.HP -= 10
                 monster.HP -=100
                 rodu.timer = 100
@@ -1011,6 +1059,7 @@ def update():
             monster.colliding = False
             rodu2.timer -= 1
             if rodu2.timer ==0:
+                rodu2.attacking(monster)
                 rodu2.HP -= 10
                 monster.HP -=100
                 rodu2.timer = 100
@@ -1026,6 +1075,7 @@ def update():
             monster.colliding = False
             rodu3.timer -= 1
             if rodu3.timer ==0:
+                rodu3.attacking(monster)
                 rodu3.HP -= 10
                 monster.HP -=100
                 rodu3.timer = 100
@@ -1041,6 +1091,7 @@ def update():
             monster.colliding = False
             rodu4.timer -= 1
             if rodu4.timer ==0:
+                rodu4.attacking(monster)
                 rodu4.HP -= 10
                 monster.HP -=100
                 rodu4.timer = 100
@@ -1066,6 +1117,7 @@ def update():
             monster.colliding = False
             bazzi.timer -= 1
             if bazzi.timer ==0:
+                bazzi.attacking(monster)
                 bazzi.HP -= 10
                 monster.HP -=100
                 bazzi.timer = 100
@@ -1081,6 +1133,7 @@ def update():
             monster.colliding = False
             bazzi2.timer -= 1
             if bazzi2.timer ==0:
+                bazzi2.attacking(monster)
                 bazzi2.HP -= 10
                 monster.HP -=100
                 bazzi2.timer = 100
@@ -1096,6 +1149,7 @@ def update():
             monster.colliding = False
             bazzi3.timer -= 1
             if bazzi3.timer ==0:
+                bazzi3.attacking(monster)
                 bazzi3.HP -= 10
                 monster.HP -=100
                 bazzi3.timer = 100
@@ -1111,6 +1165,7 @@ def update():
             monster.colliding = False
             bazzi4.timer -= 1
             if bazzi4.timer ==0:
+                bazzi4.attacking(monster)
                 bazzi4.HP -= 10
                 monster.HP -=100
                 bazzi4.timer = 100
@@ -1126,6 +1181,7 @@ def update():
             monster.colliding = False
             bazzi5.timer -= 1
             if bazzi5.timer ==0:
+                bazzi5.attacking(monster)
                 bazzi5.HP -= 10
                 monster.HP -=100
                 bazzi5.timer = 100
@@ -1141,6 +1197,7 @@ def update():
             monster.colliding = False
             dio.timer -= 1
             if dio.timer ==0:
+                dio.attacking(monster)
                 dio.HP -= 10
                 monster.HP -=100
                 dio.timer = 100
@@ -1156,6 +1213,7 @@ def update():
             monster.colliding = False
             dio2.timer -= 1
             if dio2.timer ==0:
+                dio2.attacking(monster)
                 dio2.HP -= 10
                 monster.HP -=100
                 dio2.timer = 100
@@ -1171,6 +1229,7 @@ def update():
             monster.colliding = False
             dio4.timer -= 1
             if dio4.timer ==0:
+                dio4.attacking(monster)
                 dio4.HP -= 10
                 monster.HP -=100
                 dio4.timer = 100
@@ -1186,6 +1245,7 @@ def update():
             monster.colliding = False
             dio3.timer -= 1
             if dio3.timer ==0:
+                dio3.attacking(monster)
                 dio3.HP -= 10
                 monster.HP -=100
                 dio3.timer = 100
@@ -1201,6 +1261,7 @@ def update():
             monster.colliding = False
             cappy.timer -= 1
             if cappy.timer ==0:
+                cappy.attacking(monster)
                 cappy.HP -= 10
                 monster.HP -=100
                 cappy.timer = 100
@@ -1216,6 +1277,7 @@ def update():
             monster.colliding = False
             cappy2.timer -= 1
             if cappy2.timer ==0:
+                cappy2.attacking(monster)
                 cappy2.HP -= 10
                 monster.HP -=100
                 cappy2.timer = 100
@@ -1231,6 +1293,7 @@ def update():
             monster.colliding = False
             cappy3.timer -= 1
             if cappy3.timer ==0:
+                cappy3.attacking(monster)
                 cappy3.HP -= 10
                 monster.HP -=100
                 cappy3.timer = 100
@@ -1246,6 +1309,7 @@ def update():
             monster.colliding = False
             cappy4.timer -= 1
             if cappy4.timer ==0:
+                cappy4.attacking(monster)
                 cappy4.HP -= 10
                 monster.HP -=100
                 cappy4.timer = 100
@@ -1261,6 +1325,7 @@ def update():
             monster.colliding = False
             rodu.timer -= 1
             if rodu.timer ==0:
+                rodu.attacking(monster)
                 rodu.HP -= 10
                 monster.HP -=100
                 rodu.timer = 100
@@ -1276,6 +1341,7 @@ def update():
             monster.colliding = False
             rodu2.timer -= 1
             if rodu2.timer ==0:
+                rodu2.attacking(monster)
                 rodu2.HP -= 10
                 monster.HP -=100
                 rodu2.timer = 100
@@ -1291,6 +1357,7 @@ def update():
             monster.colliding = False
             rodu3.timer -= 1
             if rodu3.timer ==0:
+                rodu3.attacking(monster)
                 rodu3.HP -= 10
                 monster.HP -=100
                 rodu3.timer = 100
@@ -1306,6 +1373,7 @@ def update():
             monster.colliding = False
             rodu4.timer -= 1
             if rodu4.timer ==0:
+                rodu4.attacking(monster)
                 rodu4.HP -= 10
                 monster.HP -=100
                 rodu4.timer = 100
@@ -1321,6 +1389,7 @@ def update():
         bazzi.colliding = False
         bazzi.timer -= 1
         if bazzi.timer == 0:
+            bazzi.attacking(monster)
             boss.HP -= 10
             bazzi.timer = 100
             if boss.HP <= 0:
@@ -1329,6 +1398,7 @@ def update():
         bazzi2.colliding = False
         bazzi2.timer -= 1
         if bazzi2.timer == 0:
+            bazzi2.attacking(monster)
             boss.HP -= 10
             bazzi2.timer = 100
             if boss.HP <= 0:
@@ -1337,6 +1407,7 @@ def update():
         bazzi3.colliding = False
         bazzi3.timer -= 1
         if bazzi3.timer == 0:
+            bazzi3.attacking(monster)
             boss.HP -= 10
             bazzi3.timer = 100
             if boss.HP <= 0:
@@ -1345,6 +1416,7 @@ def update():
         bazzi4.colliding = False
         bazzi4.timer -= 1
         if bazzi4.timer == 0:
+            bazzi4.attacking(monster)
             boss.HP -= 10
             bazzi4.timer = 100
             if boss.HP <= 0:
@@ -1353,6 +1425,7 @@ def update():
         bazzi5.colliding = False
         bazzi5.timer -= 1
         if bazzi5.timer == 0:
+            bazzi5.attacking(monster)
             boss.HP -= 10
             bazzi5.timer = 100
             if boss.HP <= 0:
@@ -1361,6 +1434,7 @@ def update():
         dio.colliding = False
         dio.timer -= 1
         if dio.timer == 0:
+            dio.attacking(monster)
             boss.HP -= 10
             dio.timer = 100
             if boss.HP <= 0:
@@ -1369,6 +1443,7 @@ def update():
         dio2.colliding = False
         dio2.timer -= 1
         if dio2.timer == 0:
+            dio2.attacking(monster)
             boss.HP -= 10
             dio2.timer = 100
             if boss.HP <= 0:
@@ -1377,6 +1452,7 @@ def update():
         dio3.colliding = False
         dio3.timer -= 1
         if dio3.timer == 0:
+            dio3.attacking(monster)
             boss.HP -= 10
             dio3.timer = 100
             if boss.HP <= 0:
@@ -1385,6 +1461,7 @@ def update():
         dio4.colliding = False
         dio4.timer -= 1
         if dio4.timer == 0:
+            dio4.attacking(monster)
             boss.HP -= 10
             dio4.timer = 100
             if boss.HP <= 0:
@@ -1393,6 +1470,7 @@ def update():
         cappy.colliding = False
         cappy.timer -= 1
         if cappy.timer == 0:
+            cappy.attacking(monster)
             boss.HP -= 10
             cappy.timer = 100
             if boss.HP <= 0:
@@ -1401,6 +1479,7 @@ def update():
         cappy2.colliding = False
         cappy2.timer -= 1
         if cappy2.timer == 0:
+            cappy2.attacking(monster)
             boss.HP -= 10
             cappy2.timer = 100
             if boss.HP <= 0:
@@ -1409,6 +1488,7 @@ def update():
         cappy3.colliding = False
         cappy3.timer -= 1
         if cappy3.timer == 0:
+            cappy3.attacking(monster)
             boss.HP -= 10
             cappy3.timer = 100
             if boss.HP <= 0:
@@ -1417,6 +1497,7 @@ def update():
         cappy4.colliding = False
         cappy4.timer -= 1
         if cappy4.timer == 0:
+            cappy4.attacking(monster)
             boss.HP -= 10
             cappy4.timer = 100
             if boss.HP <= 0:
@@ -1425,6 +1506,7 @@ def update():
         rodu.colliding = False
         rodu.timer -= 1
         if rodu.timer == 0:
+            rodu.attacking(monster)
             boss.HP -= 10
             rodu.timer = 100
             if boss.HP <= 0:
@@ -1433,6 +1515,7 @@ def update():
         rodu2.colliding = False
         rodu2.timer -= 1
         if rodu2.timer == 0:
+            rodu2.attacking(monster)
             boss.HP -= 10
             rodu2.timer = 100
             if boss.HP <= 0:
@@ -1441,6 +1524,7 @@ def update():
         rodu3.colliding = False
         rodu3.timer -= 1
         if rodu3.timer == 0:
+            rodu3.attacking(monster)
             boss.HP -= 10
             rodu3.timer = 100
             if boss.HP <= 0:
@@ -1449,6 +1533,7 @@ def update():
         rodu4.colliding = False
         rodu4.timer -= 1
         if rodu4.timer == 0:
+            rodu4.attacking(monster)
             boss.HP -= 10
             rodu4.timer = 100
             if boss.HP <= 0:
@@ -1456,7 +1541,6 @@ def update():
 
 def draw():
     clear_canvas()
-
 
     for game_object in game_world.all_objects():
         game_object.draw()

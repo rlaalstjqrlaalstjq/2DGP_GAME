@@ -37,6 +37,12 @@ class Cappy:
         Cappy.timer = 100
         Cappy.colliding = True
 
+        Cappy.attack_sound = load_wav('army_attack4.ogg')
+        Cappy.attack_sound.set_volume(50)
+
+    def attacking(Cappy, monster):
+        Cappy.attack_sound.play()
+
     def add_event(Cappy, event):
         pass
 
@@ -78,6 +84,12 @@ class Cappy2:
         Cappy2.timer = 100
         Cappy2.colliding = True
 
+        Cappy2.attack_sound = load_wav('army_attack4.ogg')
+        Cappy2.attack_sound.set_volume(50)
+
+    def attacking(Cappy2, monster):
+        Cappy2.attack_sound.play()
+
     def add_event(Cappy2, event):
         pass
 
@@ -118,6 +130,12 @@ class Cappy3:
         Cappy3.timer = 100
         Cappy3.colliding = True
 
+        Cappy3.attack_sound = load_wav('army_attack4.ogg')
+        Cappy3.attack_sound.set_volume(50)
+
+    def attacking(Cappy3, monster):
+        Cappy3.attack_sound.play()
+
     def add_event(Cappy3, event):
         pass
 
@@ -157,6 +175,12 @@ class Cappy4:
         Cappy4.fisrt_time = 0
         Cappy4.timer = 100
         Cappy4.colliding = True
+
+        Cappy4.attack_sound = load_wav('army_attack4.ogg')
+        Cappy4.attack_sound.set_volume(50)
+
+    def attacking(Cappy4, monster):
+        Cappy4.attack_sound.play()
 
     def add_event(Cappy4, event):
         pass

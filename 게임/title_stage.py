@@ -5,9 +5,21 @@ import main_state
 name = "TitleState"
 image = None
 
+class Title:
+    def __init__(self):
+        self.bgm = load_music('title_bgm.ogg')
+        self.bgm.set_volume(30)
+        self.bgm.repeat_play()
+
+
 def enter():
     global image
     image = load_image('title_stage.png')
+    global bgm
+    bgm = load_music('title_bgm.ogg')
+    bgm.set_volume(30)
+    bgm.repeat_play()
+
 
 def exit():
     global image

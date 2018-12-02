@@ -39,6 +39,12 @@ class Bazzi:
         Bazzi.colliding = True
         Bazzi.live_num = 0
 
+        Bazzi.attack_sound = load_wav('army_attack.ogg')
+        Bazzi.attack_sound.set_volume(50)
+
+    def attacking(Bazzi, monster):
+        Bazzi.attack_sound.play()
+
     def add_event(Bazzi, event):
         pass
 
@@ -82,6 +88,12 @@ class Bazzi2:
         Bazzi2.colliding = True
         Bazzi2.live_num = 0
 
+        Bazzi2.attack_sound = load_wav('army_attack.ogg')
+        Bazzi2.attack_sound.set_volume(50)
+
+    def attacking(Bazzi2, monster):
+        Bazzi2.attack_sound.play()
+
     def add_event(Bazzi2, event):
         pass
 
@@ -123,6 +135,12 @@ class Bazzi3:
         Bazzi3.timer = 100
         Bazzi3.colliding = True
         Bazzi3.live_num = 0
+
+        Bazzi3.attack_sound = load_wav('army_attack.ogg')
+        Bazzi3.attack_sound.set_volume(50)
+
+    def attacking(Bazzi3, monster):
+        Bazzi3.attack_sound.play()
 
     def add_event(Bazzi3, event):
         pass
@@ -166,6 +184,12 @@ class Bazzi4:
         Bazzi4.colliding = True
         Bazzi4.live_num = 0
 
+        Bazzi4.attack_sound = load_wav('army_attack.ogg')
+        Bazzi4.attack_sound.set_volume(50)
+
+    def attacking(Bazzi4, monster):
+        Bazzi4.attack_sound.play()
+
     def add_event(Bazzi4, event):
         pass
 
@@ -207,6 +231,12 @@ class Bazzi5:
         Bazzi5.timer = 100
         Bazzi5.colliding = True
         Bazzi5.live_num = 0
+
+        Bazzi5.attack_sound = load_wav('army_attack.ogg')
+        Bazzi5.attack_sound.set_volume(50)
+
+    def attacking(Bazzi5, monster):
+        Bazzi5.attack_sound.play()
 
     def add_event(Bazzi5, event):
         pass

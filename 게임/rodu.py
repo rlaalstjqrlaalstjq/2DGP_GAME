@@ -37,6 +37,12 @@ class Rodu:
         Rodu.timer = 100
         Rodu.colliding = True
 
+        Rodu.attack_sound = load_wav('army_attack3.ogg')
+        Rodu.attack_sound.set_volume(50)
+
+    def attacking(Rodu, monster):
+        Rodu.attack_sound.play()
+
     def add_event(Rodu, event):
         pass
 
@@ -78,6 +84,12 @@ class Rodu2:
         Rodu2.timer = 100
         Rodu2.colliding = True
 
+        Rodu2.attack_sound = load_wav('army_attack3.ogg')
+        Rodu2.attack_sound.set_volume(50)
+
+    def attacking(Rodu2, monster):
+        Rodu2.attack_sound.play()
+
     def add_event(Rodu2, event):
         pass
 
@@ -118,6 +130,12 @@ class Rodu3:
         Rodu3.timer = 100
         Rodu3.colliding = True
 
+        Rodu3.attack_sound = load_wav('army_attack3.ogg')
+        Rodu3.attack_sound.set_volume(50)
+
+    def attacking(Rodu3, monster):
+        Rodu3.attack_sound.play()
+
     def add_event(Rodu3, event):
         pass
 
@@ -157,6 +175,12 @@ class Rodu4:
         Rodu4.fisrt_time = 0
         Rodu4.timer = 100
         Rodu4.colliding = True
+
+        Rodu4.attack_sound = load_wav('army_attack3.ogg')
+        Rodu4.attack_sound.set_volume(50)
+
+    def attacking(Rodu4, monster):
+        Rodu4.attack_sound.play()
 
     def add_event(Rodu4, event):
         pass

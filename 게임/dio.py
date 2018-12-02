@@ -37,6 +37,12 @@ class Dio:
         Dio.timer = 100
         Dio.colliding = True
 
+        Dio.attack_sound = load_wav('army_attack2.ogg')
+        Dio.attack_sound.set_volume(50)
+
+    def attacking(Dio, monster):
+        Dio.attack_sound.play()
+
     def add_event(Dio, event):
         pass
 
@@ -76,6 +82,12 @@ class Dio2:
         Dio2.fisrt_time = 0
         Dio2.timer = 100
         Dio2.colliding = True
+
+        Dio2.attack_sound = load_wav('army_attack2.ogg')
+        Dio2.attack_sound.set_volume(50)
+
+    def attacking(Dio2, monster):
+        Dio2.attack_sound.play()
 
     def add_event(Dio2, event):
         pass
@@ -117,6 +129,12 @@ class Dio3:
         Dio3.timer = 100
         Dio3.colliding = True
 
+        Dio3.attack_sound = load_wav('army_attack2.ogg')
+        Dio3.attack_sound.set_volume(50)
+
+    def attacking(Dio3, monster):
+        Dio3.attack_sound.play()
+
     def add_event(Dio3, event):
         pass
 
@@ -156,6 +174,12 @@ class Dio4:
         Dio4.fisrt_time = 0
         Dio4.timer = 100
         Dio4.colliding = True
+
+        Dio4.attack_sound = load_wav('army_attack2.ogg')
+        Dio4.attack_sound.set_volume(50)
+
+    def attacking(Dio4, monster):
+        Dio4.attack_sound.play()
 
     def add_event(Dio4, event):
         pass
