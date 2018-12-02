@@ -6,6 +6,8 @@ class Boss:
         Boss.image = load_image('boss.png')
         Boss.font = load_font('ENCR10B.TTF', 16)
         Boss.HP = 2000
+
+        Boss.timer = 100
     def update(Boss):
         pass
 

@@ -6,13 +6,12 @@ from pico2d import *
 import game_framework
 import game_world
 import math
-import second_state
 
 from bazzi import Bazzi, Bazzi2, Bazzi3, Bazzi4, Bazzi5
 from rodu import Rodu, Rodu2, Rodu3, Rodu4
 from dio import Dio , Dio2, Dio3, Dio4
 from cappy import Cappy , Cappy2, Cappy3, Cappy4
-from stage_morning import Stage_Morning
+from stage_midnight import Stage_Midnight
 from manabar import Manabar
 from boss import Boss
 from tower import Tower
@@ -79,8 +78,8 @@ def enter():
     cappy4 = Cappy4()
 
     global stage_morning
-    stage_morning = Stage_Morning()
-    game_world.add_object(stage_morning, 0)
+    stage_midnight = Stage_Midnight()
+    game_world.add_object(stage_midnight, 0)
 
     global manabar
     manabar = Manabar()
@@ -255,31 +254,6 @@ def update():
 
     for game_object in game_world.all_objects():
         game_object.update()
-
-    if boss.timer == 0:
-        monster1.colliding = False
-        monster2.colliding = False
-        monster3.colliding = False
-        monster4.colliding = False
-        bazzi.colliding = False
-        bazzi2.colliding = False
-        bazzi3.colliding = False
-        bazzi4.colliding = False
-        bazzi5.colliding = False
-        dio.colliding = False
-        dio2.colliding = False
-        dio3.colliding = False
-        dio4.colliding = False
-        cappy.colliding = False
-        cappy2.colliding = False
-        cappy3.colliding = False
-        cappy4.colliding = False
-        rodu.colliding = False
-        rodu2.colliding = False
-        rodu3.colliding = False
-        rodu4.colliding = False
-        boss.timer = 100
-
 
 
     for monster in monster1:
@@ -1639,8 +1613,7 @@ def update():
                 game_world.remove_object(boss)
 
     if boss.HP <= 0:
-        game_framework.change_state(second_state)
-
+        game_framework.change_state()
 
 def draw():
     clear_canvas()
