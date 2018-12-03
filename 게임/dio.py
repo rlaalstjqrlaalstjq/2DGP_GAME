@@ -78,7 +78,7 @@ class Dio2:
     def __init__(Dio2):
         if Dio2.image == None:
             Dio2.image = load_image('Dio.png')
-            Dio.image_attack_motion = load_image('attack_motion.png')
+            Dio2.image_attack_motion = load_image('attack_motion.png')
             Dio2.y = [270, 270, 270]
         Dio2.x, Dio2.y = 150, Dio2.y[random.randint(0, 2)]
         Dio2.font = load_font('ENCR10B.TTF', 15)
@@ -130,7 +130,7 @@ class Dio3:
     def __init__(Dio3):
         if Dio3.image == None:
             Dio3.image = load_image('Dio.png')
-            Dio.image_attack_motion = load_image('attack_motion.png')
+            Dio3.image_attack_motion = load_image('attack_motion.png')
             Dio3.y = [270, 270, 270]
             Dio3.x, Dio3.y = 150, Dio3.y[random.randint(0, 2)]
         Dio3.font = load_font('ENCR10B.TTF', 15)
@@ -182,7 +182,7 @@ class Dio4:
     def __init__(Dio4):
         if Dio4.image == None:
             Dio4.image = load_image('Dio.png')
-            Dio.image_attack_motion = load_image('attack_motion.png')
+            Dio4.image_attack_motion = load_image('attack_motion.png')
             Dio4.y = [270, 270, 270]
             Dio4.x, Dio4.y = 150, Dio4.y[random.randint(0, 2)]
         Dio4.font = load_font('ENCR10B.TTF', 15)

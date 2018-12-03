@@ -256,7 +256,6 @@ def handle_events():
             else:
                 break
         elif event.type == SDL_KEYDOWN and event.key == SDLK_m:
-            game_world.clear()
             game_framework.change_state(second_state)
 
 def update():

@@ -80,7 +80,7 @@ class Cappy2:
     def __init__(Cappy2):
         if Cappy2.image == None:
             Cappy2.image = load_image('Cappy.png')
-            Cappy.image_attack_motion = load_image('attack_motion.png')
+            Cappy2.image_attack_motion = load_image('attack_motion.png')
             Cappy2.y = [270, 270, 270]
         Cappy2.x, Cappy2.y = 150, Cappy2.y[random.randint(0, 2)]
         Cappy2.font = load_font('ENCR10B.TTF', 15)
@@ -132,7 +132,7 @@ class Cappy3:
     def __init__(Cappy3):
         if Cappy3.image == None:
             Cappy3.image = load_image('Cappy.png')
-            Cappy.image_attack_motion = load_image('attack_motion.png')
+            Cappy3.image_attack_motion = load_image('attack_motion.png')
             Cappy3.y = [270, 270, 270]
         Cappy3.x, Cappy3.y = 150, Cappy3.y[random.randint(0, 2)]
         Cappy3.font = load_font('ENCR10B.TTF', 15)
@@ -184,7 +184,7 @@ class Cappy4:
     def __init__(Cappy4):
         if Cappy4.image == None:
             Cappy4.image = load_image('Cappy.png')
-            Cappy.image_attack_motion = load_image('attack_motion.png')
+            Cappy4.image_attack_motion = load_image('attack_motion.png')
             Cappy4.y = [270, 270, 270]
         Cappy4.x, Cappy4.y = 150, Cappy4.y[random.randint(0, 2)]
         Cappy4.font = load_font('ENCR10B.TTF', 15)

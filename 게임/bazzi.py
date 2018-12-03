@@ -81,7 +81,7 @@ class Bazzi2:
     def __init__(Bazzi2):
         if Bazzi2.image == None:
             Bazzi2.image = load_image('Bazzi.png')
-            Bazzi.image_attack_motion = load_image('attack_motion.png')
+            Bazzi2.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi2.y = [270, 270, 270]
         Bazzi2.x, Bazzi2.y = 150, Bazzi2.y[random.randint(0, 2)]
@@ -135,7 +135,7 @@ class Bazzi3:
     def __init__(Bazzi3):
         if Bazzi3.image == None:
             Bazzi3.image = load_image('Bazzi.png')
-            Bazzi.image_attack_motion = load_image('attack_motion.png')
+            Bazzi3.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi3.y = [270, 270, 270]
         Bazzi3.x, Bazzi3.y = 150, Bazzi3.y[random.randint(0, 2)]
@@ -189,7 +189,7 @@ class Bazzi4:
     def __init__(Bazzi4):
         if Bazzi4.image == None:
             Bazzi4.image = load_image('Bazzi.png')
-            Bazzi.image_attack_motion = load_image('attack_motion.png')
+            Bazzi4.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi4.y = [270, 270, 270]
         Bazzi4.x, Bazzi4.y = 150, Bazzi4.y[random.randint(0, 2)]
@@ -243,7 +243,7 @@ class Bazzi5:
     def __init__(Bazzi5):
         if Bazzi5.image == None:
             Bazzi5.image = load_image('Bazzi.png')
-            Bazzi.image_attack_motion = load_image('attack_motion.png')
+            Bazzi5.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi5.y = [270, 270, 270]
         Bazzi5.x, Bazzi5.y = 150, Bazzi5.y[random.randint(0, 2)]
