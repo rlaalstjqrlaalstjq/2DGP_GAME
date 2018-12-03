@@ -26,6 +26,7 @@ class Dio:
     def __init__(Dio):
         if Dio.image == None:
             Dio.image = load_image('Dio.png')
+            Dio.image_attack_motion = load_image('attack_motion.png')
             Dio.y = [270, 270, 270]
         Dio.x, Dio.y = 150, Dio.y[random.randint(0, 2)]
         Dio.font = load_font('ENCR10B.TTF', 15)
@@ -47,17 +48,22 @@ class Dio:
         pass
 
     def update(Dio):
-        Dio.frame = (Dio.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Dio.x = clamp(25, Dio.x, 1600 - 25)
 
         if Dio.colliding == True:
+            Dio.frame = (Dio.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Dio.x += 1.5  # 이동속도
         elif Dio.colliding == False:
+            Dio.frame = (Dio.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Dio.x += 0
 
     def draw(Dio):
-        Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
-        Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/500' % int(Dio.HP), (0, 0, 0))
+        if Dio.colliding == True:
+            Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
+            Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/500' % int(Dio.HP), (0, 0, 0))
+        elif Dio.colliding == False:
+            Dio.image_attack_motion.clip_draw(100, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
+            Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/500' % int(Dio.HP), (0, 0, 0))
         #draw_rectangle(*Dio.get_bb())
 
     def handle_event(Dio, event):
@@ -72,6 +78,7 @@ class Dio2:
     def __init__(Dio2):
         if Dio2.image == None:
             Dio2.image = load_image('Dio.png')
+            Dio.image_attack_motion = load_image('attack_motion.png')
             Dio2.y = [270, 270, 270]
         Dio2.x, Dio2.y = 150, Dio2.y[random.randint(0, 2)]
         Dio2.font = load_font('ENCR10B.TTF', 15)
@@ -93,17 +100,22 @@ class Dio2:
         pass
 
     def update(Dio2):
-        Dio2.frame = (Dio2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Dio2.x = clamp(25, Dio2.x, 1600 - 25)
 
         if Dio2.colliding == True:
+            Dio2.frame = (Dio2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Dio2.x += 1.5  # 이동속도
         elif Dio2.colliding == False:
+            Dio2.frame = (Dio2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Dio2.x += 0
 
     def draw(Dio2):
-        Dio2.image.clip_draw(0, int(Dio2.frame) * 100, 100, 100, Dio2.x, Dio2.y)
-        Dio2.font.draw(Dio2.x - 60, Dio2.y + 50, 'HP : %3.2i/500' % int(Dio2.HP), (0, 0, 0))
+        if Dio2.colliding == True:
+            Dio2.image.clip_draw(0, int(Dio2.frame) * 100, 100, 100, Dio2.x, Dio2.y)
+            Dio2.font.draw(Dio2.x - 60, Dio2.y + 50, 'HP : %3.2i/500' % int(Dio2.HP), (0, 0, 0))
+        elif Dio2.colliding == False:
+            Dio2.image_attack_motion.clip_draw(100, int(Dio2.frame) * 100, 100, 100, Dio2.x, Dio2.y)
+            Dio2.font.draw(Dio2.x - 60, Dio2.y + 50, 'HP : %3.2i/500' % int(Dio2.HP), (0, 0, 0))
         #draw_rectangle(*Dio2.get_bb())
 
     def handle_event(Dio2, event):
@@ -118,6 +130,7 @@ class Dio3:
     def __init__(Dio3):
         if Dio3.image == None:
             Dio3.image = load_image('Dio.png')
+            Dio.image_attack_motion = load_image('attack_motion.png')
             Dio3.y = [270, 270, 270]
             Dio3.x, Dio3.y = 150, Dio3.y[random.randint(0, 2)]
         Dio3.font = load_font('ENCR10B.TTF', 15)
@@ -139,17 +152,22 @@ class Dio3:
         pass
 
     def update(Dio3):
-        Dio3.frame = (Dio3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Dio3.x = clamp(25, Dio3.x, 1600 - 25)
 
         if Dio3.colliding == True:
+            Dio3.frame = (Dio3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Dio3.x += 1.5  # 이동속도
         elif Dio3.colliding == False:
+            Dio3.frame = (Dio3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Dio3.x += 0
 
     def draw(Dio3):
-        Dio3.image.clip_draw(0, int(Dio3.frame) * 100, 100, 100, Dio3.x, Dio3.y)
-        Dio3.font.draw(Dio3.x - 60, Dio3.y + 50, 'HP : %3.2i/500' % int(Dio3.HP), (0, 0, 0))
+        if Dio3.colliding == True:
+            Dio3.image.clip_draw(0, int(Dio3.frame) * 100, 100, 100, Dio3.x, Dio3.y)
+            Dio3.font.draw(Dio3.x - 60, Dio3.y + 50, 'HP : %3.2i/500' % int(Dio3.HP), (0, 0, 0))
+        elif Dio3.colliding == False:
+            Dio3.image_attack_motion.clip_draw(100, int(Dio3.frame) * 100, 100, 100, Dio3.x, Dio3.y)
+            Dio3.font.draw(Dio3.x - 60, Dio3.y + 50, 'HP : %3.2i/500' % int(Dio3.HP), (0, 0, 0))
         #draw_rectangle(*Dio3.get_bb())
 
     def handle_event(Dio3, event):
@@ -164,6 +182,7 @@ class Dio4:
     def __init__(Dio4):
         if Dio4.image == None:
             Dio4.image = load_image('Dio.png')
+            Dio.image_attack_motion = load_image('attack_motion.png')
             Dio4.y = [270, 270, 270]
             Dio4.x, Dio4.y = 150, Dio4.y[random.randint(0, 2)]
         Dio4.font = load_font('ENCR10B.TTF', 15)
@@ -185,17 +204,22 @@ class Dio4:
         pass
 
     def update(Dio4):
-        Dio4.frame = (Dio4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Dio4.x = clamp(25, Dio4.x, 1600 - 25)
 
         if Dio4.colliding == True:
+            Dio4.frame = (Dio4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Dio4.x += 1.5  # 이동속도
         elif Dio4.colliding == False:
+            Dio4.frame = (Dio4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Dio4.x += 0
 
     def draw(Dio4):
-        Dio4.image.clip_draw(0, int(Dio4.frame) * 100, 100, 100, Dio4.x, Dio4.y)
-        Dio4.font.draw(Dio4.x - 60, Dio4.y + 50, 'HP : %3.2i/500' % int(Dio4.HP), (0, 0, 0))
+        if Dio4.colliding == True:
+            Dio4.image.clip_draw(0, int(Dio4.frame) * 100, 100, 100, Dio4.x, Dio4.y)
+            Dio4.font.draw(Dio4.x - 60, Dio4.y + 50, 'HP : %3.2i/500' % int(Dio4.HP), (0, 0, 0))
+        elif Dio4.colliding == False:
+            Dio4.image_attack_motion.clip_draw(100, int(Dio4.frame) * 100, 100, 100, Dio4.x, Dio4.y)
+            Dio4.font.draw(Dio4.x - 60, Dio4.y + 50, 'HP : %3.2i/500' % int(Dio4.HP), (0, 0, 0))
         #draw_rectangle(*Dio4.get_bb())
 
     def handle_event(Dio4, event):

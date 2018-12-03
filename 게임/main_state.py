@@ -20,6 +20,7 @@ from selectplayer import SelectPlayer
 from monster import Monster1, Monster2, Monster3, Monster4
 from heelitem import HeelItem
 from brassitem import BrassItem
+from heal_icon import Heal_Icon
 
 
 name = "MainState"
@@ -92,6 +93,10 @@ def enter():
 
     global heelitem
     heelitem = HeelItem()
+
+    global heal_icon
+    heal_icon = Heal_Icon()
+    game_world.add_object(heal_icon, 1)
 
     global brassitem
     brassitem = BrassItem()
@@ -250,6 +255,9 @@ def handle_events():
                 brassitem.can_use -= 1
             else:
                 break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_m:
+            game_world.clear()
+            game_framework.change_state(second_state)
 
 def update():
 
@@ -258,6 +266,18 @@ def update():
 
     boss.timer -= 1
     if boss.timer == 0:
+        for monster in monster1:
+            monster.colliding = True
+
+        for monster in monster2:
+            monster.colliding = True
+
+        for monster in monster3:
+            monster.colliding = True
+
+        for monster in monster4:
+            monster.colliding = True
+
         bazzi.colliding = True
         bazzi2.colliding = True
         bazzi3.colliding = True
@@ -1237,7 +1257,7 @@ def update():
                 bazzi3.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
-                    bazzi3.remove_object(monster)
+                    monster4.remove_object(monster)
                     bazzi3.colliding = True
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi3)

@@ -26,6 +26,7 @@ class Cappy:
     def __init__(Cappy):
         if Cappy.image == None:
             Cappy.image = load_image('Cappy.png')
+            Cappy.image_attack_motion = load_image ('attack_motion.png')
             Cappy.y = [270, 270, 270]
         Cappy.x, Cappy.y = 150, Cappy.y[random.randint(0, 2)]
         Cappy.font = load_font('ENCR10B.TTF', 15)
@@ -47,17 +48,23 @@ class Cappy:
         pass
 
     def update(Cappy):
-        Cappy.frame = (Cappy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Cappy.x = clamp(25, Cappy.x, 1600 - 25)
 
         if Cappy.colliding == True:
+            Cappy.frame = (Cappy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Cappy.x += 2  # 이동속도
         elif Cappy.colliding == False:
+            Cappy.frame = (Cappy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Cappy.x += 0
 
     def draw(Cappy):
-        Cappy.image.clip_draw(0, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)
-        Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/200' % int(Cappy.HP), (0, 0, 0))
+        if Cappy.colliding == True:
+            Cappy.image.clip_draw(0, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)
+            Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/200' % int(Cappy.HP), (0, 0, 0))
+        elif Cappy.colliding == False:
+            Cappy.image_attack_motion.clip_draw(200, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)
+            Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/200' % int(Cappy.HP), (0, 0, 0))
+
         #draw_rectangle(*Cappy.get_bb())
 
     def handle_event(Cappy, event):
@@ -73,6 +80,7 @@ class Cappy2:
     def __init__(Cappy2):
         if Cappy2.image == None:
             Cappy2.image = load_image('Cappy.png')
+            Cappy.image_attack_motion = load_image('attack_motion.png')
             Cappy2.y = [270, 270, 270]
         Cappy2.x, Cappy2.y = 150, Cappy2.y[random.randint(0, 2)]
         Cappy2.font = load_font('ENCR10B.TTF', 15)
@@ -94,17 +102,22 @@ class Cappy2:
         pass
 
     def update(Cappy2):
-        Cappy2.frame = (Cappy2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Cappy2.x = clamp(25, Cappy2.x, 1600 - 25)
 
         if Cappy2.colliding == True:
+            Cappy2.frame = (Cappy2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Cappy2.x += 2  # 이동속도
         elif Cappy2.colliding == False:
+            Cappy2.frame = (Cappy2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Cappy2.x += 0
 
     def draw(Cappy2):
-        Cappy2.image.clip_draw(0, int(Cappy2.frame) * 100, 100, 100, Cappy2.x, Cappy2.y)
-        Cappy2.font.draw(Cappy2.x - 60, Cappy2.y + 50, 'HP : %3.2i/200' % int(Cappy2.HP), (0, 0, 0))
+        if Cappy2.colliding == True:
+            Cappy2.image.clip_draw(0, int(Cappy2.frame) * 100, 100, 100, Cappy2.x, Cappy2.y)
+            Cappy2.font.draw(Cappy2.x - 60, Cappy2.y + 50, 'HP : %3.2i/200' % int(Cappy2.HP), (0, 0, 0))
+        elif Cappy2.colliding == False:
+            Cappy2.image_attack_motion.clip_draw(200, int(Cappy2.frame) * 100, 100, 100, Cappy2.x, Cappy2.y)
+            Cappy2.font.draw(Cappy2.x - 60, Cappy2.y + 50, 'HP : %3.2i/200' % int(Cappy2.HP), (0, 0, 0))
         #draw_rectangle(*Cappy2.get_bb())
 
     def handle_event(Cappy2, event):
@@ -119,6 +132,7 @@ class Cappy3:
     def __init__(Cappy3):
         if Cappy3.image == None:
             Cappy3.image = load_image('Cappy.png')
+            Cappy.image_attack_motion = load_image('attack_motion.png')
             Cappy3.y = [270, 270, 270]
         Cappy3.x, Cappy3.y = 150, Cappy3.y[random.randint(0, 2)]
         Cappy3.font = load_font('ENCR10B.TTF', 15)
@@ -140,17 +154,22 @@ class Cappy3:
         pass
 
     def update(Cappy3):
-        Cappy3.frame = (Cappy3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Cappy3.x = clamp(25, Cappy3.x, 1600 - 25)
 
         if Cappy3.colliding == True:
+            Cappy3.frame = (Cappy3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Cappy3.x += 2  # 이동속도
         elif Cappy3.colliding == False:
+            Cappy3.frame = (Cappy3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Cappy3.x += 0
 
     def draw(Cappy3):
-        Cappy3.image.clip_draw(0, int(Cappy3.frame) * 100, 100, 100, Cappy3.x, Cappy3.y)
-        Cappy3.font.draw(Cappy3.x - 60, Cappy3.y + 50, 'HP : %3.2i/200' % int(Cappy3.HP), (0, 0, 0))
+        if Cappy3.colliding == True:
+            Cappy3.image.clip_draw(0, int(Cappy3.frame) * 100, 100, 100, Cappy3.x, Cappy3.y)
+            Cappy3.font.draw(Cappy3.x - 60, Cappy3.y + 50, 'HP : %3.2i/200' % int(Cappy3.HP), (0, 0, 0))
+        elif Cappy3.colliding == False:
+            Cappy3.image_attack_motion.clip_draw(200, int(Cappy3.frame) * 100, 100, 100, Cappy3.x, Cappy3.y)
+            Cappy3.font.draw(Cappy3.x - 60, Cappy3.y + 50, 'HP : %3.2i/200' % int(Cappy3.HP), (0, 0, 0))
         #draw_rectangle(*Cappy3.get_bb())
 
     def handle_event(Cappy3, event):
@@ -165,6 +184,7 @@ class Cappy4:
     def __init__(Cappy4):
         if Cappy4.image == None:
             Cappy4.image = load_image('Cappy.png')
+            Cappy.image_attack_motion = load_image('attack_motion.png')
             Cappy4.y = [270, 270, 270]
         Cappy4.x, Cappy4.y = 150, Cappy4.y[random.randint(0, 2)]
         Cappy4.font = load_font('ENCR10B.TTF', 15)
@@ -186,17 +206,22 @@ class Cappy4:
         pass
 
     def update(Cappy4):
-        Cappy4.frame = (Cappy4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Cappy4.x = clamp(25, Cappy4.x, 1600 - 25)
 
         if Cappy4.colliding == True:
+            Cappy4.frame = (Cappy4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Cappy4.x += 2  # 이동속도
         elif Cappy4.colliding == False:
+            Cappy4.frame = (Cappy4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Cappy4.x += 0
 
     def draw(Cappy4):
-        Cappy4.image.clip_draw(0, int(Cappy4.frame) * 100, 100, 100, Cappy4.x, Cappy4.y)
-        Cappy4.font.draw(Cappy4.x - 60, Cappy4.y + 50, 'HP : %3.2i/200' % int(Cappy4.HP), (0, 0, 0))
+        if Cappy4.colliding == True:
+            Cappy4.image.clip_draw(0, int(Cappy4.frame) * 100, 100, 100, Cappy4.x, Cappy4.y)
+            Cappy4.font.draw(Cappy4.x - 60, Cappy4.y + 50, 'HP : %3.2i/200' % int(Cappy4.HP), (0, 0, 0))
+        elif Cappy4.colliding == False:
+            Cappy4.image_attack_motion.clip_draw(200, int(Cappy4.frame) * 100, 100, 100, Cappy4.x, Cappy4.y)
+            Cappy4.font.draw(Cappy4.x - 60, Cappy4.y + 50, 'HP : %3.2i/200' % int(Cappy4.HP), (0, 0, 0))
         #draw_rectangle(*Cappy4.get_bb())
 
     def handle_event(Cappy4, event):

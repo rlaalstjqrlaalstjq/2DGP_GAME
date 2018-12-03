@@ -48,19 +48,23 @@ class Monster1:
         pass
 
     def update(Monster1):
-        Monster1.frame = (Monster1.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
-
         if Monster1.colliding == True:
+            Monster1.frame = (Monster1.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
             Monster1.x -= 1  # 이동속도
         elif Monster1.colliding == False:
+            Monster1.frame = (Monster1.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
             Monster1.x -= 0
 
         Monster1.x = clamp(25, Monster1.x, 1600 - 25)
 
     def draw(Monster1):
         if Monster1.x < 1400:
-            Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
-            Monster1.font.draw(Monster1.x - 60, Monster1.y + 50, 'HP : %3.2i/300' % int(Monster1.HP), (0, 0, 0))
+            if Monster1.colliding == True:
+                Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
+                Monster1.font.draw(Monster1.x - 60, Monster1.y + 50, 'HP : %3.2i/300' % int(Monster1.HP), (0, 0, 0))
+            elif Monster1.colliding == False:
+                Monster1.image.clip_draw(100, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
+                Monster1.font.draw(Monster1.x - 60, Monster1.y + 50, 'HP : %3.2i/300' % int(Monster1.HP), (0, 0, 0))
             #draw_rectangle(*Monster1.get_bb())
 
     def handle_event(Monster1, event):
@@ -94,10 +98,11 @@ class Monster2:
         pass
 
     def update(Monster2):
-        Monster2.frame = (Monster2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         if Monster2.colliding == True:
+            Monster2.frame = (Monster2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
             Monster2.x -= 0.5  # 이동속도
         elif Monster2.colliding == False:
+            Monster2.frame = (Monster2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
             Monster2.x -= 0
 
             Monster2.x = clamp(25, Monster2.x, 1600 - 25)
@@ -106,8 +111,12 @@ class Monster2:
 
     def draw(Monster2):
         if Monster2.x < 1400:
-            Monster2.image.clip_draw(0, int(Monster2.frame) * 100, 100, 100, Monster2.x, Monster2.y)
-            Monster2.font.draw(Monster2.x - 60, Monster2.y + 50, 'HP : %3.2i/400' % int(Monster2.HP), (0, 0, 0))
+            if Monster2.colliding == True:
+                Monster2.image.clip_draw(0, int(Monster2.frame) * 100, 100, 100, Monster2.x, Monster2.y)
+                Monster2.font.draw(Monster2.x - 60, Monster2.y + 50, 'HP : %3.2i/400' % int(Monster2.HP), (0, 0, 0))
+            elif Monster2.colliding == False:
+                Monster2.image.clip_draw(100, int(Monster2.frame) * 100, 100, 100, Monster2.x, Monster2.y)
+                Monster2.font.draw(Monster2.x - 60, Monster2.y + 50, 'HP : %3.2i/400' % int(Monster2.HP), (0, 0, 0))
             #draw_rectangle(*Monster2.get_bb())
 
     def handle_event(Monster2, event):
@@ -141,19 +150,25 @@ class Monster3:
         pass
 
     def update(Monster3):
-        Monster3.frame = (Monster3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         if Monster3.colliding == True:
+            Monster3.frame = (Monster3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
             Monster3.x -= 0.8  # 이동속도
         elif Monster3.colliding == False:
+            Monster3.frame = (Monster3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Monster3.x -= 0
 
         Monster3.x = clamp(25, Monster3.x, 1600 - 25)
         Monster3.mana = get_time()
 
-    def draw(self):
-        if self.x < 1400:
-            self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
-            self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/200' % int(self.HP), (0, 0, 0))
+    def draw(Monster3):
+        if Monster3.x < 1400:
+            if Monster3.colliding == True:
+                Monster3.image.clip_draw(0, int(Monster3.frame) * 100, 100, 100, Monster3.x, Monster3.y)
+                Monster3.font.draw(Monster3.x - 60, Monster3.y + 50, 'HP : %3.2i/200' % int(Monster3.HP), (0, 0, 0))
+            elif Monster3.colliding == False:
+                Monster3.image.clip_draw(100, int(Monster3.frame) * 100, 100, 100, Monster3.x, Monster3.y)
+                Monster3.font.draw(Monster3.x - 60, Monster3.y + 50, 'HP : %3.2i/200' % int(Monster3.HP), (0, 0, 0))
+
             #draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):

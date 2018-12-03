@@ -21,6 +21,7 @@ class HeelItem:
     def __init__(HeelItem):
         HeelItem.x, HeelItem.y = 120, 300
         HeelItem.image = load_image('heelitem.png')
+
         HeelItem.font = load_font('ENCR10B.TTF', 50)
         HeelItem.frame = 0
         HeelItem.timer = 300
@@ -34,6 +35,7 @@ class HeelItem:
         pass
 
     def draw(HeelItem):
+
         if HeelItem.timer > 0:
             HeelItem.image.clip_draw(0, int(HeelItem.frame) * 150, 200, 150, HeelItem.x, HeelItem.y)
             HeelItem.timer -= 1

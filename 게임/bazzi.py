@@ -26,6 +26,7 @@ class Bazzi:
     def __init__(Bazzi):
         if Bazzi.image == None:
             Bazzi.image = load_image('Bazzi.png')
+            Bazzi.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi.y = [270, 270, 270]
         Bazzi.x, Bazzi.y =  150, Bazzi.y[random.randint(0, 2)]
@@ -49,17 +50,22 @@ class Bazzi:
         pass
 
     def update(Bazzi):
-         Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
          Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
 
          if Bazzi.colliding == True:
+             Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
              Bazzi.x += 0.9  # 이동속도
          elif Bazzi.colliding == False:
+             Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
              Bazzi.x += 0
 
     def draw(Bazzi):
-        Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
-        Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/300' % int(Bazzi.HP), (0, 0, 0))
+        if Bazzi.colliding == True:
+            Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
+            Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/300' % int(Bazzi.HP), (0, 0, 0))
+        elif Bazzi.colliding == False:
+            Bazzi.image_attack_motion.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
+            Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/300' % int(Bazzi.HP), (0, 0, 0))
         #draw_rectangle(*Bazzi.get_bb())
 
     def handle_event(Bazzi, event):
@@ -75,6 +81,7 @@ class Bazzi2:
     def __init__(Bazzi2):
         if Bazzi2.image == None:
             Bazzi2.image = load_image('Bazzi.png')
+            Bazzi.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi2.y = [270, 270, 270]
         Bazzi2.x, Bazzi2.y = 150, Bazzi2.y[random.randint(0, 2)]
@@ -98,17 +105,22 @@ class Bazzi2:
         pass
 
     def update(Bazzi2):
-        Bazzi2.frame = (Bazzi2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Bazzi2.x = clamp(25, Bazzi2.x, 1600 - 25)
 
         if Bazzi2.colliding == True:
+            Bazzi2.frame = (Bazzi2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Bazzi2.x += 0.9  # 이동속도
         elif Bazzi2.colliding == False:
+            Bazzi2.frame = (Bazzi2.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Bazzi2.x += 0
 
     def draw(Bazzi2):
-        Bazzi2.image.clip_draw(0, int(Bazzi2.frame) * 100, 100, 100, Bazzi2.x, Bazzi2.y)
-        Bazzi2.font.draw(Bazzi2.x - 60, Bazzi2.y + 50, 'HP : %3.2i/300' % int(Bazzi2.HP), (0, 0, 0))
+        if Bazzi2.colliding == True:
+            Bazzi2.image.clip_draw(0, int(Bazzi2.frame) * 100, 100, 100, Bazzi2.x, Bazzi2.y)
+            Bazzi2.font.draw(Bazzi2.x - 60, Bazzi2.y + 50, 'HP : %3.2i/300' % int(Bazzi2.HP), (0, 0, 0))
+        elif Bazzi2.colliding == False:
+            Bazzi2.image_attack_motion.clip_draw(0, int(Bazzi2.frame) * 100, 100, 100, Bazzi2.x, Bazzi2.y)
+            Bazzi2.font.draw(Bazzi2.x - 60, Bazzi2.y + 50, 'HP : %3.2i/300' % int(Bazzi2.HP), (0, 0, 0))
         #draw_rectangle(*Bazzi2.get_bb())
 
     def handle_event(Bazzi2, event):
@@ -123,6 +135,7 @@ class Bazzi3:
     def __init__(Bazzi3):
         if Bazzi3.image == None:
             Bazzi3.image = load_image('Bazzi.png')
+            Bazzi.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi3.y = [270, 270, 270]
         Bazzi3.x, Bazzi3.y = 150, Bazzi3.y[random.randint(0, 2)]
@@ -146,17 +159,22 @@ class Bazzi3:
         pass
 
     def update(Bazzi3):
-        Bazzi3.frame = (Bazzi3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Bazzi3.x = clamp(25, Bazzi3.x, 1600 - 25)
 
         if Bazzi3.colliding == True:
+            Bazzi3.frame = (Bazzi3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Bazzi3.x += 0.9  # 이동속도
         elif Bazzi3.colliding == False:
+            Bazzi3.frame = (Bazzi3.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Bazzi3.x += 0
 
     def draw(Bazzi3):
-        Bazzi3.image.clip_draw(0, int(Bazzi3.frame) * 100, 100, 100, Bazzi3.x, Bazzi3.y)
-        Bazzi3.font.draw(Bazzi3.x - 60, Bazzi3.y + 50, 'HP : %3.2i/300' % int(Bazzi3.HP), (0, 0, 0))
+        if Bazzi3.colliding == True:
+            Bazzi3.image.clip_draw(0, int(Bazzi3.frame) * 100, 100, 100, Bazzi3.x, Bazzi3.y)
+            Bazzi3.font.draw(Bazzi3.x - 60, Bazzi3.y + 50, 'HP : %3.2i/300' % int(Bazzi3.HP), (0, 0, 0))
+        elif Bazzi3.colliding == False:
+            Bazzi3.image_attack_motion.clip_draw(0, int(Bazzi3.frame) * 100, 100, 100, Bazzi3.x, Bazzi3.y)
+            Bazzi3.font.draw(Bazzi3.x - 60, Bazzi3.y + 50, 'HP : %3.2i/300' % int(Bazzi3.HP), (0, 0, 0))
         #draw_rectangle(*Bazzi3.get_bb())
 
     def handle_event(Bazzi3, event):
@@ -171,6 +189,7 @@ class Bazzi4:
     def __init__(Bazzi4):
         if Bazzi4.image == None:
             Bazzi4.image = load_image('Bazzi.png')
+            Bazzi.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi4.y = [270, 270, 270]
         Bazzi4.x, Bazzi4.y = 150, Bazzi4.y[random.randint(0, 2)]
@@ -194,17 +213,22 @@ class Bazzi4:
         pass
 
     def update(Bazzi4):
-        Bazzi4.frame = (Bazzi4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Bazzi4.x = clamp(25, Bazzi4.x, 1600 - 25)
 
         if Bazzi4.colliding == True:
+            Bazzi4.frame = (Bazzi4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Bazzi4.x += 0.9  # 이동속도
         elif Bazzi4.colliding == False:
+            Bazzi4.frame = (Bazzi4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Bazzi4.x += 0
 
     def draw(Bazzi4):
-        Bazzi4.image.clip_draw(0, int(Bazzi4.frame) * 100, 100, 100, Bazzi4.x, Bazzi4.y)
-        Bazzi4.font.draw(Bazzi4.x - 60, Bazzi4.y + 50, 'HP : %3.2i/300' % int(Bazzi4.HP), (0, 0, 0))
+        if Bazzi4.colliding == True:
+            Bazzi4.image.clip_draw(0, int(Bazzi4.frame) * 100, 100, 100, Bazzi4.x, Bazzi4.y)
+            Bazzi4.font.draw(Bazzi4.x - 60, Bazzi4.y + 50, 'HP : %3.2i/300' % int(Bazzi4.HP), (0, 0, 0))
+        elif Bazzi4.colliding == False:
+            Bazzi4.image_attack_motion.clip_draw(0, int(Bazzi4.frame) * 100, 100, 100, Bazzi4.x, Bazzi4.y)
+            Bazzi4.font.draw(Bazzi4.x - 60, Bazzi4.y + 50, 'HP : %3.2i/300' % int(Bazzi4.HP), (0, 0, 0))
         #draw_rectangle(*Bazzi4.get_bb())
 
     def handle_event(Bazzi4, event):
@@ -219,6 +243,7 @@ class Bazzi5:
     def __init__(Bazzi5):
         if Bazzi5.image == None:
             Bazzi5.image = load_image('Bazzi.png')
+            Bazzi.image_attack_motion = load_image('attack_motion.png')
 
         Bazzi5.y = [270, 270, 270]
         Bazzi5.x, Bazzi5.y = 150, Bazzi5.y[random.randint(0, 2)]
@@ -242,17 +267,22 @@ class Bazzi5:
         pass
 
     def update(Bazzi5):
-        Bazzi5.frame = ( Bazzi5.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
         Bazzi5.x = clamp(25, Bazzi5.x, 1600 - 25)
 
         if Bazzi5.colliding == True:
+            Bazzi5.frame = (Bazzi5.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 5
             Bazzi5.x += 0.9  # 이동속도
         elif Bazzi5.colliding == False:
+            Bazzi5.frame = (Bazzi5.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
             Bazzi5.x += 0
 
     def draw(Bazzi5):
-        Bazzi5.image.clip_draw(0, int(Bazzi5.frame) * 100, 100, 100, Bazzi5.x, Bazzi5.y)
-        Bazzi5.font.draw(Bazzi5.x - 60, Bazzi5.y + 50, 'HP : %3.2i/300' % int(Bazzi5.HP), (0, 0, 0))
+        if Bazzi5.colliding == True:
+            Bazzi5.image.clip_draw(0, int(Bazzi5.frame) * 100, 100, 100, Bazzi5.x, Bazzi5.y)
+            Bazzi5.font.draw(Bazzi5.x - 60, Bazzi5.y + 50, 'HP : %3.2i/300' % int(Bazzi5.HP), (0, 0, 0))
+        elif Bazzi5.colliding == False:
+            Bazzi5.image_attack_motion.clip_draw(0, int(Bazzi5.frame) * 100, 100, 100, Bazzi5.x, Bazzi5.y)
+            Bazzi5.font.draw(Bazzi5.x - 60, Bazzi5.y + 50, 'HP : %3.2i/300' % int(Bazzi5.HP), (0, 0, 0))
         #draw_rectangle(*Bazzi5.get_bb())
 
     def handle_event(Bazzi5, event):

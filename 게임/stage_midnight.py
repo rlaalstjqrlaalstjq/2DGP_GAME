@@ -3,7 +3,7 @@ from pico2d import *
 class Stage_Midnight:
     def __init__(self):
         self.image = load_image('stage2.png')
-        self.bgm = load_music('grondmusic.ogg')
+        self.bgm = load_music('grondmusic.mp3')
         self.bgm.set_volume(30)
         self.bgm.repeat_play()
         self.font = load_font('ENCR10B.TTF', 16)
