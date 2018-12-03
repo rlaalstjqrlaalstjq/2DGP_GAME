@@ -28,9 +28,9 @@ class Bazzi:
             Bazzi.image = load_image('Bazzi.png')
 
         Bazzi.y = [270, 270, 270]
-        Bazzi.x, Bazzi.y = random.randint(0, 150), Bazzi.y[random.randint(0, 2)]
+        Bazzi.x, Bazzi.y =  150, Bazzi.y[random.randint(0, 2)]
         Bazzi.font = load_font('ENCR10B.TTF', 15)
-        Bazzi.HP = 350    #체력
+        Bazzi.HP = 300    #체력
         Bazzi.Attack = 50  #공격력
         Bazzi.Mana = 3  #소환에 필요한 마나 소모량
         Bazzi.frame = 0
@@ -53,14 +53,14 @@ class Bazzi:
          Bazzi.x = clamp(25, Bazzi.x, 1600 - 25)
 
          if Bazzi.colliding == True:
-             Bazzi.x += 3  # 이동속도
+             Bazzi.x += 0.9  # 이동속도
          elif Bazzi.colliding == False:
              Bazzi.x += 0
 
     def draw(Bazzi):
         Bazzi.image.clip_draw(0, int(Bazzi.frame) * 100, 100, 100, Bazzi.x, Bazzi.y)
-        Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/350' % int(Bazzi.HP), (0, 0, 0))
-        draw_rectangle(*Bazzi.get_bb())
+        Bazzi.font.draw(Bazzi.x - 60, Bazzi.y + 50, 'HP : %3.2i/300' % int(Bazzi.HP), (0, 0, 0))
+        #draw_rectangle(*Bazzi.get_bb())
 
     def handle_event(Bazzi, event):
         pass
@@ -77,9 +77,9 @@ class Bazzi2:
             Bazzi2.image = load_image('Bazzi.png')
 
         Bazzi2.y = [270, 270, 270]
-        Bazzi2.x, Bazzi2.y = random.randint(0, 150), Bazzi2.y[random.randint(0, 2)]
+        Bazzi2.x, Bazzi2.y = 150, Bazzi2.y[random.randint(0, 2)]
         Bazzi2.font = load_font('ENCR10B.TTF', 15)
-        Bazzi2.HP = 350  # 체력
+        Bazzi2.HP = 300  # 체력
         Bazzi2.Attack = 50  # 공격력
         Bazzi2.Mana = 3  # 소환에 필요한 마나 소모량
         Bazzi2.frame = 0
@@ -102,14 +102,14 @@ class Bazzi2:
         Bazzi2.x = clamp(25, Bazzi2.x, 1600 - 25)
 
         if Bazzi2.colliding == True:
-            Bazzi2.x += 3  # 이동속도
+            Bazzi2.x += 0.9  # 이동속도
         elif Bazzi2.colliding == False:
             Bazzi2.x += 0
 
     def draw(Bazzi2):
         Bazzi2.image.clip_draw(0, int(Bazzi2.frame) * 100, 100, 100, Bazzi2.x, Bazzi2.y)
-        Bazzi2.font.draw(Bazzi2.x - 60, Bazzi2.y + 50, 'HP : %3.2i/350' % int(Bazzi2.HP), (0, 0, 0))
-        draw_rectangle(*Bazzi2.get_bb())
+        Bazzi2.font.draw(Bazzi2.x - 60, Bazzi2.y + 50, 'HP : %3.2i/300' % int(Bazzi2.HP), (0, 0, 0))
+        #draw_rectangle(*Bazzi2.get_bb())
 
     def handle_event(Bazzi2, event):
         pass
@@ -125,9 +125,9 @@ class Bazzi3:
             Bazzi3.image = load_image('Bazzi.png')
 
         Bazzi3.y = [270, 270, 270]
-        Bazzi3.x, Bazzi3.y = random.randint(0, 150), Bazzi3.y[random.randint(0, 2)]
+        Bazzi3.x, Bazzi3.y = 150, Bazzi3.y[random.randint(0, 2)]
         Bazzi3.font = load_font('ENCR10B.TTF', 15)
-        Bazzi3.HP = 350  # 체력
+        Bazzi3.HP = 300  # 체력
         Bazzi3.Attack = 50  # 공격력
         Bazzi3.Mana = 3  # 소환에 필요한 마나 소모량
         Bazzi3.frame = 0
@@ -150,14 +150,14 @@ class Bazzi3:
         Bazzi3.x = clamp(25, Bazzi3.x, 1600 - 25)
 
         if Bazzi3.colliding == True:
-            Bazzi3.x += 3  # 이동속도
+            Bazzi3.x += 0.9  # 이동속도
         elif Bazzi3.colliding == False:
             Bazzi3.x += 0
 
     def draw(Bazzi3):
         Bazzi3.image.clip_draw(0, int(Bazzi3.frame) * 100, 100, 100, Bazzi3.x, Bazzi3.y)
-        Bazzi3.font.draw(Bazzi3.x - 60, Bazzi3.y + 50, 'HP : %3.2i/350' % int(Bazzi3.HP), (0, 0, 0))
-        draw_rectangle(*Bazzi3.get_bb())
+        Bazzi3.font.draw(Bazzi3.x - 60, Bazzi3.y + 50, 'HP : %3.2i/300' % int(Bazzi3.HP), (0, 0, 0))
+        #draw_rectangle(*Bazzi3.get_bb())
 
     def handle_event(Bazzi3, event):
         pass
@@ -173,9 +173,9 @@ class Bazzi4:
             Bazzi4.image = load_image('Bazzi.png')
 
         Bazzi4.y = [270, 270, 270]
-        Bazzi4.x, Bazzi4.y = random.randint(0, 150), Bazzi4.y[random.randint(0, 2)]
+        Bazzi4.x, Bazzi4.y = 150, Bazzi4.y[random.randint(0, 2)]
         Bazzi4.font = load_font('ENCR10B.TTF', 15)
-        Bazzi4.HP = 350  # 체력
+        Bazzi4.HP = 300  # 체력
         Bazzi4.Attack = 50  # 공격력
         Bazzi4.Mana = 3  # 소환에 필요한 마나 소모량
         Bazzi4.frame = 0
@@ -198,14 +198,14 @@ class Bazzi4:
         Bazzi4.x = clamp(25, Bazzi4.x, 1600 - 25)
 
         if Bazzi4.colliding == True:
-            Bazzi4.x += 3  # 이동속도
+            Bazzi4.x += 0.9  # 이동속도
         elif Bazzi4.colliding == False:
             Bazzi4.x += 0
 
     def draw(Bazzi4):
         Bazzi4.image.clip_draw(0, int(Bazzi4.frame) * 100, 100, 100, Bazzi4.x, Bazzi4.y)
-        Bazzi4.font.draw(Bazzi4.x - 60, Bazzi4.y + 50, 'HP : %3.2i/350' % int(Bazzi4.HP), (0, 0, 0))
-        draw_rectangle(*Bazzi4.get_bb())
+        Bazzi4.font.draw(Bazzi4.x - 60, Bazzi4.y + 50, 'HP : %3.2i/300' % int(Bazzi4.HP), (0, 0, 0))
+        #draw_rectangle(*Bazzi4.get_bb())
 
     def handle_event(Bazzi4, event):
         pass
@@ -221,9 +221,9 @@ class Bazzi5:
             Bazzi5.image = load_image('Bazzi.png')
 
         Bazzi5.y = [270, 270, 270]
-        Bazzi5.x, Bazzi5.y = random.randint(0, 150), Bazzi5.y[random.randint(0, 2)]
+        Bazzi5.x, Bazzi5.y = 150, Bazzi5.y[random.randint(0, 2)]
         Bazzi5.font = load_font('ENCR10B.TTF', 15)
-        Bazzi5.HP = 350  # 체력
+        Bazzi5.HP = 300  # 체력
         Bazzi5.Attack = 50  # 공격력
         Bazzi5.Mana = 3  # 소환에 필요한 마나 소모량
         Bazzi5.frame = 0
@@ -246,14 +246,14 @@ class Bazzi5:
         Bazzi5.x = clamp(25, Bazzi5.x, 1600 - 25)
 
         if Bazzi5.colliding == True:
-            Bazzi5.x += 3  # 이동속도
+            Bazzi5.x += 0.9  # 이동속도
         elif Bazzi5.colliding == False:
             Bazzi5.x += 0
 
     def draw(Bazzi5):
         Bazzi5.image.clip_draw(0, int(Bazzi5.frame) * 100, 100, 100, Bazzi5.x, Bazzi5.y)
-        Bazzi5.font.draw(Bazzi5.x - 60, Bazzi5.y + 50, 'HP : %3.2i/350' % int(Bazzi5.HP), (0, 0, 0))
-        draw_rectangle(*Bazzi5.get_bb())
+        Bazzi5.font.draw(Bazzi5.x - 60, Bazzi5.y + 50, 'HP : %3.2i/300' % int(Bazzi5.HP), (0, 0, 0))
+        #draw_rectangle(*Bazzi5.get_bb())
 
     def handle_event(Bazzi5, event):
         pass

@@ -29,7 +29,7 @@ class Dio:
             Dio.y = [270, 270, 270]
         Dio.x, Dio.y = 150, Dio.y[random.randint(0, 2)]
         Dio.font = load_font('ENCR10B.TTF', 15)
-        Dio.HP = 200    #체력
+        Dio.HP = 500    #체력
         Dio.Attack = 80  #공격력
         Dio.Mana = 5  #소환에 필요한 마나 소모량
         Dio.frame = 0
@@ -57,8 +57,8 @@ class Dio:
 
     def draw(Dio):
         Dio.image.clip_draw(0, int(Dio.frame) * 100, 100, 100, Dio.x, Dio.y)
-        Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/200' % int(Dio.HP), (0, 0, 0))
-        draw_rectangle(*Dio.get_bb())
+        Dio.font.draw(Dio.x - 60, Dio.y + 50, 'HP : %3.2i/500' % int(Dio.HP), (0, 0, 0))
+        #draw_rectangle(*Dio.get_bb())
 
     def handle_event(Dio, event):
         pass
@@ -75,7 +75,7 @@ class Dio2:
             Dio2.y = [270, 270, 270]
         Dio2.x, Dio2.y = 150, Dio2.y[random.randint(0, 2)]
         Dio2.font = load_font('ENCR10B.TTF', 15)
-        Dio2.HP = 200    #체력
+        Dio2.HP = 500    #체력
         Dio2.Attack = 80  #공격력
         Dio2.Mana = 5  #소환에 필요한 마나 소모량
         Dio2.frame = 0
@@ -103,8 +103,8 @@ class Dio2:
 
     def draw(Dio2):
         Dio2.image.clip_draw(0, int(Dio2.frame) * 100, 100, 100, Dio2.x, Dio2.y)
-        Dio2.font.draw(Dio2.x - 60, Dio2.y + 50, 'HP : %3.2i/200' % int(Dio2.HP), (0, 0, 0))
-        draw_rectangle(*Dio2.get_bb())
+        Dio2.font.draw(Dio2.x - 60, Dio2.y + 50, 'HP : %3.2i/500' % int(Dio2.HP), (0, 0, 0))
+        #draw_rectangle(*Dio2.get_bb())
 
     def handle_event(Dio2, event):
         pass
@@ -121,7 +121,7 @@ class Dio3:
             Dio3.y = [270, 270, 270]
             Dio3.x, Dio3.y = 150, Dio3.y[random.randint(0, 2)]
         Dio3.font = load_font('ENCR10B.TTF', 15)
-        Dio3.HP = 200    #체력
+        Dio3.HP = 500    #체력
         Dio3.Attack = 80  #공격력
         Dio3.Mana = 5  #소환에 필요한 마나 소모량
         Dio3.frame = 0
@@ -149,8 +149,8 @@ class Dio3:
 
     def draw(Dio3):
         Dio3.image.clip_draw(0, int(Dio3.frame) * 100, 100, 100, Dio3.x, Dio3.y)
-        Dio3.font.draw(Dio3.x - 60, Dio3.y + 50, 'HP : %3.2i/200' % int(Dio3.HP), (0, 0, 0))
-        draw_rectangle(*Dio3.get_bb())
+        Dio3.font.draw(Dio3.x - 60, Dio3.y + 50, 'HP : %3.2i/500' % int(Dio3.HP), (0, 0, 0))
+        #draw_rectangle(*Dio3.get_bb())
 
     def handle_event(Dio3, event):
         pass
@@ -167,7 +167,7 @@ class Dio4:
             Dio4.y = [270, 270, 270]
             Dio4.x, Dio4.y = 150, Dio4.y[random.randint(0, 2)]
         Dio4.font = load_font('ENCR10B.TTF', 15)
-        Dio4.HP = 200    #체력
+        Dio4.HP = 500    #체력
         Dio4.Attack = 80  #공격력
         Dio4.Mana = 5  #소환에 필요한 마나 소모량
         Dio4.frame = 0
@@ -195,8 +195,8 @@ class Dio4:
 
     def draw(Dio4):
         Dio4.image.clip_draw(0, int(Dio4.frame) * 100, 100, 100, Dio4.x, Dio4.y)
-        Dio4.font.draw(Dio4.x - 60, Dio4.y + 50, 'HP : %3.2i/200' % int(Dio4.HP), (0, 0, 0))
-        draw_rectangle(*Dio4.get_bb())
+        Dio4.font.draw(Dio4.x - 60, Dio4.y + 50, 'HP : %3.2i/500' % int(Dio4.HP), (0, 0, 0))
+        #draw_rectangle(*Dio4.get_bb())
 
     def handle_event(Dio4, event):
         pass

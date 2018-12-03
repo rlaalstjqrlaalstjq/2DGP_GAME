@@ -29,7 +29,7 @@ class Rodu:
             Rodu.y = [270, 270, 270]
         Rodu.x, Rodu.y = 150, Rodu.y[random.randint(0, 2)]
         Rodu.font = load_font('ENCR10B.TTF', 15)
-        Rodu.HP = 500    #체력
+        Rodu.HP = 700    #체력
         Rodu.Attack = 30  #공격력
         Rodu.Mana = 7  #소환에 필요한 마나 소모량
         Rodu.frame = 0
@@ -57,8 +57,8 @@ class Rodu:
 
     def draw(Rodu):
         Rodu.image.clip_draw(0, int(Rodu.frame) * 100, 100, 100, Rodu.x, Rodu.y)
-        Rodu.font.draw(Rodu.x - 60, Rodu.y + 50, 'HP : %3.2i/500' % int(Rodu.HP), (0, 0, 0))
-        draw_rectangle(*Rodu.get_bb())
+        Rodu.font.draw(Rodu.x - 60, Rodu.y + 50, 'HP : %3.2i/700' % int(Rodu.HP), (0, 0, 0))
+        #draw_rectangle(*Rodu.get_bb())
 
     def handle_event(Rodu, event):
         pass
@@ -76,7 +76,7 @@ class Rodu2:
             Rodu2.y = [270, 270, 270]
         Rodu2.x, Rodu2.y = 150, Rodu2.y[random.randint(0, 2)]
         Rodu2.font = load_font('ENCR10B.TTF', 15)
-        Rodu2.HP = 500    #체력
+        Rodu2.HP = 700    #체력
         Rodu2.Attack = 30  #공격력
         Rodu2.Mana = 7  #소환에 필요한 마나 소모량
         Rodu2.frame = 0
@@ -104,8 +104,8 @@ class Rodu2:
 
     def draw(Rodu2):
         Rodu2.image.clip_draw(0, int(Rodu2.frame) * 100, 100, 100, Rodu2.x, Rodu2.y)
-        Rodu2.font.draw(Rodu2.x - 60, Rodu2.y + 50, 'HP : %3.2i/500' % int(Rodu2.HP), (0, 0, 0))
-        draw_rectangle(*Rodu2.get_bb())
+        Rodu2.font.draw(Rodu2.x - 60, Rodu2.y + 50, 'HP : %3.2i/700' % int(Rodu2.HP), (0, 0, 0))
+        #draw_rectangle(*Rodu2.get_bb())
 
     def handle_event(Rodu2, event):
         pass
@@ -122,7 +122,7 @@ class Rodu3:
             Rodu3.y = [270, 270, 270]
         Rodu3.x, Rodu3.y = 150, Rodu3.y[random.randint(0, 2)]
         Rodu3.font = load_font('ENCR10B.TTF', 15)
-        Rodu3.HP = 500    #체력
+        Rodu3.HP = 700    #체력
         Rodu3.Attack = 30  #공격력
         Rodu3.Mana = 7  #소환에 필요한 마나 소모량
         Rodu3.frame = 0
@@ -150,8 +150,8 @@ class Rodu3:
 
     def draw(Rodu3):
         Rodu3.image.clip_draw(0, int(Rodu3.frame) * 100, 100, 100, Rodu3.x, Rodu3.y)
-        Rodu3.font.draw(Rodu3.x - 60, Rodu3.y + 50, 'HP : %3.2i/500' % int(Rodu3.HP), (0, 0, 0))
-        draw_rectangle(*Rodu3.get_bb())
+        Rodu3.font.draw(Rodu3.x - 60, Rodu3.y + 50, 'HP : %3.2i/700' % int(Rodu3.HP), (0, 0, 0))
+        #draw_rectangle(*Rodu3.get_bb())
 
     def handle_event(Rodu3, event):
         pass
@@ -168,7 +168,7 @@ class Rodu4:
             Rodu4.y = [270, 270, 270]
         Rodu4.x, Rodu4.y = 150, Rodu4.y[random.randint(0, 2)]
         Rodu4.font = load_font('ENCR10B.TTF', 15)
-        Rodu4.HP = 500    #체력
+        Rodu4.HP = 700    #체력
         Rodu4.Attack = 30  #공격력
         Rodu4.Mana = 7  #소환에 필요한 마나 소모량
         Rodu4.frame = 0
@@ -196,8 +196,8 @@ class Rodu4:
 
     def draw(Rodu4):
         Rodu4.image.clip_draw(0, int(Rodu4.frame) * 100, 100, 100, Rodu4.x, Rodu4.y)
-        Rodu4.font.draw(Rodu4.x - 60, Rodu4.y + 50, 'HP : %3.2i/500' % int(Rodu4.HP), (0, 0, 0))
-        draw_rectangle(*Rodu4.get_bb())
+        Rodu4.font.draw(Rodu4.x - 60, Rodu4.y + 50, 'HP : %3.2i/700' % int(Rodu4.HP), (0, 0, 0))
+        #draw_rectangle(*Rodu4.get_bb())
 
     def handle_event(Rodu4, event):
         pass

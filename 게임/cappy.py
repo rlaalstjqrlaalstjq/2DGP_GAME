@@ -29,7 +29,7 @@ class Cappy:
             Cappy.y = [270, 270, 270]
         Cappy.x, Cappy.y = 150, Cappy.y[random.randint(0, 2)]
         Cappy.font = load_font('ENCR10B.TTF', 15)
-        Cappy.HP = 350    #체력
+        Cappy.HP = 200    #체력
         Cappy.Attack = 20  #공격력
         Cappy.Mana = 2  #소환에 필요한 마나 소모량
         Cappy.frame = 0
@@ -57,8 +57,8 @@ class Cappy:
 
     def draw(Cappy):
         Cappy.image.clip_draw(0, int(Cappy.frame) * 100, 100, 100, Cappy.x, Cappy.y)
-        Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/350' % int(Cappy.HP), (0, 0, 0))
-        draw_rectangle(*Cappy.get_bb())
+        Cappy.font.draw(Cappy.x - 60, Cappy.y + 50, 'HP : %3.2i/200' % int(Cappy.HP), (0, 0, 0))
+        #draw_rectangle(*Cappy.get_bb())
 
     def handle_event(Cappy, event):
         pass
@@ -76,7 +76,7 @@ class Cappy2:
             Cappy2.y = [270, 270, 270]
         Cappy2.x, Cappy2.y = 150, Cappy2.y[random.randint(0, 2)]
         Cappy2.font = load_font('ENCR10B.TTF', 15)
-        Cappy2.HP = 350    #체력
+        Cappy2.HP = 200    #체력
         Cappy2.Attack = 20  #공격력
         Cappy2.Mana = 2  #소환에 필요한 마나 소모량
         Cappy2.frame = 0
@@ -104,8 +104,8 @@ class Cappy2:
 
     def draw(Cappy2):
         Cappy2.image.clip_draw(0, int(Cappy2.frame) * 100, 100, 100, Cappy2.x, Cappy2.y)
-        Cappy2.font.draw(Cappy2.x - 60, Cappy2.y + 50, 'HP : %3.2i/350' % int(Cappy2.HP), (0, 0, 0))
-        draw_rectangle(*Cappy2.get_bb())
+        Cappy2.font.draw(Cappy2.x - 60, Cappy2.y + 50, 'HP : %3.2i/200' % int(Cappy2.HP), (0, 0, 0))
+        #draw_rectangle(*Cappy2.get_bb())
 
     def handle_event(Cappy2, event):
         pass
@@ -122,7 +122,7 @@ class Cappy3:
             Cappy3.y = [270, 270, 270]
         Cappy3.x, Cappy3.y = 150, Cappy3.y[random.randint(0, 2)]
         Cappy3.font = load_font('ENCR10B.TTF', 15)
-        Cappy3.HP = 350    #체력
+        Cappy3.HP = 200    #체력
         Cappy3.Attack = 20  #공격력
         Cappy3.Mana = 2  #소환에 필요한 마나 소모량
         Cappy3.frame = 0
@@ -150,8 +150,8 @@ class Cappy3:
 
     def draw(Cappy3):
         Cappy3.image.clip_draw(0, int(Cappy3.frame) * 100, 100, 100, Cappy3.x, Cappy3.y)
-        Cappy3.font.draw(Cappy3.x - 60, Cappy3.y + 50, 'HP : %3.2i/350' % int(Cappy3.HP), (0, 0, 0))
-        draw_rectangle(*Cappy3.get_bb())
+        Cappy3.font.draw(Cappy3.x - 60, Cappy3.y + 50, 'HP : %3.2i/200' % int(Cappy3.HP), (0, 0, 0))
+        #draw_rectangle(*Cappy3.get_bb())
 
     def handle_event(Cappy3, event):
         pass
@@ -168,7 +168,7 @@ class Cappy4:
             Cappy4.y = [270, 270, 270]
         Cappy4.x, Cappy4.y = 150, Cappy4.y[random.randint(0, 2)]
         Cappy4.font = load_font('ENCR10B.TTF', 15)
-        Cappy4.HP = 350    #체력
+        Cappy4.HP = 200    #체력
         Cappy4.Attack = 20  #공격력
         Cappy4.Mana = 2  #소환에 필요한 마나 소모량
         Cappy4.frame = 0
@@ -196,8 +196,8 @@ class Cappy4:
 
     def draw(Cappy4):
         Cappy4.image.clip_draw(0, int(Cappy4.frame) * 100, 100, 100, Cappy4.x, Cappy4.y)
-        Cappy4.font.draw(Cappy4.x - 60, Cappy4.y + 50, 'HP : %3.2i/350' % int(Cappy4.HP), (0, 0, 0))
-        draw_rectangle(*Cappy4.get_bb())
+        Cappy4.font.draw(Cappy4.x - 60, Cappy4.y + 50, 'HP : %3.2i/200' % int(Cappy4.HP), (0, 0, 0))
+        #draw_rectangle(*Cappy4.get_bb())
 
     def handle_event(Cappy4, event):
         pass

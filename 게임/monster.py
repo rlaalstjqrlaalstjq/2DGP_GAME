@@ -61,7 +61,7 @@ class Monster1:
         if Monster1.x < 1400:
             Monster1.image.clip_draw(0, int(Monster1.frame) * 100, 100, 100, Monster1.x, Monster1.y)
             Monster1.font.draw(Monster1.x - 60, Monster1.y + 50, 'HP : %3.2i/300' % int(Monster1.HP), (0, 0, 0))
-            draw_rectangle(*Monster1.get_bb())
+            #draw_rectangle(*Monster1.get_bb())
 
     def handle_event(Monster1, event):
         pass
@@ -108,7 +108,7 @@ class Monster2:
         if Monster2.x < 1400:
             Monster2.image.clip_draw(0, int(Monster2.frame) * 100, 100, 100, Monster2.x, Monster2.y)
             Monster2.font.draw(Monster2.x - 60, Monster2.y + 50, 'HP : %3.2i/400' % int(Monster2.HP), (0, 0, 0))
-            draw_rectangle(*Monster2.get_bb())
+            #draw_rectangle(*Monster2.get_bb())
 
     def handle_event(Monster2, event):
         pass
@@ -154,7 +154,7 @@ class Monster3:
         if self.x < 1400:
             self.image.clip_draw(0, int(self.frame) * 100, 100, 100, self.x, self.y)
             self.font.draw(self.x - 60, self.y + 50, 'HP : %3.2i/200' % int(self.HP), (0, 0, 0))
-            draw_rectangle(*self.get_bb())
+            #draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         pass
@@ -188,7 +188,7 @@ class Monster4:
     def update(Monster4):
         Monster4.frame = (Monster4.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
         if Monster4.colliding == True:
-            Monster4.x -= 0.8  # 이동속도
+            Monster4.x -= 1.2  # 이동속도
         elif Monster4.colliding == False:
             Monster4.x -= 0
 
@@ -199,7 +199,7 @@ class Monster4:
         if Monster4.x <1400:
             Monster4.image.clip_draw(0, int(Monster4.frame) * 100, 100, 100, Monster4.x, Monster4.y)
             Monster4.font.draw(Monster4.x - 60, Monster4.y + 50, 'HP : %3.2i/500' % int(Monster4.HP), (0, 0, 0))
-            draw_rectangle(*Monster4.get_bb())
+            #draw_rectangle(*Monster4.get_bb())
 
     def handle_event(Monster4, event):
         pass

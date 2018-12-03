@@ -14,7 +14,7 @@ class Boss:
     def draw(Boss):
         Boss.image.clip_draw(0, 0, 250, 350, 1455, 350)
         Boss.font.draw(1350, 500, '(HP: %3.2f/2000.00)' % Boss.HP, (255, 0, 0))
-        draw_rectangle(*Boss.get_bb())
+        #draw_rectangle(*Boss.get_bb())
 
     def get_bb(Boss):
         return Boss.x - 100, Boss.y - 200, Boss.x + 100, Boss.y + 250
