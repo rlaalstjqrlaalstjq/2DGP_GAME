@@ -104,16 +104,16 @@ def enter():
     game_world.add_object(boss, 1)
 
     global monster1
-    monster1 = [Monster1() for i in range(5)]
+    monster1 = [Monster1() for i in range(15)]
     game_world.add_objects(monster1, 1)
     global monster2
-    monster2 = [Monster2() for i in range(5)]
+    monster2 = [Monster2() for i in range(15)]
     game_world.add_objects(monster2, 1)
     global monster3
-    monster3 = [Monster3() for i in range(5)]
+    monster3 = [Monster3() for i in range(20)]
     game_world.add_objects(monster3, 1)
     global monster4
-    monster4 = [Monster4() for i in range(5)]
+    monster4 = [Monster4() for i in range(20)]
     game_world.add_objects(monster4, 1)
 
 

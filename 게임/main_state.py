@@ -1667,7 +1667,8 @@ def draw():
     update_canvas()
 
 
-
+def exit():
+    game_world.clear()
 
 
 
