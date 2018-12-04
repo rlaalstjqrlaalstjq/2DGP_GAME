@@ -39,6 +39,7 @@ class Bazzi:
         Bazzi.timer = 100
         Bazzi.colliding = True
         Bazzi.live_num = 0
+        Bazzi.reset_num = True
 
         Bazzi.attack_sound = load_wav('army_attack.ogg')
         Bazzi.attack_sound.set_volume(50)
@@ -58,6 +59,14 @@ class Bazzi:
          elif Bazzi.colliding == False:
              Bazzi.frame = (Bazzi.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
              Bazzi.x += 0
+
+         if Bazzi.reset_num == False:
+             Bazzi.y = [270, 270, 270]
+             Bazzi.x, Bazzi.y = 150, Bazzi.y[random.randint(0, 2)]
+             Bazzi.HP = 300
+             Bazzi.reset_num = True
+
+
 
     def draw(Bazzi):
         if Bazzi.colliding == True:

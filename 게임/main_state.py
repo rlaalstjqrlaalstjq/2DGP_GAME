@@ -123,9 +123,6 @@ def enter():
     game_world.add_objects(monster4, 1)
 
 
-def exit():
-    game_world.clear()
-
 def pause():
     pass
 
@@ -324,6 +321,7 @@ def update():
                     bazzi.colliding = True
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
+
                     monster.colliding = True  # 몬스터 1과 배찌의 충돌체크
         if collide(bazzi2, monster):
             bazzi2.colliding = False
@@ -340,6 +338,7 @@ def update():
                     game_world.remove_object(monster)
                     bazzi2.colliding = True
                 elif bazzi2.HP <=0:
+
                     game_world.remove_object(bazzi2)
                     monster.colliding = True    # 배찌2 / 몬스터 1
         if collide(bazzi3, monster):
@@ -357,7 +356,8 @@ def update():
                     game_world.remove_object(monster)
                     bazzi3.colliding = True
                 elif bazzi3.HP <=0:
-                    game_world.remove_object(bazzi3)   # 배찌3 / 몬스터 1
+                    game_world.remove_object(bazzi3)
+                    # 배찌3 / 몬스터 1
                     monster.colliding = True
         if collide(bazzi4, monster):
             bazzi4.colliding = False
@@ -375,6 +375,7 @@ def update():
                     bazzi4.colliding = True
                 elif bazzi4.HP <=0:
                     game_world.remove_object(bazzi4)
+
                     monster.colliding = True      # 배찌4 / 몬스터 1
         if collide(bazzi5, monster):
             bazzi5.colliding = False
@@ -392,6 +393,7 @@ def update():
                     bazzi5.colliding = True
                 elif bazzi5.HP <=0:
                     game_world.remove_object(bazzi5)
+
                     monster.colliding = True     # 배찌5 / 몬스터 1
         if collide(dio, monster):
             dio.colliding = False
@@ -1654,8 +1656,8 @@ def update():
             if boss.HP <= 0:
                 game_world.remove_object(boss)
 
-    #if boss.HP <= 0:
-       # game_framework.change_state(second_state)
+    if boss.HP <= 0:
+        game_framework.change_state(second_state)
 
 
 def draw():
