@@ -27,7 +27,6 @@ class Bazzi:
         if Bazzi.image == None:
             Bazzi.image = load_image('Bazzi.png')
             Bazzi.image_attack_motion = load_image('attack_motion.png')
-
         Bazzi.y = [270, 270, 270]
         Bazzi.x, Bazzi.y =  150, Bazzi.y[random.randint(0, 2)]
         Bazzi.font = load_font('ENCR10B.TTF', 15)

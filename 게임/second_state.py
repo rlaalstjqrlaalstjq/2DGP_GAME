@@ -6,6 +6,7 @@ from pico2d import *
 import game_framework
 import game_world
 import math
+import last_stage
 
 from bazzi import Bazzi, Bazzi2, Bazzi3, Bazzi4, Bazzi5
 from rodu import Rodu, Rodu2, Rodu3, Rodu4
@@ -19,9 +20,10 @@ from selectplayer import SelectPlayer
 from monster import Monster1, Monster2, Monster3, Monster4
 from heelitem import HeelItem
 from brassitem import BrassItem
+from heal_icon import Heal_Icon
 
 
-name = "MainState"
+name = "secondstate"
 
 
 
@@ -77,7 +79,7 @@ def enter():
     global cappy4
     cappy4 = Cappy4()
 
-    global stage_morning
+    global stage_midnight
     stage_midnight = Stage_Midnight()
     game_world.add_object(stage_midnight, 0)
 
@@ -92,6 +94,10 @@ def enter():
     global heelitem
     heelitem = HeelItem()
 
+    global heal_icon
+    heal_icon = Heal_Icon()
+    game_world.add_object(heal_icon, 1)
+
     global brassitem
     brassitem = BrassItem()
 
@@ -104,21 +110,18 @@ def enter():
     game_world.add_object(boss, 1)
 
     global monster1
-    monster1 = [Monster1() for i in range(15)]
+    monster1 = [Monster1() for i in range(20)]
     game_world.add_objects(monster1, 1)
     global monster2
     monster2 = [Monster2() for i in range(15)]
     game_world.add_objects(monster2, 1)
     global monster3
-    monster3 = [Monster3() for i in range(20)]
+    monster3 = [Monster3() for i in range(10)]
     game_world.add_objects(monster3, 1)
     global monster4
-    monster4 = [Monster4() for i in range(20)]
+    monster4 = [Monster4() for i in range(5)]
     game_world.add_objects(monster4, 1)
 
-
-def exit():
-    game_world.clear()
 
 def pause():
     pass
@@ -249,11 +252,44 @@ def handle_events():
                 brassitem.can_use -= 1
             else:
                 break
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_m:
+            game_framework.change_state(last_stage)
 
 def update():
 
     for game_object in game_world.all_objects():
         game_object.update()
+
+    boss.timer -= 1
+    if boss.timer == 0:
+        for monster in monster1:
+            monster.colliding = True
+            monster.stages = 2
+        for monster in monster2:
+            monster.colliding = True
+        for monster in monster3:
+            monster.colliding = True
+        for monster in monster4:
+            monster.colliding = True
+
+        bazzi.colliding = True
+        bazzi2.colliding = True
+        bazzi3.colliding = True
+        bazzi4.colliding = True
+        bazzi5.colliding = True
+        dio.colliding = True
+        dio2.colliding = True
+        dio3.colliding = True
+        dio4.colliding = True
+        cappy.colliding = True
+        cappy2.colliding = True
+        cappy3.colliding = True
+        cappy4.colliding = True
+        rodu.colliding = True
+        rodu2.colliding = True
+        rodu3.colliding = True
+        rodu4.colliding = True
+        boss.timer = 100
 
 
     for monster in monster1:
@@ -274,7 +310,7 @@ def update():
                 bazzi.attacking(monster)
                 monster.attacking(bazzi)
                 bazzi.HP -= 10
-                monster.HP -=100
+                monster.HP -=30
                 bazzi.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -282,6 +318,7 @@ def update():
                     bazzi.colliding = True
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi)
+
                     monster.colliding = True  # 몬스터 1과 배찌의 충돌체크
         if collide(bazzi2, monster):
             bazzi2.colliding = False
@@ -291,13 +328,14 @@ def update():
                 bazzi2.attacking(monster)
                 monster.attacking(bazzi2)
                 bazzi2.HP -= 10
-                monster.HP -=100
+                monster.HP -=30
                 bazzi2.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     bazzi2.colliding = True
                 elif bazzi2.HP <=0:
+
                     game_world.remove_object(bazzi2)
                     monster.colliding = True    # 배찌2 / 몬스터 1
         if collide(bazzi3, monster):
@@ -308,14 +346,15 @@ def update():
                 bazzi3.attacking(monster)
                 monster.attacking(bazzi3)
                 bazzi3.HP -= 10
-                monster.HP -=100
+                monster.HP -=30
                 bazzi3.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
                     game_world.remove_object(monster)
                     bazzi3.colliding = True
                 elif bazzi3.HP <=0:
-                    game_world.remove_object(bazzi3)   # 배찌3 / 몬스터 1
+                    game_world.remove_object(bazzi3)
+                    # 배찌3 / 몬스터 1
                     monster.colliding = True
         if collide(bazzi4, monster):
             bazzi4.colliding = False
@@ -325,7 +364,7 @@ def update():
                 bazzi4.attacking(monster)
                 monster.attacking(bazzi4)
                 bazzi4.HP -= 10
-                monster.HP -=100
+                monster.HP -=30
                 bazzi4.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -333,6 +372,7 @@ def update():
                     bazzi4.colliding = True
                 elif bazzi4.HP <=0:
                     game_world.remove_object(bazzi4)
+
                     monster.colliding = True      # 배찌4 / 몬스터 1
         if collide(bazzi5, monster):
             bazzi5.colliding = False
@@ -342,7 +382,7 @@ def update():
                 bazzi5.attacking(monster)
                 monster.attacking(bazzi5)
                 bazzi5.HP -= 10
-                monster.HP -=100
+                monster.HP -=30
                 bazzi5.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -350,6 +390,7 @@ def update():
                     bazzi5.colliding = True
                 elif bazzi5.HP <=0:
                     game_world.remove_object(bazzi5)
+
                     monster.colliding = True     # 배찌5 / 몬스터 1
         if collide(dio, monster):
             dio.colliding = False
@@ -359,7 +400,7 @@ def update():
                 dio.attacking(monster)
                 monster.attacking(dio)
                 dio.HP -= 10
-                monster.HP -=100
+                monster.HP -=50
                 dio.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -376,7 +417,7 @@ def update():
                 dio2.attacking(monster)
                 monster.attacking(dio2)
                 dio2.HP -= 10
-                monster.HP -=100
+                monster.HP -=50
                 dio2.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -393,7 +434,7 @@ def update():
                 dio3.attacking(monster)
                 monster.attacking(dio3)
                 dio3.HP -= 10
-                monster.HP -=100
+                monster.HP -=50
                 dio3.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -410,7 +451,7 @@ def update():
                 dio4.attacking(monster)
                 monster.attacking(dio4)
                 dio4.HP -= 10
-                monster.HP -=100
+                monster.HP -=50
                 dio4.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -427,7 +468,7 @@ def update():
                 cappy.attacking(monster)
                 monster.attacking(cappy)
                 cappy.HP -= 10
-                monster.HP -= 100
+                monster.HP -= 20
                 cappy.timer = 100
                 if monster.HP <= 0:
                     monster1.remove(monster)
@@ -444,7 +485,7 @@ def update():
                 cappy2.attacking(monster)
                 monster.attacking(cappy2)
                 cappy2.HP -= 10
-                monster.HP -= 100
+                monster.HP -= 20
                 cappy2.timer = 100
                 if monster.HP <= 0:
                     monster1.remove(monster)
@@ -461,7 +502,7 @@ def update():
                 cappy3.attacking(monster)
                 monster.attacking(cappy3)
                 cappy3.HP -= 10
-                monster.HP -= 100
+                monster.HP -= 20
                 cappy3.timer = 100
                 if monster.HP <= 0:
                     monster1.remove(monster)
@@ -478,7 +519,7 @@ def update():
                 cappy4.attacking(monster)
                 monster.attacking(cappy4)
                 cappy4.HP -= 10
-                monster.HP -= 100
+                monster.HP -= 20
                 cappy4.timer = 100
                 if monster.HP <= 0:
                     monster1.remove(monster)
@@ -495,7 +536,7 @@ def update():
                 rodu.attacking(monster)
                 monster.attacking(rodu)
                 rodu.HP -= 10
-                monster.HP -=100
+                monster.HP -=70
                 rodu.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -512,7 +553,7 @@ def update():
                 rodu2.attacking(monster)
                 monster.attacking(rodu2)
                 rodu2.HP -= 10
-                monster.HP -=100
+                monster.HP -=70
                 rodu2.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -529,7 +570,7 @@ def update():
                 rodu3.attacking(monster)
                 monster.attacking(rodu3)
                 rodu3.HP -= 10
-                monster.HP -=100
+                monster.HP -=70
                 rodu3.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -546,7 +587,7 @@ def update():
                 rodu4.attacking(monster)
                 monster.attacking(rodu4)
                 rodu4.HP -= 10
-                monster.HP -=100
+                monster.HP -=70
                 rodu4.timer = 100
                 if monster.HP <=0:
                     monster1.remove(monster)
@@ -564,7 +605,7 @@ def update():
             tower.timer -= 1
             if tower.timer == 0:
                 monster.attacking(tower)
-                tower.HP -= 10
+                tower.HP -= 20
                 tower.timer = 100
                 if tower.HP <= 0:
                     game_world.remove_object(tower)   # 몬스터 2과 타워 충돌체크
@@ -575,8 +616,8 @@ def update():
             if bazzi.timer ==0:
                 bazzi.attacking(monster)
                 monster.attacking(bazzi)
-                bazzi.HP -= 10
-                monster.HP -=100
+                bazzi.HP -= 20
+                monster.HP -=30
                 bazzi.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -592,8 +633,8 @@ def update():
             if bazzi2.timer ==0:
                 bazzi2.attacking(monster)
                 monster.attacking(bazzi2)
-                bazzi2.HP -= 10
-                monster.HP -=100
+                bazzi2.HP -= 20
+                monster.HP -=30
                 bazzi2.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -609,8 +650,8 @@ def update():
             if bazzi3.timer ==0:
                 bazzi3.attacking(monster)
                 monster.attacking(bazzi3)
-                bazzi3.HP -= 10
-                monster.HP -=100
+                bazzi3.HP -= 20
+                monster.HP -=30
                 bazzi3.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -626,8 +667,8 @@ def update():
             if bazzi4.timer ==0:
                 bazzi4.attacking(monster)
                 monster.attacking(bazzi4)
-                bazzi4.HP -= 10
-                monster.HP -=100
+                bazzi4.HP -= 20
+                monster.HP -=30
                 bazzi4.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -643,8 +684,8 @@ def update():
             if bazzi5.timer ==0:
                 bazzi5.attacking(monster)
                 monster.attacking(bazzi5)
-                bazzi5.HP -= 10
-                monster.HP -=100
+                bazzi5.HP -= 20
+                monster.HP -=30
                 bazzi5.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -660,8 +701,8 @@ def update():
             if dio.timer ==0:
                 dio.attacking(monster)
                 monster.attacking(dio)
-                dio.HP -= 10
-                monster.HP -=100
+                dio.HP -= 20
+                monster.HP -=50
                 dio.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -677,8 +718,8 @@ def update():
             if dio2.timer ==0:
                 dio2.attacking(monster)
                 monster.attacking(dio2)
-                dio2.HP -= 10
-                monster.HP -=100
+                dio2.HP -= 20
+                monster.HP -=50
                 dio2.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -694,8 +735,8 @@ def update():
             if dio3.timer ==0:
                 dio3.attacking(monster)
                 monster.attacking(dio3)
-                dio3.HP -= 10
-                monster.HP -=100
+                dio3.HP -= 20
+                monster.HP -=50
                 dio3.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -711,8 +752,8 @@ def update():
             if dio4.timer ==0:
                 dio4.attacking(monster)
                 monster.attacking(dio4)
-                dio4.HP -= 10
-                monster.HP -=100
+                dio4.HP -= 20
+                monster.HP -=50
                 dio4.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -728,8 +769,8 @@ def update():
             if cappy.timer ==0:
                 cappy.attacking(monster)
                 monster.attacking(cappy)
-                cappy.HP -= 10
-                monster.HP -=100
+                cappy.HP -= 20
+                monster.HP -=20
                 cappy.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -745,8 +786,8 @@ def update():
             if cappy2.timer ==0:
                 cappy2.attacking(monster)
                 monster.attacking(cappy2)
-                cappy2.HP -= 10
-                monster.HP -=100
+                cappy2.HP -= 20
+                monster.HP -=20
                 cappy2.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -762,8 +803,8 @@ def update():
             if cappy3.timer ==0:
                 cappy3.attacking(monster)
                 monster.attacking(cappy3)
-                cappy3.HP -= 10
-                monster.HP -=100
+                cappy3.HP -= 20
+                monster.HP -=20
                 cappy3.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -779,8 +820,8 @@ def update():
             if cappy4.timer ==0:
                 cappy4.attacking(monster)
                 monster.attacking(cappy4)
-                cappy4.HP -= 10
-                monster.HP -=100
+                cappy4.HP -= 20
+                monster.HP -=20
                 cappy4.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -796,8 +837,8 @@ def update():
             if rodu.timer ==0:
                 rodu.attacking(monster)
                 monster.attacking(rodu)
-                rodu.HP -= 10
-                monster.HP -=100
+                rodu.HP -= 20
+                monster.HP -=70
                 rodu.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -813,8 +854,8 @@ def update():
             if rodu2.timer ==0:
                 rodu2.attacking(monster)
                 monster.attacking(rodu2)
-                rodu2.HP -= 10
-                monster.HP -=100
+                rodu2.HP -= 20
+                monster.HP -=70
                 rodu2.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -830,8 +871,8 @@ def update():
             if rodu3.timer ==0:
                 rodu3.attacking(monster)
                 monster.attacking(rodu3)
-                rodu3.HP -= 10
-                monster.HP -=100
+                rodu3.HP -= 20
+                monster.HP -=70
                 rodu3.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -847,8 +888,8 @@ def update():
             if rodu4.timer ==0:
                 rodu4.attacking(monster)
                 monster.attacking(rodu4)
-                rodu4.HP -= 10
-                monster.HP -=100
+                rodu4.HP -= 20
+                monster.HP -=70
                 rodu4.timer = 100
                 if monster.HP <=0:
                     monster2.remove(monster)
@@ -864,7 +905,7 @@ def update():
             tower.timer -= 1
             if tower.timer == 0:
                 monster.attacking(tower)
-                tower.HP -= 100
+                tower.HP -= 20
                 tower.timer = 100
                 if tower.HP <= 0:
                     game_world.remove_object(tower)   # 몬스터 3과 타워 충돌체크
@@ -875,8 +916,8 @@ def update():
             if bazzi.timer ==0:
                 bazzi.attacking(monster)
                 monster.attacking(bazzi)
-                bazzi.HP -= 10
-                monster.HP -=10
+                bazzi.HP -= 20
+                monster.HP -=30
                 bazzi.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -892,8 +933,8 @@ def update():
             if bazzi2.timer ==0:
                 bazzi2.attacking(monster)
                 monster.attacking(bazzi2)
-                bazzi2.HP -= 10
-                monster.HP -=10
+                bazzi2.HP -= 20
+                monster.HP -=30
                 bazzi2.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -909,8 +950,8 @@ def update():
             if bazzi3.timer ==0:
                 bazzi3.attacking(monster)
                 monster.attacking(bazzi3)
-                bazzi3.HP -= 10
-                monster.HP -=10
+                bazzi3.HP -= 20
+                monster.HP -=30
                 bazzi3.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -926,8 +967,8 @@ def update():
             if bazzi4.timer ==0:
                 bazzi4.attacking(monster)
                 monster.attacking(bazzi4)
-                bazzi4.HP -= 10
-                monster.HP -=10
+                bazzi4.HP -= 20
+                monster.HP -=30
                 bazzi4.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -943,8 +984,8 @@ def update():
             if bazzi5.timer ==0:
                 bazzi5.attacking(monster)
                 monster.attacking(bazzi5)
-                bazzi5.HP -= 10
-                monster.HP -=10
+                bazzi5.HP -= 20
+                monster.HP -=30
                 bazzi5.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -960,8 +1001,8 @@ def update():
             if dio.timer ==0:
                 dio.attacking(monster)
                 monster.attacking(dio)
-                dio.HP -= 10
-                monster.HP -=100
+                dio.HP -= 20
+                monster.HP -=50
                 dio.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -977,8 +1018,8 @@ def update():
             if dio2.timer ==0:
                 dio2.attacking(monster)
                 monster.attacking(dio2)
-                dio2.HP -= 10
-                monster.HP -=100
+                dio2.HP -= 20
+                monster.HP -=50
                 dio2.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -994,8 +1035,8 @@ def update():
             if dio3.timer ==0:
                 dio3.attacking(monster)
                 monster.attacking(dio3)
-                dio3.HP -= 10
-                monster.HP -=100
+                dio3.HP -= 20
+                monster.HP -=50
                 dio3.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1011,8 +1052,8 @@ def update():
             if dio4.timer ==0:
                 dio4.attacking(monster)
                 monster.attacking(dio4)
-                dio4.HP -= 10
-                monster.HP -=100
+                dio4.HP -= 20
+                monster.HP -=50
                 dio4.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1028,8 +1069,8 @@ def update():
             if cappy.timer ==0:
                 cappy.attacking(monster)
                 monster.attacking(cappy)
-                cappy.HP -= 10
-                monster.HP -=100
+                cappy.HP -= 20
+                monster.HP -=20
                 cappy.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1045,8 +1086,8 @@ def update():
             if cappy2.timer ==0:
                 cappy2.attacking(monster)
                 monster.attacking(cappy2)
-                cappy2.HP -= 10
-                monster.HP -=100
+                cappy2.HP -= 20
+                monster.HP -=20
                 cappy2.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1062,8 +1103,8 @@ def update():
             if cappy3.timer ==0:
                 monster.attacking(cappy3)
                 cappy3.attacking(monster)
-                cappy3.HP -= 10
-                monster.HP -=100
+                cappy3.HP -= 20
+                monster.HP -=20
                 cappy3.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1079,8 +1120,8 @@ def update():
             if cappy4.timer ==0:
                 cappy4.attacking(monster)
                 monster.attacking(cappy4)
-                cappy4.HP -= 10
-                monster.HP -=100
+                cappy4.HP -= 20
+                monster.HP -=20
                 cappy4.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1096,8 +1137,8 @@ def update():
             if rodu.timer ==0:
                 rodu.attacking(monster)
                 monster.attacking(rodu)
-                rodu.HP -= 10
-                monster.HP -=100
+                rodu.HP -= 20
+                monster.HP -=70
                 rodu.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1113,8 +1154,8 @@ def update():
             if rodu2.timer ==0:
                 rodu2.attacking(monster)
                 monster.attacking(rodu2)
-                rodu2.HP -= 10
-                monster.HP -=100
+                rodu2.HP -= 20
+                monster.HP -=70
                 rodu2.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1130,8 +1171,8 @@ def update():
             if rodu3.timer ==0:
                 rodu3.attacking(monster)
                 monster.attacking(rodu3)
-                rodu3.HP -= 10
-                monster.HP -=100
+                rodu3.HP -= 20
+                monster.HP -=70
                 rodu3.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1147,8 +1188,8 @@ def update():
             if rodu4.timer ==0:
                 rodu4.attacking(monster)
                 monster.attacking(rodu4)
-                rodu4.HP -= 10
-                monster.HP -=100
+                rodu4.HP -= 20
+                monster.HP -=70
                 rodu4.timer = 100
                 if monster.HP <=0:
                     monster3.remove(monster)
@@ -1164,7 +1205,7 @@ def update():
             tower.timer -= 1
             if tower.timer == 0:
                 monster.attacking(tower)
-                tower.HP -= 10
+                tower.HP -= 40
                 tower.timer = 100
                 if tower.HP <= 0:
                     game_world.remove_object(tower)   # 몬스터 4과 타워 충돌체크
@@ -1175,8 +1216,8 @@ def update():
             if bazzi.timer ==0:
                 bazzi.attacking(monster)
                 monster.attacking(bazzi)
-                bazzi.HP -= 10
-                monster.HP -=100
+                bazzi.HP -= 40
+                monster.HP -=30
                 bazzi.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1192,8 +1233,8 @@ def update():
             if bazzi2.timer ==0:
                 bazzi2.attacking(monster)
                 monster.attacking(bazzi2)
-                bazzi2.HP -= 10
-                monster.HP -=100
+                bazzi2.HP -= 40
+                monster.HP -=30
                 bazzi2.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1209,12 +1250,12 @@ def update():
             if bazzi3.timer ==0:
                 bazzi3.attacking(monster)
                 monster.attacking(bazzi3)
-                bazzi3.HP -= 10
-                monster.HP -=100
+                bazzi3.HP -= 40
+                monster.HP -=30
                 bazzi3.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
-                    bazzi3.remove_object(monster)
+                    monster4.remove_object(monster)
                     bazzi3.colliding = True
                 elif bazzi.HP <=0:
                     game_world.remove_object(bazzi3)
@@ -1226,8 +1267,8 @@ def update():
             if bazzi4.timer ==0:
                 bazzi4.attacking(monster)
                 monster.attacking(bazzi4)
-                bazzi4.HP -= 10
-                monster.HP -=100
+                bazzi4.HP -= 40
+                monster.HP -=30
                 bazzi4.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1243,8 +1284,8 @@ def update():
             if bazzi5.timer ==0:
                 bazzi5.attacking(monster)
                 monster.attacking(bazzi5)
-                bazzi5.HP -= 10
-                monster.HP -=100
+                bazzi5.HP -= 40
+                monster.HP -=30
                 bazzi5.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1260,8 +1301,8 @@ def update():
             if dio.timer ==0:
                 dio.attacking(monster)
                 monster.attacking(dio)
-                dio.HP -= 10
-                monster.HP -=100
+                dio.HP -= 40
+                monster.HP -=50
                 dio.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1277,8 +1318,8 @@ def update():
             if dio2.timer ==0:
                 dio2.attacking(monster)
                 monster.attacking(dio2)
-                dio2.HP -= 10
-                monster.HP -=100
+                dio2.HP -= 40
+                monster.HP -=50
                 dio2.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1294,8 +1335,8 @@ def update():
             if dio4.timer ==0:
                 dio4.attacking(monster)
                 monster.attacking(dio4)
-                dio4.HP -= 10
-                monster.HP -=100
+                dio4.HP -= 40
+                monster.HP -=50
                 dio4.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1311,8 +1352,8 @@ def update():
             if dio3.timer ==0:
                 dio3.attacking(monster)
                 monster.attacking(dio3)
-                dio3.HP -= 10
-                monster.HP -=100
+                dio3.HP -= 40
+                monster.HP -=50
                 dio3.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1328,8 +1369,8 @@ def update():
             if cappy.timer ==0:
                 cappy.attacking(monster)
                 monster.attacking(cappy)
-                cappy.HP -= 10
-                monster.HP -=100
+                cappy.HP -= 40
+                monster.HP -=20
                 cappy.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1345,8 +1386,8 @@ def update():
             if cappy2.timer ==0:
                 cappy2.attacking(monster)
                 monster.attacking(cappy2)
-                cappy2.HP -= 10
-                monster.HP -=100
+                cappy2.HP -= 40
+                monster.HP -=20
                 cappy2.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1362,8 +1403,8 @@ def update():
             if cappy3.timer ==0:
                 cappy3.attacking(monster)
                 monster.attacking(cappy3)
-                cappy3.HP -= 10
-                monster.HP -=100
+                cappy3.HP -= 40
+                monster.HP -=20
                 cappy3.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1379,8 +1420,8 @@ def update():
             if cappy4.timer ==0:
                 cappy4.attacking(monster)
                 monster.attacking(cappy4)
-                cappy4.HP -= 10
-                monster.HP -=100
+                cappy4.HP -= 40
+                monster.HP -=20
                 cappy4.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1396,8 +1437,8 @@ def update():
             if rodu.timer ==0:
                 rodu.attacking(monster)
                 monster.attacking(rodu)
-                rodu.HP -= 10
-                monster.HP -=100
+                rodu.HP -= 40
+                monster.HP -=70
                 rodu.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1413,8 +1454,8 @@ def update():
             if rodu2.timer ==0:
                 rodu2.attacking(monster)
                 monster.attacking(rodu2)
-                rodu2.HP -= 10
-                monster.HP -=100
+                rodu2.HP -= 40
+                monster.HP -=70
                 rodu2.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1430,8 +1471,8 @@ def update():
             if rodu3.timer ==0:
                 rodu3.attacking(monster)
                 monster.attacking(rodu3)
-                rodu3.HP -= 10
-                monster.HP -=100
+                rodu3.HP -= 40
+                monster.HP -=70
                 rodu3.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1447,8 +1488,8 @@ def update():
             if rodu4.timer ==0:
                 rodu4.attacking(monster)
                 monster.attacking(rodu4)
-                rodu4.HP -= 10
-                monster.HP -=100
+                rodu4.HP -= 40
+                monster.HP -=70
                 rodu4.timer = 100
                 if monster.HP <=0:
                     monster4.remove(monster)
@@ -1463,7 +1504,7 @@ def update():
         bazzi.timer -= 1
         if bazzi.timer == 0:
             bazzi.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 30
             bazzi.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 배찌와 보스의 충돌체크
@@ -1472,7 +1513,7 @@ def update():
         bazzi2.timer -= 1
         if bazzi2.timer == 0:
             bazzi2.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 30
             bazzi2.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1481,7 +1522,7 @@ def update():
         bazzi3.timer -= 1
         if bazzi3.timer == 0:
             bazzi3.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 30
             bazzi3.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1490,7 +1531,7 @@ def update():
         bazzi4.timer -= 1
         if bazzi4.timer == 0:
             bazzi4.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 30
             bazzi4.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1499,7 +1540,7 @@ def update():
         bazzi5.timer -= 1
         if bazzi5.timer == 0:
             bazzi5.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 30
             bazzi5.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1508,7 +1549,7 @@ def update():
         dio.timer -= 1
         if dio.timer == 0:
             dio.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 50
             dio.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 다오 보스의 충돌체크
@@ -1517,7 +1558,7 @@ def update():
         dio2.timer -= 1
         if dio2.timer == 0:
             dio2.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 50
             dio2.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1526,7 +1567,7 @@ def update():
         dio3.timer -= 1
         if dio3.timer == 0:
             dio3.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 50
             dio3.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1535,7 +1576,7 @@ def update():
         dio4.timer -= 1
         if dio4.timer == 0:
             dio4.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 50
             dio4.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1544,7 +1585,7 @@ def update():
         cappy.timer -= 1
         if cappy.timer == 0:
             cappy.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 20
             cappy.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 캐피와 보스의 충돌체크
@@ -1553,7 +1594,7 @@ def update():
         cappy2.timer -= 1
         if cappy2.timer == 0:
             cappy2.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 20
             cappy2.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1562,7 +1603,7 @@ def update():
         cappy3.timer -= 1
         if cappy3.timer == 0:
             cappy3.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 20
             cappy3.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1571,7 +1612,7 @@ def update():
         cappy4.timer -= 1
         if cappy4.timer == 0:
             cappy4.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 20
             cappy4.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1580,7 +1621,7 @@ def update():
         rodu.timer -= 1
         if rodu.timer == 0:
             rodu.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 70
             rodu.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)    # 로두와 보스의 충돌체크
@@ -1589,7 +1630,7 @@ def update():
         rodu2.timer -= 1
         if rodu2.timer == 0:
             rodu2.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 70
             rodu2.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1598,7 +1639,7 @@ def update():
         rodu3.timer -= 1
         if rodu3.timer == 0:
             rodu3.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 70
             rodu3.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
@@ -1607,13 +1648,14 @@ def update():
         rodu4.timer -= 1
         if rodu4.timer == 0:
             rodu4.attacking(monster)
-            boss.HP -= 100
+            boss.HP -= 70
             rodu4.timer = 100
             if boss.HP <= 0:
                 game_world.remove_object(boss)
 
     if boss.HP <= 0:
-        game_framework.change_state()
+        game_framework.change_state(last_stage)
+
 
 def draw():
     clear_canvas()
@@ -1624,7 +1666,8 @@ def draw():
     update_canvas()
 
 
-
+def exit():
+    game_world.clear()
 
 
 

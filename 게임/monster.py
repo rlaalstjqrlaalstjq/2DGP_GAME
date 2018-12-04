@@ -29,8 +29,10 @@ class Monster1:
     def __init__(Monster1):
         if Monster1.image == None:
             Monster1.image = load_image('monster1.png')
+
         Monster1.y = [270, 270, 270]
         Monster1.x, Monster1.y = random.randint(1400, 10000) , Monster1.y[random.randint(0, 2)]
+
 
         Monster1.font = load_font('ENCR10B.TTF', 15)
         Monster1.HP = 300

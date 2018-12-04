@@ -253,6 +253,7 @@ def handle_events():
             else:
                 break
         elif event.type == SDL_KEYDOWN and event.key == SDLK_m:
+            exit()
             game_framework.change_state(second_state)
 
 def update():
@@ -264,15 +265,13 @@ def update():
     if boss.timer == 0:
         for monster in monster1:
             monster.colliding = True
-
         for monster in monster2:
             monster.colliding = True
-
         for monster in monster3:
             monster.colliding = True
-
         for monster in monster4:
             monster.colliding = True
+        boss.timer = 100
 
         bazzi.colliding = True
         bazzi2.colliding = True
@@ -292,8 +291,6 @@ def update():
         rodu3.colliding = True
         rodu4.colliding = True
         boss.timer = 100
-
-
 
     for monster in monster1:
         if collide(tower, monster):
